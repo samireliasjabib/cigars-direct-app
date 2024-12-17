@@ -25,7 +25,7 @@ import {
 } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
-import {PageLayout} from '~/components/PageLayout';
+import {PageLayout} from '~/components/layout/PageLayout';
 import {GenericError} from '~/components/GenericError';
 import {NotFound} from '~/components/NotFound';
 import favicon from '~/assets/favicon.svg';

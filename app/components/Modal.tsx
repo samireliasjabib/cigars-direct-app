@@ -1,5 +1,5 @@
-import {IconClose} from '~/components/Icon';
-import {Link} from '~/components/Link';
+import {IconClose} from '~/components/layout/ui/Icon';
+import {Link} from '~/components/shared/Link';
 
 export function Modal({
   children,

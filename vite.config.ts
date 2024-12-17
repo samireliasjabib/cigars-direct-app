@@ -20,7 +20,17 @@ export default defineConfig({
   ],
   ssr: {
     optimizeDeps: {
-      include: ['typographic-base'],
+      include: [
+        'screenfull',
+        'nano-css/addon/vcssom/cssToTree',
+        'nano-css/addon/vcssom',
+        'nano-css/addon/cssom',
+        'nano-css',
+        'copy-to-clipboard',
+        'js-cookie',
+        'fast-deep-equal/react',
+        'typographic-base',
+      ],
     },
   },
   optimizeDeps: {

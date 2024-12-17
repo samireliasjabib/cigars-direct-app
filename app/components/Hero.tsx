@@ -8,7 +8,7 @@ import type {
 
 import type {CollectionContentFragment} from 'storefrontapi.generated';
 import {Heading, Text} from '~/components/Text';
-import {Link} from '~/components/Link';
+import {Link} from '~/components/shared/Link';
 
 type HeroProps = CollectionContentFragment & {
   height?: 'full';

@@ -6,7 +6,7 @@ import type {FulfillmentStatus} from '@shopify/hydrogen/customer-account-api-typ
 
 import type {OrderFragment} from 'customer-accountapi.generated';
 import {statusMessage} from '~/lib/utils';
-import {Link} from '~/components/Link';
+import {Link} from '~/components/shared/Link';
 import {Heading, PageHeader, Text} from '~/components/Text';
 import {CUSTOMER_ORDER_QUERY} from '~/graphql/customer-account/CustomerOrderQuery';
 

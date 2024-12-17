@@ -23,13 +23,13 @@ import type {
   ProductVariantFragmentFragment,
 } from 'storefrontapi.generated';
 import {Heading, Section, Text} from '~/components/Text';
-import {Link} from '~/components/Link';
+import {Link} from '~/components/shared/Link';
 import {Button} from '~/components/Button';
 import {AddToCartButton} from '~/components/AddToCartButton';
 import {Skeleton} from '~/components/Skeleton';
 import {ProductSwimlane} from '~/components/ProductSwimlane';
 import {ProductGallery} from '~/components/ProductGallery';
-import {IconCaret, IconCheck, IconClose} from '~/components/Icon';
+import {IconCaret, IconCheck, IconClose} from '~/components/layout/ui/Icon';
 import {getExcerpt} from '~/lib/utils';
 import {seoPayload} from '~/lib/seo.server';
 import type {Storefront} from '~/lib/type';

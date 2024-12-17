@@ -7,7 +7,7 @@ import {useLoaderData} from '@remix-run/react';
 import {flattenConnection, getSeoMeta, Image} from '@shopify/hydrogen';
 
 import {PageHeader, Section} from '~/components/Text';
-import {Link} from '~/components/Link';
+import {Link} from '~/components/shared/Link';
 import {Grid} from '~/components/Grid';
 import {getImageLoadingPriority, PAGINATION_SIZE} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';

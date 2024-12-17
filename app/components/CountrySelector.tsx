@@ -7,7 +7,7 @@ import {CartForm} from '@shopify/hydrogen';
 
 import {Button} from '~/components/Button';
 import {Heading} from '~/components/Text';
-import {IconCheck} from '~/components/Icon';
+import {IconCheck} from '~/components/layout/ui/Icon';
 import type {Localizations, Locale} from '~/lib/type';
 import {DEFAULT_LOCALE} from '~/lib/utils';
 import type {RootLoader} from '~/root';

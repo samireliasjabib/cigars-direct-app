@@ -19,8 +19,8 @@ import type {
 
 import {Button} from '~/components/Button';
 import {Text, Heading} from '~/components/Text';
-import {Link} from '~/components/Link';
-import {IconRemove} from '~/components/Icon';
+import {Link} from '~/components/shared/Link';
+import {IconRemove} from '~/components/layout/ui/Icon';
 import {FeaturedProducts} from '~/components/FeaturedProducts';
 import {getInputStyleClasses} from '~/lib/utils';
 

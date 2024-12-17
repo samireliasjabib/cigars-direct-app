@@ -8,7 +8,7 @@ import invariant from 'tiny-invariant';
 import {getSeoMeta} from '@shopify/hydrogen';
 
 import {PageHeader, Section, Heading} from '~/components/Text';
-import {Link} from '~/components/Link';
+import {Link} from '~/components/shared/Link';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
 import type {NonNullableFields} from '~/lib/type';
