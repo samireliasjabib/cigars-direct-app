@@ -1,6 +1,4 @@
-import {Image} from '@shopify/hydrogen';
 import {EnhancedMenu} from '~/lib/utils';
-import CIGARS_DIRECT_LOGO_WHITE from '../../../../assets/cigar-logo-white.jpg';
 import HeaderSearchInput from './HeaderSearchInput';
 import CartToggle from '~/components/cart/CartToggle';
 import AccountLink from '../shared/account-link/AccountLink';
@@ -15,11 +13,10 @@ const DesktopHeader = ({
   return (
     <header
       role="heading"
-      className="bg-black sticky top-0 z-40 left-0 w-full px-4 md:px-10 py-4 hidden md:block "
+      className="bg-black sticky top-0 z-40 left-0 w-full px-4 md:px-10 py-4 hidden lg:block "
     >
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         <div className="flex items-center gap-12 w-full">
-          {/* logo */}
           <Logo />
           <HeaderSearchInput />
         </div>

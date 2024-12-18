@@ -45,9 +45,27 @@ export async function loader(args: LoaderFunctionArgs) {
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
 async function loadCriticalData({context, request}: LoaderFunctionArgs) {
-  return {
-    seo: seoPayload.home({url: request.url}),
-  };
+  try {
+    const [collectionData] = await Promise.all([
+      // Fetch collection data
+      context.storefront.query(COLLECTION_HERO_QUERY, {
+        variables: {
+          handle: 'cigars-of-the-year',
+          country: context.storefront.i18n.country,
+          language: context.storefront.i18n.language,
+        },
+      }),
+      // PUT OTHER CRITICAL QUERIES HERE (example of parallel request)
+    ]);
+
+    return {
+      collectionData,
+      seo: seoPayload.home({url: request.url}),
+    };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  }
 }
 
 /**
@@ -134,15 +152,16 @@ export const meta = ({matches}: MetaArgs<typeof loader>) => {
 };
 
 export default function Homepage() {
-  const {secondaryHero, tertiaryHero, featuredCollections, featuredProducts} =
-    useLoaderData<typeof loader>();
+  const {collectionData} = useLoaderData<typeof loader>();
+
+  console.log(collectionData);
 
   // TODO: skeletons vs placeholders
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
   return (
     <>
-      <HomeBanner
+      {/* <HomeBanner
         desktopImage={{
           url: 'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-image.webp?v=1734482420',
           altText: 'cigars-direct-banner-desktop',
@@ -152,7 +171,7 @@ export default function Homepage() {
           altText: 'cigars-direct-banner-mobile',
         }}
       />
-      <TopCigarsBrands />
+      <TopCigarsBrands /> */}
       {/* {featuredProducts && (
         <Suspense>
           <Await resolve={featuredProducts}>
@@ -227,12 +246,19 @@ export default function Homepage() {
   );
 }
 
-const COLLECTION_CONTENT_FRAGMENT = `#graphql
-  fragment CollectionContent on Collection {
+// Basic collection information
+const COLLECTION_BASIC_FRAGMENT = `#graphql
+  fragment CollectionBasic on Collection {
     id
     handle
     title
     descriptionHtml
+  }
+` as const;
+
+// Hero-specific metafields
+const COLLECTION_HERO_FRAGMENT = `#graphql
+  fragment CollectionHero on Collection {
     heading: metafield(namespace: "hero", key: "title") {
       value
     }
@@ -256,28 +282,59 @@ const COLLECTION_CONTENT_FRAGMENT = `#graphql
   ${MEDIA_FRAGMENT}
 ` as const;
 
-const HOMEPAGE_SEO_QUERY = `#graphql
-  query seoCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
-      ...CollectionContent
+// Product variant details
+const PRODUCT_VARIANT_FRAGMENT = `#graphql
+  fragment ProductVariant on ProductVariant {
+    id
+    image {
+      url
+      altText
+      width
+      height
     }
-    shop {
-      name
-      description
+    price {
+      amount
+      currencyCode
+    }
+    compareAtPrice {
+      amount
+      currencyCode
     }
   }
-  ${COLLECTION_CONTENT_FRAGMENT}
+` as const;
+
+// Collection products
+const COLLECTION_PRODUCTS_FRAGMENT = `#graphql
+  fragment CollectionProducts on Collection {
+    products(first: 8) {
+      nodes {
+        id
+        title
+        publishedAt
+        handle
+        variants(first: 1) {
+          nodes {
+            ...ProductVariant
+          }
+        }
+      }
+    }
+  }
+  ${PRODUCT_VARIANT_FRAGMENT}
 ` as const;
 
 const COLLECTION_HERO_QUERY = `#graphql
   query heroCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
-      ...CollectionContent
+    collection(handle: $handle) {
+      ...CollectionBasic
+      ...CollectionHero
+      ...CollectionProducts
     }
   }
-  ${COLLECTION_CONTENT_FRAGMENT}
+  ${COLLECTION_BASIC_FRAGMENT}
+  ${COLLECTION_HERO_FRAGMENT}
+  ${COLLECTION_PRODUCTS_FRAGMENT}
 ` as const;
 
 // @see: https://shopify.dev/api/storefront/current/queries/products
