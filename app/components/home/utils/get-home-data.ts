@@ -1,17 +1,21 @@
 import {seoPayload} from '~/lib/seo.server';
-import {fetchCollectionData} from '~/services/collections.service';
 
 import {type LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import {fetchCollectionData} from '~/services/collections.service';
 
 async function loadCriticalData(args: LoaderFunctionArgs) {
   const {request} = args;
   try {
-    const [collectionData] = await Promise.all([
-      fetchCollectionData(args),
+    const [cigarsOfTheYear] = await Promise.all([
+      fetchCollectionData({
+        args,
+        handle: 'cigars-of-the-year',
+      }),
       // PUT OTHER CRITICAL QUERIES HERE (example of parallel request)
     ]);
+
     return {
-      collectionData,
+      cigarsOfTheYear,
       seo: seoPayload.home({url: request.url}),
     };
   } catch (error) {
@@ -26,7 +30,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
   return {};
 }
 
-function getHomeData(args: LoaderFunctionArgs) {
+async function getHomeData(args: LoaderFunctionArgs) {
   const {params, context} = args;
   const {language, country} = context.storefront.i18n;
 
@@ -39,7 +43,7 @@ function getHomeData(args: LoaderFunctionArgs) {
 
   try {
     const deferredData = loadDeferredData(args);
-    const criticalData = loadCriticalData(args);
+    const criticalData = await loadCriticalData(args);
 
     return {...deferredData, ...criticalData};
   } catch (error) {

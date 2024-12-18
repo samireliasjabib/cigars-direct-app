@@ -1,5 +1,4 @@
-// Product variant details
-const PRODUCT_VARIANT_FRAGMENT = `#graphql
+export const PRODUCT_VARIANT_FRAGMENT = `#graphql
   fragment ProductVariant on ProductVariant {
     id
     image {
@@ -19,4 +18,29 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
   }
 ` as const;
 
-export {PRODUCT_VARIANT_FRAGMENT};
+export const PRODUCT_BASIC_FRAGMENT = `#graphql
+  fragment ProductContent on Product {
+    id
+    title
+    handle
+    variants(first: 1) {
+      edges {
+        node {
+          id
+          price {
+            amount
+            currencyCode
+          }
+          compareAtPrice {
+            amount
+            currencyCode
+          }
+          image {
+            url
+            altText
+          }
+        }
+      }
+    }
+  }
+` as const;

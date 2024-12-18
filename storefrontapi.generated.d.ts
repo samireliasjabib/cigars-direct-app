@@ -21,6 +21,329 @@ export type OrderCardFragment = Pick<
   };
 };
 
+export type CollectionContentFragment = Pick<
+  StorefrontAPI.Collection,
+  'id' | 'handle' | 'title' | 'descriptionHtml'
+> & {
+  products: {
+    edges: Array<{
+      node: Pick<StorefrontAPI.Product, 'id' | 'title' | 'handle'> & {
+        variants: {
+          edges: Array<{
+            node: Pick<StorefrontAPI.ProductVariant, 'id'> & {
+              price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+              compareAtPrice?: StorefrontAPI.Maybe<
+                Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
+              >;
+              image?: StorefrontAPI.Maybe<
+                Pick<StorefrontAPI.Image, 'url' | 'altText'>
+              >;
+            };
+          }>;
+        };
+      };
+    }>;
+  };
+  heading?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+  byline?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+  cta?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+  spread?: StorefrontAPI.Maybe<{
+    reference?: StorefrontAPI.Maybe<
+      | ({__typename: 'MediaImage'} & Pick<
+          StorefrontAPI.MediaImage,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            image?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
+            >;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+      | ({__typename: 'Model3d'} & Pick<
+          StorefrontAPI.Model3d,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            sources: Array<
+              Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+            >;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+      | ({__typename: 'Video'} & Pick<
+          StorefrontAPI.Video,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            sources: Array<Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>>;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+    >;
+  }>;
+  spreadSecondary?: StorefrontAPI.Maybe<{
+    reference?: StorefrontAPI.Maybe<
+      | ({__typename: 'MediaImage'} & Pick<
+          StorefrontAPI.MediaImage,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            image?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
+            >;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+      | ({__typename: 'Model3d'} & Pick<
+          StorefrontAPI.Model3d,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            sources: Array<
+              Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+            >;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+      | ({__typename: 'Video'} & Pick<
+          StorefrontAPI.Video,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            sources: Array<Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>>;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+    >;
+  }>;
+};
+
+export type SeoCollectionContentQueryVariables = StorefrontAPI.Exact<{
+  handle?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['String']['input']>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+}>;
+
+export type SeoCollectionContentQuery = {
+  hero?: StorefrontAPI.Maybe<
+    Pick<
+      StorefrontAPI.Collection,
+      'id' | 'handle' | 'title' | 'descriptionHtml'
+    > & {
+      products: {
+        edges: Array<{
+          node: Pick<StorefrontAPI.Product, 'id' | 'title' | 'handle'> & {
+            variants: {
+              edges: Array<{
+                node: Pick<StorefrontAPI.ProductVariant, 'id'> & {
+                  price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+                  compareAtPrice?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
+                  >;
+                  image?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.Image, 'url' | 'altText'>
+                  >;
+                };
+              }>;
+            };
+          };
+        }>;
+      };
+      heading?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+      byline?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+      cta?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+      spread?: StorefrontAPI.Maybe<{
+        reference?: StorefrontAPI.Maybe<
+          | ({__typename: 'MediaImage'} & Pick<
+              StorefrontAPI.MediaImage,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                image?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+          | ({__typename: 'Model3d'} & Pick<
+              StorefrontAPI.Model3d,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                sources: Array<
+                  Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+          | ({__typename: 'Video'} & Pick<
+              StorefrontAPI.Video,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                sources: Array<
+                  Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+        >;
+      }>;
+      spreadSecondary?: StorefrontAPI.Maybe<{
+        reference?: StorefrontAPI.Maybe<
+          | ({__typename: 'MediaImage'} & Pick<
+              StorefrontAPI.MediaImage,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                image?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+          | ({__typename: 'Model3d'} & Pick<
+              StorefrontAPI.Model3d,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                sources: Array<
+                  Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+          | ({__typename: 'Video'} & Pick<
+              StorefrontAPI.Video,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                sources: Array<
+                  Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+        >;
+      }>;
+    }
+  >;
+  shop: Pick<StorefrontAPI.Shop, 'name' | 'description'>;
+};
+
+export type HeroCollectionContentQueryVariables = StorefrontAPI.Exact<{
+  handle?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['String']['input']>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+}>;
+
+export type HeroCollectionContentQuery = {
+  hero?: StorefrontAPI.Maybe<
+    Pick<
+      StorefrontAPI.Collection,
+      'id' | 'handle' | 'title' | 'descriptionHtml'
+    > & {
+      products: {
+        edges: Array<{
+          node: Pick<StorefrontAPI.Product, 'id' | 'title' | 'handle'> & {
+            variants: {
+              edges: Array<{
+                node: Pick<StorefrontAPI.ProductVariant, 'id'> & {
+                  price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+                  compareAtPrice?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
+                  >;
+                  image?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.Image, 'url' | 'altText'>
+                  >;
+                };
+              }>;
+            };
+          };
+        }>;
+      };
+      heading?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+      byline?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+      cta?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+      spread?: StorefrontAPI.Maybe<{
+        reference?: StorefrontAPI.Maybe<
+          | ({__typename: 'MediaImage'} & Pick<
+              StorefrontAPI.MediaImage,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                image?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+          | ({__typename: 'Model3d'} & Pick<
+              StorefrontAPI.Model3d,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                sources: Array<
+                  Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+          | ({__typename: 'Video'} & Pick<
+              StorefrontAPI.Video,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                sources: Array<
+                  Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+        >;
+      }>;
+      spreadSecondary?: StorefrontAPI.Maybe<{
+        reference?: StorefrontAPI.Maybe<
+          | ({__typename: 'MediaImage'} & Pick<
+              StorefrontAPI.MediaImage,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                image?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+          | ({__typename: 'Model3d'} & Pick<
+              StorefrontAPI.Model3d,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                sources: Array<
+                  Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+          | ({__typename: 'Video'} & Pick<
+              StorefrontAPI.Video,
+              'id' | 'mediaContentType' | 'alt'
+            > & {
+                sources: Array<
+                  Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
+                >;
+                previewImage?: StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Image, 'url'>
+                >;
+              })
+        >;
+      }>;
+    }
+  >;
+};
+
 type Media_ExternalVideo_Fragment = {__typename: 'ExternalVideo'} & Pick<
   StorefrontAPI.ExternalVideo,
   'id' | 'embedUrl' | 'host' | 'mediaContentType' | 'alt'
@@ -101,6 +424,25 @@ export type ProductVariantFragment = Pick<
   compareAtPrice?: StorefrontAPI.Maybe<
     Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
   >;
+};
+
+export type ProductContentFragment = Pick<
+  StorefrontAPI.Product,
+  'id' | 'title' | 'handle'
+> & {
+  variants: {
+    edges: Array<{
+      node: Pick<StorefrontAPI.ProductVariant, 'id'> & {
+        price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+        compareAtPrice?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
+        >;
+        image?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Image, 'url' | 'altText'>
+        >;
+      };
+    }>;
+  };
 };
 
 export type LayoutQueryVariables = StorefrontAPI.Exact<{
@@ -210,272 +552,6 @@ export type GetShopPrimaryDomainQueryVariables = StorefrontAPI.Exact<{
 
 export type GetShopPrimaryDomainQuery = {
   shop: {primaryDomain: Pick<StorefrontAPI.Domain, 'url'>};
-};
-
-export type CollectionContentFragment = Pick<
-  StorefrontAPI.Collection,
-  'id' | 'handle' | 'title' | 'descriptionHtml'
-> & {
-  heading?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-  byline?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-  cta?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-  spread?: StorefrontAPI.Maybe<{
-    reference?: StorefrontAPI.Maybe<
-      | ({__typename: 'MediaImage'} & Pick<
-          StorefrontAPI.MediaImage,
-          'id' | 'mediaContentType' | 'alt'
-        > & {
-            image?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
-            >;
-            previewImage?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'url'>
-            >;
-          })
-      | ({__typename: 'Model3d'} & Pick<
-          StorefrontAPI.Model3d,
-          'id' | 'mediaContentType' | 'alt'
-        > & {
-            sources: Array<
-              Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
-            >;
-            previewImage?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'url'>
-            >;
-          })
-      | ({__typename: 'Video'} & Pick<
-          StorefrontAPI.Video,
-          'id' | 'mediaContentType' | 'alt'
-        > & {
-            sources: Array<Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>>;
-            previewImage?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'url'>
-            >;
-          })
-    >;
-  }>;
-  spreadSecondary?: StorefrontAPI.Maybe<{
-    reference?: StorefrontAPI.Maybe<
-      | ({__typename: 'MediaImage'} & Pick<
-          StorefrontAPI.MediaImage,
-          'id' | 'mediaContentType' | 'alt'
-        > & {
-            image?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
-            >;
-            previewImage?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'url'>
-            >;
-          })
-      | ({__typename: 'Model3d'} & Pick<
-          StorefrontAPI.Model3d,
-          'id' | 'mediaContentType' | 'alt'
-        > & {
-            sources: Array<
-              Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
-            >;
-            previewImage?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'url'>
-            >;
-          })
-      | ({__typename: 'Video'} & Pick<
-          StorefrontAPI.Video,
-          'id' | 'mediaContentType' | 'alt'
-        > & {
-            sources: Array<Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>>;
-            previewImage?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'url'>
-            >;
-          })
-    >;
-  }>;
-};
-
-export type SeoCollectionContentQueryVariables = StorefrontAPI.Exact<{
-  handle?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['String']['input']>;
-  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-}>;
-
-export type SeoCollectionContentQuery = {
-  hero?: StorefrontAPI.Maybe<
-    Pick<
-      StorefrontAPI.Collection,
-      'id' | 'handle' | 'title' | 'descriptionHtml'
-    > & {
-      heading?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-      byline?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-      cta?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-      spread?: StorefrontAPI.Maybe<{
-        reference?: StorefrontAPI.Maybe<
-          | ({__typename: 'MediaImage'} & Pick<
-              StorefrontAPI.MediaImage,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                image?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-          | ({__typename: 'Model3d'} & Pick<
-              StorefrontAPI.Model3d,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                sources: Array<
-                  Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-          | ({__typename: 'Video'} & Pick<
-              StorefrontAPI.Video,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                sources: Array<
-                  Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-        >;
-      }>;
-      spreadSecondary?: StorefrontAPI.Maybe<{
-        reference?: StorefrontAPI.Maybe<
-          | ({__typename: 'MediaImage'} & Pick<
-              StorefrontAPI.MediaImage,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                image?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-          | ({__typename: 'Model3d'} & Pick<
-              StorefrontAPI.Model3d,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                sources: Array<
-                  Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-          | ({__typename: 'Video'} & Pick<
-              StorefrontAPI.Video,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                sources: Array<
-                  Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-        >;
-      }>;
-    }
-  >;
-  shop: Pick<StorefrontAPI.Shop, 'name' | 'description'>;
-};
-
-export type HeroCollectionContentQueryVariables = StorefrontAPI.Exact<{
-  handle?: StorefrontAPI.InputMaybe<StorefrontAPI.Scalars['String']['input']>;
-  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-}>;
-
-export type HeroCollectionContentQuery = {
-  hero?: StorefrontAPI.Maybe<
-    Pick<
-      StorefrontAPI.Collection,
-      'id' | 'handle' | 'title' | 'descriptionHtml'
-    > & {
-      heading?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-      byline?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-      cta?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
-      spread?: StorefrontAPI.Maybe<{
-        reference?: StorefrontAPI.Maybe<
-          | ({__typename: 'MediaImage'} & Pick<
-              StorefrontAPI.MediaImage,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                image?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-          | ({__typename: 'Model3d'} & Pick<
-              StorefrontAPI.Model3d,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                sources: Array<
-                  Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-          | ({__typename: 'Video'} & Pick<
-              StorefrontAPI.Video,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                sources: Array<
-                  Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-        >;
-      }>;
-      spreadSecondary?: StorefrontAPI.Maybe<{
-        reference?: StorefrontAPI.Maybe<
-          | ({__typename: 'MediaImage'} & Pick<
-              StorefrontAPI.MediaImage,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                image?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-          | ({__typename: 'Model3d'} & Pick<
-              StorefrontAPI.Model3d,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                sources: Array<
-                  Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-          | ({__typename: 'Video'} & Pick<
-              StorefrontAPI.Video,
-              'id' | 'mediaContentType' | 'alt'
-            > & {
-                sources: Array<
-                  Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
-                >;
-                previewImage?: StorefrontAPI.Maybe<
-                  Pick<StorefrontAPI.Image, 'url'>
-                >;
-              })
-        >;
-      }>;
-    }
-  >;
 };
 
 export type ApiAllProductsQueryVariables = StorefrontAPI.Exact<{
@@ -1182,6 +1258,14 @@ export type PaginatedProductsSearchQuery = {
 };
 
 interface GeneratedQueryTypes {
+  '#graphql\n  query seoCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    hero: collection(handle: $handle) {\n      ...CollectionContent\n    }\n    shop {\n      name\n      description\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    products(first: 10) {\n      edges {\n        node {\n          ...ProductContent\n        }\n      }\n    }\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n  #graphql\n  fragment ProductContent on Product {\n    id\n    title\n    handle\n    variants(first: 1) {\n      edges {\n        node {\n          id\n          price {\n            amount\n            currencyCode\n          }\n          compareAtPrice {\n            amount\n            currencyCode\n          }\n          image {\n            url\n            altText\n          }\n        }\n      }\n    }\n  }\n\n\n': {
+    return: SeoCollectionContentQuery;
+    variables: SeoCollectionContentQueryVariables;
+  };
+  '#graphql\n  query heroCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    hero: collection(handle: $handle) {\n      ...CollectionContent\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    products(first: 10) {\n      edges {\n        node {\n          ...ProductContent\n        }\n      }\n    }\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n  #graphql\n  fragment ProductContent on Product {\n    id\n    title\n    handle\n    variants(first: 1) {\n      edges {\n        node {\n          id\n          price {\n            amount\n            currencyCode\n          }\n          compareAtPrice {\n            amount\n            currencyCode\n          }\n          image {\n            url\n            altText\n          }\n        }\n      }\n    }\n  }\n\n\n': {
+    return: HeroCollectionContentQuery;
+    variables: HeroCollectionContentQueryVariables;
+  };
   '#graphql\n  query layout(\n    $language: LanguageCode\n    $headerMenuHandle: String!\n    $footerMenuHandle: String!\n  ) @inContext(language: $language) {\n    shop {\n      ...Shop\n    }\n    headerMenu: menu(handle: $headerMenuHandle) {\n      ...Menu\n    }\n    footerMenu: menu(handle: $footerMenuHandle) {\n      ...Menu\n    }\n  }\n  fragment Shop on Shop {\n    id\n    name\n    description\n    primaryDomain {\n      url\n    }\n    brand {\n      logo {\n        image {\n          url\n        }\n      }\n    }\n  }\n  fragment MenuItem on MenuItem {\n    id\n    resourceId\n    tags\n    title\n    type\n    url\n  }\n  fragment ChildMenuItem on MenuItem {\n    ...MenuItem\n  }\n  fragment ParentMenuItem on MenuItem {\n    ...MenuItem\n    items {\n      ...ChildMenuItem\n    }\n  }\n  fragment Menu on Menu {\n    id\n    items {\n      ...ParentMenuItem\n    }\n  }\n': {
     return: LayoutQuery;
     variables: LayoutQueryVariables;
@@ -1189,14 +1273,6 @@ interface GeneratedQueryTypes {
   '#graphql\n      query getShopPrimaryDomain { shop { primaryDomain { url } } }\n    ': {
     return: GetShopPrimaryDomainQuery;
     variables: GetShopPrimaryDomainQueryVariables;
-  };
-  '#graphql\n  query seoCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    hero: collection(handle: $handle) {\n      ...CollectionContent\n    }\n    shop {\n      name\n      description\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n\n': {
-    return: SeoCollectionContentQuery;
-    variables: SeoCollectionContentQueryVariables;
-  };
-  '#graphql\n  query heroCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    hero: collection(handle: $handle) {\n      ...CollectionContent\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n\n': {
-    return: HeroCollectionContentQuery;
-    variables: HeroCollectionContentQueryVariables;
   };
   '#graphql\n  query ApiAllProducts(\n    $query: String\n    $count: Int\n    $reverse: Boolean\n    $country: CountryCode\n    $language: LanguageCode\n    $sortKey: ProductSortKeys\n  ) @inContext(country: $country, language: $language) {\n    products(first: $count, sortKey: $sortKey, reverse: $reverse, query: $query) {\n      nodes {\n        ...ProductCard\n      }\n    }\n  }\n  #graphql\n  fragment ProductCard on Product {\n    id\n    title\n    publishedAt\n    handle\n    vendor\n    variants(first: 1) {\n      nodes {\n        id\n        availableForSale\n        image {\n          url\n          altText\n          width\n          height\n        }\n        price {\n          amount\n          currencyCode\n        }\n        compareAtPrice {\n          amount\n          currencyCode\n        }\n        selectedOptions {\n          name\n          value\n        }\n        product {\n          handle\n          title\n        }\n      }\n    }\n  }\n\n': {
     return: ApiAllProductsQuery;

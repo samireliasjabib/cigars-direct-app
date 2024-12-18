@@ -6,14 +6,14 @@ import {
 import {useLoaderData} from '@remix-run/react';
 import {getSeoMeta} from '@shopify/hydrogen';
 
-import {getHeroPlaceholder} from '~/lib/placeholders';
+// import {getHeroPlaceholder} from '~/lib/placeholders';
 import {routeHeaders} from '~/data/cache';
+import {seoPayload} from '~/lib/seo.server';
+
+import getHomeData from '~/components/home/utils/get-home-data';
 import TopCigarsBrands from '~/components/home/top-cigars-brands/TopCigarsBrands';
 import HomeBanner from '~/components/home/home-banner/HomeBanner';
 import CigarsOfTheYear from '~/components/home/cigars-of-the-year/CigarsOfTheYear';
-import {seoPayload} from '~/lib/seo.server';
-import getHomeData from '~/components/home/utils/get-home-data';
-
 export const headers = routeHeaders;
 
 export async function loader(args: LoaderFunctionArgs) {
@@ -34,12 +34,10 @@ export const meta = ({matches}: MetaArgs<typeof loader>) => {
 };
 
 export default function Homepage() {
-  const {collectionData} = useLoaderData<typeof loader>();
-
-  console.log(collectionData);
+  const {cigarsOfTheYear} = useLoaderData<typeof loader>();
 
   // TODO: skeletons vs placeholders
-  const skeletons = getHeroPlaceholder([{}, {}, {}]);
+  // const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
   return (
     <>
@@ -54,7 +52,9 @@ export default function Homepage() {
         }}
       />
       <TopCigarsBrands />
-      <CigarsOfTheYear />
+      {cigarsOfTheYear ? (
+        <CigarsOfTheYear cigarsOfTheYear={cigarsOfTheYear} />
+      ) : null}
     </>
   );
 }

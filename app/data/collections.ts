@@ -1,4 +1,5 @@
 import {MEDIA_FRAGMENT} from './fragments';
+import {PRODUCT_BASIC_FRAGMENT} from './products';
 
 const COLLECTION_CONTENT_FRAGMENT = `#graphql
   fragment CollectionContent on Collection {
@@ -6,6 +7,13 @@ const COLLECTION_CONTENT_FRAGMENT = `#graphql
     handle
     title
     descriptionHtml
+    products(first: 10) {
+      edges {
+        node {
+          ...ProductContent
+        }
+      }
+    }
     heading: metafield(namespace: "hero", key: "title") {
       value
     }
@@ -27,6 +35,7 @@ const COLLECTION_CONTENT_FRAGMENT = `#graphql
     }
   }
   ${MEDIA_FRAGMENT}
+  ${PRODUCT_BASIC_FRAGMENT}
 ` as const;
 
 const HOMEPAGE_SEO_QUERY = `#graphql
@@ -53,4 +62,9 @@ const COLLECTION_HERO_QUERY = `#graphql
   ${COLLECTION_CONTENT_FRAGMENT}
 ` as const;
 
-export {COLLECTION_HERO_QUERY, HOMEPAGE_SEO_QUERY, COLLECTION_CONTENT_FRAGMENT};
+export {
+  COLLECTION_HERO_QUERY,
+  HOMEPAGE_SEO_QUERY,
+  COLLECTION_CONTENT_FRAGMENT,
+  PRODUCT_BASIC_FRAGMENT,
+};
