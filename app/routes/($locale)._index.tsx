@@ -13,7 +13,8 @@ import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
-import HomeBanner from '~/components/home/HomeBanner';
+import TopCigarsBrands from '~/components/home/top-cigars-brands/TopCigarsBrands';
+import HomeBanner from '~/components/home/home-banner/HomeBanner';
 
 export const headers = routeHeaders;
 
@@ -151,7 +152,8 @@ export default function Homepage() {
           altText: 'cigars-direct-banner-mobile',
         }}
       />
-      {featuredProducts && (
+      <TopCigarsBrands />
+      {/* {featuredProducts && (
         <Suspense>
           <Await resolve={featuredProducts}>
             {(response) => {
@@ -172,7 +174,7 @@ export default function Homepage() {
             }}
           </Await>
         </Suspense>
-      )}
+      )} */}
 
       {/* {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
@@ -187,7 +189,7 @@ export default function Homepage() {
         </Suspense>
       )} */}
 
-      {featuredCollections && (
+      {/* {featuredCollections && (
         <Suspense>
           <Await resolve={featuredCollections}>
             {(response) => {
@@ -207,7 +209,7 @@ export default function Homepage() {
             }}
           </Await>
         </Suspense>
-      )}
+      )} */}
       {/* 
       {tertiaryHero && (
         <Suspense fallback={<Hero {...skeletons[2]} />}>

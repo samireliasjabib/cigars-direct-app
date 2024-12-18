@@ -1,7 +1,8 @@
 import {Image} from '@shopify/hydrogen';
-import {Button} from '../ui/button';
+import {BannerProps} from './types';
+import {Button} from '../../ui/button';
 
-function DesktopBanner({
+function MobileBanner({
   image,
   buttonClass,
   buttonLabel,
@@ -11,7 +12,7 @@ function DesktopBanner({
     <div className="w-full h-full relative">
       <Image
         data={image}
-        sizes="(min-width: 768px)"
+        sizes="(max-width: 767px)"
         className="w-full h-auto"
       />
       <div className={`flex justify-center w-full absolute ${buttonPosition}`}>
@@ -23,4 +24,4 @@ function DesktopBanner({
   );
 }
 
-export default DesktopBanner;
+export default MobileBanner;
