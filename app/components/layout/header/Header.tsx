@@ -43,12 +43,7 @@ function Header({title, menu}: {title: string; menu?: EnhancedMenu}) {
         menu={menu}
         openCart={openCart}
       />
-      <MobileHeader
-        isHome={isHome}
-        title={title}
-        openCart={openCart}
-        openMenu={openMenu}
-      />
+      <MobileHeader openCart={openCart} openMenu={openMenu} />
     </>
   );
 }

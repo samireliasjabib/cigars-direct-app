@@ -5,15 +5,24 @@ import {RootLoader} from '~/root';
 import {IconAccount, IconLogin} from '../../../ui/Icon';
 import AccountToggle from './AccountToggle';
 
-function AccountLink() {
+function AccountLink({
+  variant = 'default',
+}: {
+  variant: 'default' | 'label-hidden';
+}) {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const isLoggedIn = rootData?.isLoggedIn;
 
   return (
     <Link to="/account">
       <Suspense fallback={<IconLogin />}>
-        <Await resolve={isLoggedIn} errorElement={<AccountToggle />}>
-          {(isLoggedIn) => (isLoggedIn ? <IconAccount /> : <AccountToggle />)}
+        <Await
+          resolve={isLoggedIn}
+          errorElement={<AccountToggle variant={variant} />}
+        >
+          {(isLoggedIn) =>
+            isLoggedIn ? <IconAccount /> : <AccountToggle variant={variant} />
+          }
         </Await>
       </Suspense>
     </Link>

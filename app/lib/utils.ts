@@ -1,3 +1,6 @@
+import {clsx, type ClassValue} from 'clsx';
+import {twMerge} from 'tailwind-merge';
+
 import {useLocation, useRouteLoaderData} from '@remix-run/react';
 import type {MoneyV2} from '@shopify/hydrogen/storefront-api-types';
 import type {FulfillmentStatus} from '@shopify/hydrogen/customer-account-api-types';
@@ -12,6 +15,10 @@ import type {RootLoader} from '~/root';
 import {countries} from '~/data/countries';
 
 import type {I18nLocale} from './type';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 type EnhancedMenuItemProps = {
   to: string;

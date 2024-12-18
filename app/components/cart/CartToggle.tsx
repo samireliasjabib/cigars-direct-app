@@ -1,12 +1,20 @@
-const CartToggle = ({openCart}: {openCart: () => void}) => {
+const CartToggle = ({
+  openCart,
+  variant = 'default',
+}: {
+  openCart?: () => void;
+  variant?: 'default' | 'label-hidden';
+}) => {
   return (
     <div
-      onClick={openCart}
       role="button"
       className="flex flex-row items-center gap-4"
+      onClick={openCart}
     >
       <CartIcon />
-      <p className="text-sm uppercase text-white tracking-wide">Cart</p>
+      {variant !== 'label-hidden' && (
+        <p className="text-sm uppercase text-white tracking-wide">Cart</p>
+      )}
     </div>
   );
 };

@@ -1,8 +1,14 @@
-const AccountToggle = () => {
+const AccountToggle = ({
+  variant = 'default',
+}: {
+  variant?: 'default' | 'label-hidden';
+}) => {
   return (
     <div className="flex flex-row items-center gap-4">
       <UserIcon />
-      <p className="text-sm uppercase text-white tracking-wide	">Account</p>
+      {variant !== 'label-hidden' && (
+        <p className="text-sm uppercase text-white tracking-wide">Account</p>
+      )}
     </div>
   );
 };

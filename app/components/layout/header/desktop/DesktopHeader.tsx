@@ -2,42 +2,29 @@ import {Image} from '@shopify/hydrogen';
 import {EnhancedMenu} from '~/lib/utils';
 import CIGARS_DIRECT_LOGO_WHITE from '../../../../assets/cigar-logo-white.jpg';
 import HeaderSearchInput from './HeaderSearchInput';
-import {Cart} from '~/components/cart/Cart';
 import CartToggle from '~/components/cart/CartToggle';
 import AccountLink from '../shared/account-link/AccountLink';
+import Logo from '../shared/Logo';
 
 const DesktopHeader = ({
-  isHome,
   openCart,
-  menu,
-  title,
 }: {
-  isHome: boolean;
   openCart: () => void;
   menu?: EnhancedMenu;
-  title: string;
 }) => {
   return (
     <header
       role="heading"
-      className="bg-black sticky top-0 z-40 left-0 w-full px-4 md:px-10 py-4"
+      className="bg-black sticky top-0 z-40 left-0 w-full px-4 md:px-10 py-4 hidden md:block "
     >
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         <div className="flex items-center gap-12 w-full">
           {/* logo */}
-          <Image
-            data={{
-              url: CIGARS_DIRECT_LOGO_WHITE,
-              altText: 'CIGARS DIRECT',
-            }}
-            width={140}
-            className="object-contain"
-            height={55}
-          />
+          <Logo />
           <HeaderSearchInput />
         </div>
         <div className="flex items-center gap-8">
-          <AccountLink />
+          <AccountLink variant="default" />
           <CartToggle openCart={openCart} />
         </div>
       </div>

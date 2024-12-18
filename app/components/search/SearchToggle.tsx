@@ -1,18 +1,13 @@
-function HeaderSearchInput() {
+import {useState} from 'react';
+
+export default function SearchToggle() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex items-center w-full bg-white max-w-[475px] p-1">
-      <input
-        type="search"
-        placeholder="Search..."
-        className="text-sm w-full border-none outline-none focus:outline-none focus:ring-0 text-black px-"
-        name="q"
-      />
+    <button onClick={() => setIsOpen(!isOpen)}>
       <SearchIcon />
-    </div>
+    </button>
   );
 }
-
-export default HeaderSearchInput;
 
 function SearchIcon() {
   return (
@@ -20,7 +15,6 @@ function SearchIcon() {
       aria-hidden="true"
       focusable="false"
       role="presentation"
-      className="relative right-3"
       viewBox="0 0 64 64"
       width={28}
       height={28}
@@ -28,7 +22,7 @@ function SearchIcon() {
     >
       <path
         d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42"
-        stroke="black"
+        stroke="white"
         fill="none"
         strokeWidth="4"
         strokeMiterlimit="10"
