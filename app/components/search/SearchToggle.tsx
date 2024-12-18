@@ -1,11 +1,8 @@
-import {useState} from 'react';
-
 export default function SearchToggle() {
-  const [isOpen, setIsOpen] = useState(false);
   return (
-    <button onClick={() => setIsOpen(!isOpen)}>
+    <div>
       <SearchIcon />
-    </button>
+    </div>
   );
 }
 

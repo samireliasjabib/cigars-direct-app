@@ -1,4 +1,10 @@
-import type {AppLoadContext, EntryContext} from '@shopify/remix-oxygen';
+import {cors} from 'remix-utils/cors';
+
+import type {
+  AppLoadContext,
+  EntryContext,
+  HandleDataRequestFunction,
+} from '@shopify/remix-oxygen';
 import {RemixServer} from '@remix-run/react';
 import isbot from 'isbot';
 import {renderToReadableStream} from 'react-dom/server';
@@ -52,3 +58,10 @@ export default async function handleRequest(
     status: responseStatusCode,
   });
 }
+
+export let handleDataRequest: HandleDataRequestFunction = async (
+  response,
+  {request},
+) => {
+  return await cors(request, response);
+};

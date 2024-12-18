@@ -1,5 +1,6 @@
 import {CartForm} from '@shopify/hydrogen';
 import {useEffect} from 'react';
+import {useIsHydrated} from '~/hooks/useIsHydrated';
 import CartDrawer from '~/components/cart/CartDrawer';
 import {useDrawer} from '~/components/Drawer';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
@@ -8,8 +9,9 @@ import MobileHeader from './mobile/MobileHeader';
 import MenuDrawer from './mobile/MenuDrawer';
 import DesktopHeader from './desktop/DesktopHeader';
 
-function Header({title, menu}: {title: string; menu?: EnhancedMenu}) {
-  const isHome = useIsHomePath();
+function Header({menu}: {title: string; menu?: EnhancedMenu}) {
+  // const isHome = useIsHomePath();
+  const isHydrated = useIsHydrated();
 
   const {
     isOpen: isCartOpen,
@@ -25,11 +27,14 @@ function Header({title, menu}: {title: string; menu?: EnhancedMenu}) {
 
   const addToCartFetchers = useCartFetchers(CartForm.ACTIONS.LinesAdd);
 
-  // toggle cart drawer when adding to cart
   useEffect(() => {
     if (isCartOpen || !addToCartFetchers.length) return;
     openCart();
   }, [addToCartFetchers, isCartOpen, openCart]);
+
+  if (!isHydrated) {
+    return null; // Prevent rendering mismatched UI during SSR
+  }
 
   return (
     <>
