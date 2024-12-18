@@ -7,13 +7,13 @@ import {Suspense} from 'react';
 import {Await, useLoaderData} from '@remix-run/react';
 import {getSeoMeta} from '@shopify/hydrogen';
 
-import {Hero} from '~/components/Hero';
 import {FeaturedCollections} from '~/components/FeaturedCollections';
 import {ProductSwimlane} from '~/components/ProductSwimlane';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
+import HomeBanner from '~/components/home/HomeBanner';
 
 export const headers = routeHeaders;
 
@@ -44,16 +44,7 @@ export async function loader(args: LoaderFunctionArgs) {
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
 async function loadCriticalData({context, request}: LoaderFunctionArgs) {
-  const [{shop, hero}] = await Promise.all([
-    context.storefront.query(HOMEPAGE_SEO_QUERY, {
-      variables: {handle: 'freestyle'},
-    }),
-    // Add other queries here, so that they are loaded in parallel
-  ]);
-
   return {
-    shop,
-    primaryHero: hero,
     seo: seoPayload.home({url: request.url}),
   };
 }
@@ -142,23 +133,24 @@ export const meta = ({matches}: MetaArgs<typeof loader>) => {
 };
 
 export default function Homepage() {
-  const {
-    primaryHero,
-    secondaryHero,
-    tertiaryHero,
-    featuredCollections,
-    featuredProducts,
-  } = useLoaderData<typeof loader>();
+  const {secondaryHero, tertiaryHero, featuredCollections, featuredProducts} =
+    useLoaderData<typeof loader>();
 
   // TODO: skeletons vs placeholders
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
   return (
     <>
-      {primaryHero && (
-        <Hero {...primaryHero} height="full" top loading="eager" />
-      )}
-
+      <HomeBanner
+        desktopImage={{
+          url: 'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-image.webp?v=1734482420',
+          altText: 'cigars-direct-banner-desktop',
+        }}
+        mobileImage={{
+          url: 'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-mobile.webp?v=1734482417',
+          altText: 'cigars-direct-banner-mobile',
+        }}
+      />
       {featuredProducts && (
         <Suspense>
           <Await resolve={featuredProducts}>
@@ -182,7 +174,7 @@ export default function Homepage() {
         </Suspense>
       )}
 
-      {secondaryHero && (
+      {/* {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
           <Await resolve={secondaryHero}>
             {(response) => {
@@ -193,7 +185,7 @@ export default function Homepage() {
             }}
           </Await>
         </Suspense>
-      )}
+      )} */}
 
       {featuredCollections && (
         <Suspense>
@@ -216,7 +208,7 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-
+      {/* 
       {tertiaryHero && (
         <Suspense fallback={<Hero {...skeletons[2]} />}>
           <Await resolve={tertiaryHero}>
@@ -228,7 +220,7 @@ export default function Homepage() {
             }}
           </Await>
         </Suspense>
-      )}
+      )} */}
     </>
   );
 }

@@ -37,12 +37,7 @@ function Header({title, menu}: {title: string; menu?: EnhancedMenu}) {
       {menu && (
         <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
       )}
-      <DesktopHeader
-        isHome={isHome}
-        title={title}
-        menu={menu}
-        openCart={openCart}
-      />
+      <DesktopHeader menu={menu} openCart={openCart} />
       <MobileHeader openCart={openCart} openMenu={openMenu} />
     </>
   );
