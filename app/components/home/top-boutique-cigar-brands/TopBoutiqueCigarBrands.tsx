@@ -1,4 +1,3 @@
-import {LightweightCollectionQuery} from 'storefrontapi.generated';
 import Heading from '~/components/design-system/Heading';
 
 function TopBoutiqueCigarBrands() {
