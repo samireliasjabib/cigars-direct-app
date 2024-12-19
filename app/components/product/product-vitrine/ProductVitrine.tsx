@@ -8,7 +8,7 @@ function ProductVitrine({
 }) {
   if (!products?.edges.length) return null;
   return (
-    <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
+    <div className="grid grid-cols-2 gap-6 md:gap-12 md:grid-cols-4">
       {products.edges.map((product, i) => (
         <ProductCard key={product.node.id} product={product.node} />
       ))}

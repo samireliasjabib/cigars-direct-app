@@ -11,11 +11,13 @@ function Heading({title, viewAllLink, className}: HeadingProps) {
   return (
     <div
       className={cn(
-        'flex justify-between items-center pb-6 md:pb-12',
+        'flex flex-wrap justify-between items-start md:items-center pb-6 md:pb-12',
         className,
       )}
     >
-      <h2 className="text-xl lg:text-3xl font-bold uppercase">{title}</h2>
+      <h2 className="text-xl lg:text-3xl font-bold uppercase break-words max-w-[70%] md:max-w-none">
+        {title}
+      </h2>
       {viewAllLink && (
         <Link
           to={viewAllLink}
