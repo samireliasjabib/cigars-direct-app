@@ -23,6 +23,7 @@ function BrandCard({brand}: BrandCardProps) {
           decoding="async"
           className="object-cover w-full h-full transition-transform duration-500 ease-out group-hover:scale-105"
           loading="lazy"
+          sizes="(min-width: 1024px) 16.666vw, 33.333vw"
         />
       </div>
       <h3 className="mt-3 text-sm md:text-base font-medium text-gray-900 text-center transition-colors duration-300 group-hover:text-primary">
