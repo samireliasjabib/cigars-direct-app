@@ -28,6 +28,51 @@ export type CollectionContentFragment = Pick<
   products: {
     edges: Array<{
       node: Pick<StorefrontAPI.Product, 'id' | 'title' | 'handle'> & {
+        media: {
+          nodes: Array<
+            | ({__typename: 'ExternalVideo'} & Pick<
+                StorefrontAPI.ExternalVideo,
+                'id' | 'embedUrl' | 'host' | 'mediaContentType' | 'alt'
+              > & {
+                  previewImage?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.Image, 'url'>
+                  >;
+                })
+            | ({__typename: 'MediaImage'} & Pick<
+                StorefrontAPI.MediaImage,
+                'id' | 'mediaContentType' | 'alt'
+              > & {
+                  image?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
+                  >;
+                  previewImage?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.Image, 'url'>
+                  >;
+                })
+            | ({__typename: 'Model3d'} & Pick<
+                StorefrontAPI.Model3d,
+                'id' | 'mediaContentType' | 'alt'
+              > & {
+                  sources: Array<
+                    Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+                  >;
+                  previewImage?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.Image, 'url'>
+                  >;
+                })
+            | ({__typename: 'Video'} & Pick<
+                StorefrontAPI.Video,
+                'id' | 'mediaContentType' | 'alt'
+              > & {
+                  sources: Array<
+                    Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
+                  >;
+                  previewImage?: StorefrontAPI.Maybe<
+                    Pick<StorefrontAPI.Image, 'url'>
+                  >;
+                })
+          >;
+        };
         priceRange: {
           minVariantPrice: Pick<
             StorefrontAPI.MoneyV2,
@@ -144,6 +189,54 @@ export type SeoCollectionContentQuery = {
       products: {
         edges: Array<{
           node: Pick<StorefrontAPI.Product, 'id' | 'title' | 'handle'> & {
+            media: {
+              nodes: Array<
+                | ({__typename: 'ExternalVideo'} & Pick<
+                    StorefrontAPI.ExternalVideo,
+                    'id' | 'embedUrl' | 'host' | 'mediaContentType' | 'alt'
+                  > & {
+                      previewImage?: StorefrontAPI.Maybe<
+                        Pick<StorefrontAPI.Image, 'url'>
+                      >;
+                    })
+                | ({__typename: 'MediaImage'} & Pick<
+                    StorefrontAPI.MediaImage,
+                    'id' | 'mediaContentType' | 'alt'
+                  > & {
+                      image?: StorefrontAPI.Maybe<
+                        Pick<
+                          StorefrontAPI.Image,
+                          'id' | 'url' | 'width' | 'height'
+                        >
+                      >;
+                      previewImage?: StorefrontAPI.Maybe<
+                        Pick<StorefrontAPI.Image, 'url'>
+                      >;
+                    })
+                | ({__typename: 'Model3d'} & Pick<
+                    StorefrontAPI.Model3d,
+                    'id' | 'mediaContentType' | 'alt'
+                  > & {
+                      sources: Array<
+                        Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+                      >;
+                      previewImage?: StorefrontAPI.Maybe<
+                        Pick<StorefrontAPI.Image, 'url'>
+                      >;
+                    })
+                | ({__typename: 'Video'} & Pick<
+                    StorefrontAPI.Video,
+                    'id' | 'mediaContentType' | 'alt'
+                  > & {
+                      sources: Array<
+                        Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
+                      >;
+                      previewImage?: StorefrontAPI.Maybe<
+                        Pick<StorefrontAPI.Image, 'url'>
+                      >;
+                    })
+              >;
+            };
             priceRange: {
               minVariantPrice: Pick<
                 StorefrontAPI.MoneyV2,
@@ -267,6 +360,54 @@ export type CollectionByHandleQuery = {
       products: {
         edges: Array<{
           node: Pick<StorefrontAPI.Product, 'id' | 'title' | 'handle'> & {
+            media: {
+              nodes: Array<
+                | ({__typename: 'ExternalVideo'} & Pick<
+                    StorefrontAPI.ExternalVideo,
+                    'id' | 'embedUrl' | 'host' | 'mediaContentType' | 'alt'
+                  > & {
+                      previewImage?: StorefrontAPI.Maybe<
+                        Pick<StorefrontAPI.Image, 'url'>
+                      >;
+                    })
+                | ({__typename: 'MediaImage'} & Pick<
+                    StorefrontAPI.MediaImage,
+                    'id' | 'mediaContentType' | 'alt'
+                  > & {
+                      image?: StorefrontAPI.Maybe<
+                        Pick<
+                          StorefrontAPI.Image,
+                          'id' | 'url' | 'width' | 'height'
+                        >
+                      >;
+                      previewImage?: StorefrontAPI.Maybe<
+                        Pick<StorefrontAPI.Image, 'url'>
+                      >;
+                    })
+                | ({__typename: 'Model3d'} & Pick<
+                    StorefrontAPI.Model3d,
+                    'id' | 'mediaContentType' | 'alt'
+                  > & {
+                      sources: Array<
+                        Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+                      >;
+                      previewImage?: StorefrontAPI.Maybe<
+                        Pick<StorefrontAPI.Image, 'url'>
+                      >;
+                    })
+                | ({__typename: 'Video'} & Pick<
+                    StorefrontAPI.Video,
+                    'id' | 'mediaContentType' | 'alt'
+                  > & {
+                      sources: Array<
+                        Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>
+                      >;
+                      previewImage?: StorefrontAPI.Maybe<
+                        Pick<StorefrontAPI.Image, 'url'>
+                      >;
+                    })
+              >;
+            };
             priceRange: {
               minVariantPrice: Pick<
                 StorefrontAPI.MoneyV2,
@@ -460,6 +601,49 @@ export type ProductContentFragment = Pick<
   StorefrontAPI.Product,
   'id' | 'title' | 'handle'
 > & {
+  media: {
+    nodes: Array<
+      | ({__typename: 'ExternalVideo'} & Pick<
+          StorefrontAPI.ExternalVideo,
+          'id' | 'embedUrl' | 'host' | 'mediaContentType' | 'alt'
+        > & {
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+      | ({__typename: 'MediaImage'} & Pick<
+          StorefrontAPI.MediaImage,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            image?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'id' | 'url' | 'width' | 'height'>
+            >;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+      | ({__typename: 'Model3d'} & Pick<
+          StorefrontAPI.Model3d,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            sources: Array<
+              Pick<StorefrontAPI.Model3dSource, 'mimeType' | 'url'>
+            >;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+      | ({__typename: 'Video'} & Pick<
+          StorefrontAPI.Video,
+          'id' | 'mediaContentType' | 'alt'
+        > & {
+            sources: Array<Pick<StorefrontAPI.VideoSource, 'mimeType' | 'url'>>;
+            previewImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'url'>
+            >;
+          })
+    >;
+  };
   priceRange: {
     minVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
     maxVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
@@ -1292,11 +1476,11 @@ export type PaginatedProductsSearchQuery = {
 };
 
 interface GeneratedQueryTypes {
-  '#graphql\n  query seoCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    hero: collection(handle: $handle) {\n      ...CollectionContent\n    }\n    shop {\n      name\n      description\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    products(first: 10) {\n      edges {\n        node {\n          ...ProductContent\n        }\n      }\n    }\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n  #graphql\n  fragment ProductContent on Product {\n    id\n    title\n    handle\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n      maxVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      edges {\n        node {\n          id\n          price {\n            amount\n            currencyCode\n          }\n          compareAtPrice {\n            amount\n            currencyCode\n          }\n          image {\n            url\n            altText\n          }\n        }\n      }\n    }\n  }\n\n\n': {
+  '#graphql\n  query seoCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    hero: collection(handle: $handle) {\n      ...CollectionContent\n    }\n    shop {\n      name\n      description\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    products(first: 10) {\n      edges {\n        node {\n          ...ProductContent\n        }\n      }\n    }\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment ProductContent on Product {\n    id\n    title\n    handle\n    media(first: 2) {\n      nodes {\n        ...Media\n      }\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n      maxVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      edges {\n        node {\n          id\n          price {\n            amount\n            currencyCode\n          }\n          compareAtPrice {\n            amount\n            currencyCode\n          }\n          image {\n            url\n            altText\n          }\n        }\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n\n\n': {
     return: SeoCollectionContentQuery;
     variables: SeoCollectionContentQueryVariables;
   };
-  '#graphql\n  query collectionByHandle($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    collection: collection(handle: $handle) {\n      ...CollectionContent\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    products(first: 10) {\n      edges {\n        node {\n          ...ProductContent\n        }\n      }\n    }\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n  #graphql\n  fragment ProductContent on Product {\n    id\n    title\n    handle\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n      maxVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      edges {\n        node {\n          id\n          price {\n            amount\n            currencyCode\n          }\n          compareAtPrice {\n            amount\n            currencyCode\n          }\n          image {\n            url\n            altText\n          }\n        }\n      }\n    }\n  }\n\n\n': {
+  '#graphql\n  query collectionByHandle($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    collection: collection(handle: $handle) {\n      ...CollectionContent\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    products(first: 10) {\n      edges {\n        node {\n          ...ProductContent\n        }\n      }\n    }\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment ProductContent on Product {\n    id\n    title\n    handle\n    media(first: 2) {\n      nodes {\n        ...Media\n      }\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n      maxVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      edges {\n        node {\n          id\n          price {\n            amount\n            currencyCode\n          }\n          compareAtPrice {\n            amount\n            currencyCode\n          }\n          image {\n            url\n            altText\n          }\n        }\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n\n\n': {
     return: CollectionByHandleQuery;
     variables: CollectionByHandleQueryVariables;
   };

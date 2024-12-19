@@ -1,4 +1,3 @@
-import {MEDIA_FRAGMENT} from './fragments';
 import {COLLECTION_PRODUCT_FRAGMENT} from './products';
 
 const COLLECTION_CONTENT_FRAGMENT = `#graphql
@@ -34,7 +33,6 @@ const COLLECTION_CONTENT_FRAGMENT = `#graphql
       }
     }
   }
-  ${MEDIA_FRAGMENT}
   ${COLLECTION_PRODUCT_FRAGMENT}
 ` as const;
 

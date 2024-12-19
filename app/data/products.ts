@@ -1,3 +1,5 @@
+import {MEDIA_FRAGMENT} from './fragments';
+
 export const PRODUCT_VARIANT_FRAGMENT = `#graphql
   fragment ProductVariant on ProductVariant {
     id
@@ -23,6 +25,11 @@ export const COLLECTION_PRODUCT_FRAGMENT = `#graphql
     id
     title
     handle
+    media(first: 2) {
+      nodes {
+        ...Media
+      }
+    }
     priceRange {
       minVariantPrice {
         amount
@@ -53,4 +60,5 @@ export const COLLECTION_PRODUCT_FRAGMENT = `#graphql
       }
     }
   }
+  ${MEDIA_FRAGMENT}
 ` as const;
