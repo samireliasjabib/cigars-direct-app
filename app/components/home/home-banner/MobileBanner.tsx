@@ -19,7 +19,7 @@ function MobileBanner({
         sizes="100vw"
         className="w-full h-full object-cover"
         loading="eager"
-        decoding="sync"
+        decoding="async"
       />
       <div className={`flex justify-center w-full absolute ${buttonPosition}`}>
         <Button variant="default" className={buttonClass}>
