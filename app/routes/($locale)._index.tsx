@@ -3,26 +3,53 @@ import {
   type MetaArgs,
   type LoaderFunctionArgs,
 } from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
-import {getSeoMeta} from '@shopify/hydrogen';
+import {Await, useLoaderData} from '@remix-run/react';
+import {getSeoMeta, SeoConfig} from '@shopify/hydrogen';
 
 // import {getHeroPlaceholder} from '~/lib/placeholders';
 import {routeHeaders} from '~/data/cache';
-import {seoPayload} from '~/lib/seo.server';
 
-import getHomeData from '~/components/home/utils/get-home-data';
+import {
+  loadCriticalData,
+  loadDeferredData,
+} from '~/components/home/utils/get-home-data';
 import TopCigarsBrands from '~/components/home/top-cigars-brands/TopCigarsBrands';
 import HomeBanner from '~/components/home/home-banner/HomeBanner';
 import CigarsOfTheYear from '~/components/home/cigars-of-the-year/CigarsOfTheYear';
 import TopBoutiqueCigarBrands from '~/components/home/top-boutique-cigar-brands/TopBoutiqueCigarBrands';
+import {
+  CollectionByHandleQuery,
+  GetCollectionTopBoutiqueBrandsQuery,
+} from 'storefrontapi.generated';
+import {Suspense} from 'react';
 export const headers = routeHeaders;
 
+type HomeLoaderData = {
+  topBoutiqueCigarsBrands: Promise<{
+    topBoutiqueCigarsBrands: GetCollectionTopBoutiqueBrandsQuery;
+  }>;
+  cigarsOfTheYear: CollectionByHandleQuery;
+  seo: SeoConfig;
+};
+
 export async function loader(args: LoaderFunctionArgs) {
+  const {params, context} = args;
+  const {language, country} = context.storefront.i18n;
+
+  if (
+    params.locale &&
+    params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
+  ) {
+    throw new Response(null, {status: 404});
+  }
+
   try {
-    const data = await getHomeData(args);
+    const deferredData = loadDeferredData(args);
+    const criticalData = await loadCriticalData(args);
+
     return defer({
-      ...data,
-      seo: seoPayload.home({url: args.request.url}),
+      ...deferredData,
+      ...criticalData,
     });
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -35,8 +62,8 @@ export const meta = ({matches}: MetaArgs<typeof loader>) => {
 };
 
 export default function Homepage() {
-  const {cigarsOfTheYear} = useLoaderData<typeof loader>();
-
+  const {cigarsOfTheYear, topBoutiqueCigarsBrands} =
+    useLoaderData<HomeLoaderData>();
   // TODO: skeletons vs placeholders
   // const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
@@ -56,7 +83,21 @@ export default function Homepage() {
       {cigarsOfTheYear ? (
         <CigarsOfTheYear cigarsOfTheYear={cigarsOfTheYear} />
       ) : null}
-      <TopBoutiqueCigarBrands />
+      {topBoutiqueCigarsBrands ? (
+        <Suspense fallback={<div>Loading...</div>}>
+          <Await resolve={topBoutiqueCigarsBrands}>
+            {(topBoutiqueCigarsBrands) => {
+              return (
+                <TopBoutiqueCigarBrands
+                  topBoutiqueCigarsBrands={
+                    topBoutiqueCigarsBrands as unknown as GetCollectionTopBoutiqueBrandsQuery
+                  }
+                />
+              );
+            }}
+          </Await>
+        </Suspense>
+      ) : null}
     </>
   );
 }

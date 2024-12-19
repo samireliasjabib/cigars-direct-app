@@ -18,7 +18,6 @@ import {Grid} from '~/components/Grid';
 import {ProductCard} from '~/components/ProductCard';
 import {ProductSwimlane} from '~/components/ProductSwimlane';
 import {FeaturedCollections} from '~/components/FeaturedCollections';
-import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getImageLoadingPriority, PAGINATION_SIZE} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';
 
@@ -26,6 +25,7 @@ import {
   getFeaturedData,
   type FeaturedData,
 } from './($locale).featured-products';
+import {PRODUCT_CARD_FRAGMENT} from '~/graphql/querys/products/fragments';
 
 export async function loader({
   request,

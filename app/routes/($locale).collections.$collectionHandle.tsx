@@ -25,12 +25,12 @@ import {Grid} from '~/components/Grid';
 import {Button} from '~/components/Button';
 import {ProductCard} from '~/components/ProductCard';
 import {SortFilter, type SortParam} from '~/components/SortFilter';
-import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
 import {FILTER_URL_PREFIX} from '~/components/SortFilter';
 import {getImageLoadingPriority} from '~/lib/const';
 import {parseAsCurrency} from '~/lib/utils';
+import {PRODUCT_CARD_FRAGMENT} from '~/graphql/querys/products/fragments';
 
 export const headers = routeHeaders;
 

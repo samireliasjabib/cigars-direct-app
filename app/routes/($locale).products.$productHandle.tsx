@@ -34,7 +34,8 @@ import {getExcerpt} from '~/lib/utils';
 import {seoPayload} from '~/lib/seo.server';
 import type {Storefront} from '~/lib/type';
 import {routeHeaders} from '~/data/cache';
-import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
+import {MEDIA_FRAGMENT} from '~/graphql/querys/media/fragments';
+import {PRODUCT_CARD_FRAGMENT} from '~/graphql/querys/products/fragments';
 
 export const headers = routeHeaders;
 

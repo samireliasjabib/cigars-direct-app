@@ -2,8 +2,7 @@ import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import type {ProductSortKeys} from '@shopify/hydrogen/storefront-api-types';
 import {flattenConnection} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
-
-import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
+import {PRODUCT_CARD_FRAGMENT} from '~/graphql/querys/products/fragments';
 
 /**
  * Fetch a given set of products from the storefront API

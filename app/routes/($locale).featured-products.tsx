@@ -1,10 +1,7 @@
 import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
-
-import {
-  PRODUCT_CARD_FRAGMENT,
-  FEATURED_COLLECTION_FRAGMENT,
-} from '~/data/fragments';
+import {FEATURED_COLLECTION_FRAGMENT} from '~/graphql/querys/collections/fragments';
+import {PRODUCT_CARD_FRAGMENT} from '~/graphql/querys/products/fragments';
 
 export async function loader({context: {storefront}}: LoaderFunctionArgs) {
   return json(await getFeaturedData(storefront));

@@ -14,10 +14,10 @@ import {
 import {PageHeader, Section} from '~/components/Text';
 import {ProductCard} from '~/components/ProductCard';
 import {Grid} from '~/components/Grid';
-import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getImageLoadingPriority} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
+import {PRODUCT_CARD_FRAGMENT} from '~/graphql/querys/products/fragments';
 
 const PAGE_BY = 8;
 

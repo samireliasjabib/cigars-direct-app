@@ -1,13 +1,16 @@
 import {seoPayload} from '~/lib/seo.server';
 
 import {type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {fetchCollectionData} from '~/services/collections.service';
+import {
+  getCollectionByHandle,
+  getTopBoutiqueCigarsBrand,
+} from '~/services/collections.service';
 
-async function loadCriticalData(args: LoaderFunctionArgs) {
+export async function loadCriticalData(args: LoaderFunctionArgs) {
   const {request} = args;
   try {
     const [cigarsOfTheYear] = await Promise.all([
-      fetchCollectionData({
+      getCollectionByHandle({
         args,
         handle: 'cigars-of-the-year',
       }),
@@ -24,30 +27,13 @@ async function loadCriticalData(args: LoaderFunctionArgs) {
   }
 }
 
-function loadDeferredData(args: LoaderFunctionArgs) {
-  return {};
+export function loadDeferredData(args: LoaderFunctionArgs) {
+  const topBoutiqueCigarsBrands = getTopBoutiqueCigarsBrand({
+    args,
+    handle: 'top-boutique-cigar-brands',
+  });
+
+  return {
+    topBoutiqueCigarsBrands,
+  };
 }
-
-async function getHomeData(args: LoaderFunctionArgs) {
-  const {params, context} = args;
-  const {language, country} = context.storefront.i18n;
-
-  if (
-    params.locale &&
-    params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase()
-  ) {
-    throw new Response(null, {status: 404});
-  }
-
-  try {
-    const deferredData = loadDeferredData(args);
-    const criticalData = await loadCriticalData(args);
-
-    return {...deferredData, ...criticalData};
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error);
-  }
-}
-
-export default getHomeData;

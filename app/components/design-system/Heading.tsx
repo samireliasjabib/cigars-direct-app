@@ -11,7 +11,7 @@ function Heading({title, viewAllLink, className}: HeadingProps) {
   return (
     <div
       className={cn(
-        'flex flex-wrap justify-between items-start md:items-center pb-6 md:pb-12',
+        'flex flex-wrap justify-between items-center pb-6 md:pb-12',
         className,
       )}
     >
