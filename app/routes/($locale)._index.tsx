@@ -14,6 +14,7 @@ import getHomeData from '~/components/home/utils/get-home-data';
 import TopCigarsBrands from '~/components/home/top-cigars-brands/TopCigarsBrands';
 import HomeBanner from '~/components/home/home-banner/HomeBanner';
 import CigarsOfTheYear from '~/components/home/cigars-of-the-year/CigarsOfTheYear';
+import TopBoutiqueCigarBrands from '~/components/home/top-boutique-cigar-brands/TopBoutiqueCigar-Brands';
 export const headers = routeHeaders;
 
 export async function loader(args: LoaderFunctionArgs) {
@@ -55,6 +56,7 @@ export default function Homepage() {
       {cigarsOfTheYear ? (
         <CigarsOfTheYear cigarsOfTheYear={cigarsOfTheYear} />
       ) : null}
+      <TopBoutiqueCigarBrands />
     </>
   );
 }

@@ -1,19 +1,24 @@
-import {HeroCollectionContentQuery} from 'storefrontapi.generated';
+import {CollectionByHandleQuery} from 'storefrontapi.generated';
 import Heading from '~/components/design-system/Heading';
 import ProductVitrine from '~/components/product/product-vitrine/ProductVitrine';
 
 function CigarsOfTheYear({
   cigarsOfTheYear,
 }: {
-  cigarsOfTheYear: HeroCollectionContentQuery;
+  cigarsOfTheYear: CollectionByHandleQuery;
 }) {
-  const products = cigarsOfTheYear.hero?.products;
+  const products = cigarsOfTheYear.collection?.products;
+  const handle = cigarsOfTheYear.collection?.handle;
   if (!products?.edges.length) return null;
   return (
-    <section role="region">
+    <section
+      role="region"
+      aria-label="Cigars of the Year"
+      className="wrapper pb-16 md:pb-20"
+    >
       <Heading
-        title="Cigars of the Year"
-        viewAllLink={`/collections/${cigarsOfTheYear.hero?.handle}`}
+        title="2023 Cigars of the Year"
+        viewAllLink={`/collections/${handle}`}
       />
       <ProductVitrine products={products} />
     </section>

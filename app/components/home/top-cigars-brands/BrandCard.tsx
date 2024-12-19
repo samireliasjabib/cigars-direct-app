@@ -16,7 +16,7 @@ function BrandCard({imageUrl, altText}: BrandCardProps) {
             url: imageUrl,
             altText,
           }}
-          className="object-contain h-14 filter grayscale hover:filter-none transition-all duration-300  transform group-hover:scale-110"
+          className="object-contain h-14 filter grayscale group-hover:filter-none transition-all duration-300  transform group-hover:scale-110"
           width={110}
         />
       </div>

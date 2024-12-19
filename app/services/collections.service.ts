@@ -1,5 +1,5 @@
 import {LoaderFunctionArgs} from '@remix-run/server-runtime';
-import {COLLECTION_HERO_QUERY} from '~/data/collections';
+import {COLLECTION_BY_HANDLE_QUERY} from '~/data/collections';
 
 export const fetchCollectionData = async ({
   args,
@@ -9,7 +9,7 @@ export const fetchCollectionData = async ({
   handle: string;
 }) => {
   const {context} = args;
-  return context.storefront.query(COLLECTION_HERO_QUERY, {
+  return context.storefront.query(COLLECTION_BY_HANDLE_QUERY, {
     variables: {
       handle,
       country: context.storefront.i18n.country,

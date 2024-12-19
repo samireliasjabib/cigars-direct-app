@@ -75,4 +75,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .wrapper {
+    @apply max-w-[1440px] mx-auto px-4 md:px-10;
+  }
 }

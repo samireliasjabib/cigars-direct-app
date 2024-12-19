@@ -1,5 +1,5 @@
 import {MEDIA_FRAGMENT} from './fragments';
-import {PRODUCT_BASIC_FRAGMENT} from './products';
+import {COLLECTION_PRODUCT_FRAGMENT} from './products';
 
 const COLLECTION_CONTENT_FRAGMENT = `#graphql
   fragment CollectionContent on Collection {
@@ -35,7 +35,7 @@ const COLLECTION_CONTENT_FRAGMENT = `#graphql
     }
   }
   ${MEDIA_FRAGMENT}
-  ${PRODUCT_BASIC_FRAGMENT}
+  ${COLLECTION_PRODUCT_FRAGMENT}
 ` as const;
 
 const HOMEPAGE_SEO_QUERY = `#graphql
@@ -52,10 +52,10 @@ const HOMEPAGE_SEO_QUERY = `#graphql
   ${COLLECTION_CONTENT_FRAGMENT}
 ` as const;
 
-const COLLECTION_HERO_QUERY = `#graphql
-  query heroCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
+const COLLECTION_BY_HANDLE_QUERY = `#graphql
+  query collectionByHandle($handle: String, $country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
+    collection: collection(handle: $handle) {
       ...CollectionContent
     }
   }
@@ -63,8 +63,8 @@ const COLLECTION_HERO_QUERY = `#graphql
 ` as const;
 
 export {
-  COLLECTION_HERO_QUERY,
+  COLLECTION_BY_HANDLE_QUERY,
   HOMEPAGE_SEO_QUERY,
   COLLECTION_CONTENT_FRAGMENT,
-  PRODUCT_BASIC_FRAGMENT,
+  COLLECTION_PRODUCT_FRAGMENT,
 };

@@ -13,9 +13,9 @@ const DesktopHeader = ({
   return (
     <header
       role="heading"
-      className="bg-black sticky top-0 z-40 left-0 w-full px-4 md:px-10 py-4 hidden lg:block "
+      className="bg-black sticky top-0 z-40 left-0 w-full py-4 hidden lg:block "
     >
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between">
+      <div className="wrapper flex items-center justify-between">
         <div className="flex items-center gap-12 w-full">
           <Logo />
           <HeaderSearchInput />

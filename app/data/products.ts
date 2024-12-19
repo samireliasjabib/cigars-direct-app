@@ -18,11 +18,21 @@ export const PRODUCT_VARIANT_FRAGMENT = `#graphql
   }
 ` as const;
 
-export const PRODUCT_BASIC_FRAGMENT = `#graphql
+export const COLLECTION_PRODUCT_FRAGMENT = `#graphql
   fragment ProductContent on Product {
     id
     title
     handle
+    priceRange {
+      minVariantPrice {
+        amount
+        currencyCode
+      }
+      maxVariantPrice {
+        amount
+        currencyCode
+      }
+    }
     variants(first: 1) {
       edges {
         node {
