@@ -7,24 +7,37 @@ function ProductImageSwitcher({
   firstImage: {url: string; altText?: string};
   secondImage: {url: string; altText?: string};
 }) {
+  const imageSize = {
+    width: 400,
+    height: 400,
+  };
+
   return (
-    <div className="relative h-full">
+    <div className="relative aspect-square">
       {/* First Image */}
-      <div className="transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0">
+      <div className="absolute inset-0 transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0">
         <Image
-          data={firstImage}
-          aspectRatio="5/5"
+          data={{
+            ...firstImage,
+            ...imageSize,
+          }}
+          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+          className="object-cover w-full h-full border border-transparent group-hover:border-gray-200 transition-all duration-700 ease-in-out"
           loading="lazy"
-          className="object-cover w-full h-auto border border-transparent group-hover:border-gray-200 transition-all duration-700 ease-in-out"
+          decoding="async"
         />
       </div>
       {/* Second Image */}
       <div className="absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100">
         <Image
-          data={secondImage}
-          aspectRatio="5/5"
+          data={{
+            ...secondImage,
+            ...imageSize,
+          }}
+          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+          className="object-cover w-full h-full border border-transparent group-hover:border-gray-200 transition-all duration-700 ease-in-out"
           loading="lazy"
-          className="object-cover w-full h-auto border border-transparent group-hover:border-gray-200 transition-all duration-700 ease-in-out"
+          decoding="async"
         />
       </div>
     </div>

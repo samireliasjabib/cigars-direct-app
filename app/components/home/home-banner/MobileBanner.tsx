@@ -9,11 +9,17 @@ function MobileBanner({
   buttonPosition,
 }: BannerProps) {
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full relative aspect-[16/9] md:aspect-[21/9]">
       <Image
-        data={image}
-        sizes="(max-width: 767px)"
-        className="w-full h-auto"
+        data={{
+          ...image,
+          width: 767,
+          height: 432,
+        }}
+        sizes="(max-width: 767px) 100vw, 767px"
+        className="w-full h-full object-cover"
+        loading="eager"
+        decoding="sync"
       />
       <div className={`flex justify-center w-full absolute ${buttonPosition}`}>
         <Button variant="default" className={buttonClass}>

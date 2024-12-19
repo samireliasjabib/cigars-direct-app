@@ -9,11 +9,17 @@ function DesktopBanner({
   buttonPosition,
 }: BannerProps) {
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full relative aspect-[21/9] hidden md:block">
       <Image
-        data={image}
-        sizes="(min-width: 768px)"
-        className="w-full h-auto"
+        data={{
+          ...image,
+          width: 1920,
+          height: 820,
+        }}
+        sizes="(min-width: 768px) 100vw, 1px"
+        className="w-full h-full object-cover"
+        loading="eager"
+        decoding="sync"
       />
       <div className={`flex justify-center w-full absolute ${buttonPosition}`}>
         <Button variant="default" className={buttonClass}>
