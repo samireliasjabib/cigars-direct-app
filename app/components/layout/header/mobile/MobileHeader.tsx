@@ -19,7 +19,7 @@ function MobileHeader({
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <header className="bg-black flex items-center px-4 py-3 justify-between sticky top-0 z-40 w-full lg:hidden">
+    <div className="h-[72px] bg-black flex items-center px-4 py-3 justify-between w-full lg:hidden">
       <Image
         data={{url: CIGARS_DIRECT_LOGO_WHITE, altText: 'CIGARS DIRECT'}}
         width={140}
@@ -50,7 +50,7 @@ function MobileHeader({
           />
         </ActionButton>
       </div>
-    </header>
+    </div>
   );
 }
 

@@ -9,12 +9,11 @@ function MobileBanner({
   buttonPosition,
 }: BannerProps) {
   return (
-    <div className="w-full relative aspect-[767/432] md:hidden">
+    <div className="w-full relative  md:hidden">
       <Image
         data={{
           ...image,
           width: 767,
-          height: 432,
         }}
         sizes="100vw"
         className="w-full h-full object-cover"

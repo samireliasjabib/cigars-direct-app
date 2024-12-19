@@ -9,12 +9,11 @@ function DesktopBanner({
   buttonPosition,
 }: BannerProps) {
   return (
-    <div className="w-full relative aspect-[21/9] hidden md:block">
+    <div className="w-full relative hidden md:block">
       <Image
         data={{
           ...image,
           width: 1920,
-          height: 820,
         }}
         sizes="(min-width: 768px) 100vw, 1px"
         className="w-full h-full object-cover"

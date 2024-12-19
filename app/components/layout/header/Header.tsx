@@ -4,15 +4,17 @@ import {useIsHydrated} from '~/hooks/useIsHydrated';
 import CartDrawer from '~/components/cart/CartDrawer';
 import {useDrawer} from '~/components/Drawer';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
-import {EnhancedMenu, useIsHomePath} from '~/lib/utils';
+import {EnhancedMenu} from '~/lib/utils';
 import MobileHeader from './mobile/MobileHeader';
 import MenuDrawer from './mobile/MenuDrawer';
 import DesktopHeader from './desktop/DesktopHeader';
 
-function Header({menu}: {title: string; menu?: EnhancedMenu}) {
-  // const isHome = useIsHomePath();
-  const isHydrated = useIsHydrated();
+interface HeaderProps {
+  title: string;
+  menu?: EnhancedMenu;
+}
 
+function Header({menu}: HeaderProps) {
   const {
     isOpen: isCartOpen,
     openDrawer: openCart,
@@ -32,18 +34,17 @@ function Header({menu}: {title: string; menu?: EnhancedMenu}) {
     openCart();
   }, [addToCartFetchers, isCartOpen, openCart]);
 
-  if (!isHydrated) {
-    return null; // Prevent rendering mismatched UI during SSR
-  }
-
   return (
     <>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
       {menu && (
         <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
       )}
-      <DesktopHeader menu={menu} openCart={openCart} />
-      <MobileHeader openCart={openCart} openMenu={openMenu} />
+      <header className="fixed top-0 left-0 right-0 z-40 bg-black">
+        <DesktopHeader menu={menu} openCart={openCart} />
+        <MobileHeader openCart={openCart} openMenu={openMenu} />
+      </header>
+      <div className="h-[72px] lg:h-[80px]" aria-hidden="true" />
     </>
   );
 }

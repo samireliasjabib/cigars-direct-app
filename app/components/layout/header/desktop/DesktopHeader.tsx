@@ -11,10 +11,7 @@ const DesktopHeader = ({
   menu?: EnhancedMenu;
 }) => {
   return (
-    <header
-      role="heading"
-      className="bg-black sticky top-0 z-40 left-0 w-full py-4 hidden lg:block "
-    >
+    <div className="h-[80px] bg-black w-full py-4 hidden lg:block">
       <div className="wrapper flex items-center justify-between">
         <div className="flex items-center gap-12 w-full">
           <Logo />
@@ -25,7 +22,7 @@ const DesktopHeader = ({
           <CartToggle openCart={openCart} />
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
