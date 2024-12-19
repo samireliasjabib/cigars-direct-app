@@ -24,9 +24,7 @@ async function loadCriticalData(args: LoaderFunctionArgs) {
   }
 }
 
-function loadDeferredData({context}: LoaderFunctionArgs) {
-  const {language, country} = context.storefront.i18n;
-
+function loadDeferredData(args: LoaderFunctionArgs) {
   return {};
 }
 
