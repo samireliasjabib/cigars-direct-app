@@ -17,6 +17,8 @@ function AboutUs() {
           altText: mockData.title,
         }}
         sizes="100vw"
+        height="100%"
+        width="100%"
         className="w-full h-full object-cover"
       />
       {/* Gradient overlay */}

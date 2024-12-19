@@ -9,14 +9,14 @@ function MobileBanner({
   buttonPosition,
 }: BannerProps) {
   return (
-    <div className="w-full relative  md:hidden">
+    <div className="w-full relative h-[500px] md:hidden">
       <Image
         data={{
           ...image,
-          width: 767,
         }}
-        sizes="100vw"
         className="w-full h-full object-cover"
+        height="100%"
+        width="100%"
         loading="eager"
         decoding="async"
       />
