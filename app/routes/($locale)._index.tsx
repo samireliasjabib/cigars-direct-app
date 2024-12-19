@@ -17,11 +17,14 @@ import TopCigarsBrands from '~/components/home/top-cigars-brands/TopCigarsBrands
 import HomeBanner from '~/components/home/home-banner/HomeBanner';
 import CigarsOfTheYear from '~/components/home/cigars-of-the-year/CigarsOfTheYear';
 import TopBoutiqueCigarBrands from '~/components/home/top-boutique-cigar-brands/TopBoutiqueCigarBrands';
+import AboutUs from '~/components/home/about-us/About-us';
 import {
   CollectionByHandleQuery,
   GetCollectionTopBoutiqueBrandsQuery,
 } from 'storefrontapi.generated';
 import {Suspense} from 'react';
+import Reviews from '~/components/home/reviews/Reviews';
+
 export const headers = routeHeaders;
 
 type HomeLoaderData = {
@@ -64,8 +67,6 @@ export const meta = ({matches}: MetaArgs<typeof loader>) => {
 export default function Homepage() {
   const {cigarsOfTheYear, topBoutiqueCigarsBrands} =
     useLoaderData<HomeLoaderData>();
-  // TODO: skeletons vs placeholders
-  // const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
   return (
     <>
@@ -86,18 +87,18 @@ export default function Homepage() {
       {topBoutiqueCigarsBrands ? (
         <Suspense fallback={<div>Loading...</div>}>
           <Await resolve={topBoutiqueCigarsBrands}>
-            {(topBoutiqueCigarsBrands) => {
-              return (
-                <TopBoutiqueCigarBrands
-                  topBoutiqueCigarsBrands={
-                    topBoutiqueCigarsBrands as unknown as GetCollectionTopBoutiqueBrandsQuery
-                  }
-                />
-              );
-            }}
+            {(topBoutiqueCigarsBrands) => (
+              <TopBoutiqueCigarBrands
+                topBoutiqueCigarsBrands={
+                  topBoutiqueCigarsBrands as unknown as GetCollectionTopBoutiqueBrandsQuery
+                }
+              />
+            )}
           </Await>
         </Suspense>
       ) : null}
+      <AboutUs />
+      <Reviews />
     </>
   );
 }
