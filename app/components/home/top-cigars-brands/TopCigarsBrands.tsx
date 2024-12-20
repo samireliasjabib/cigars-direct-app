@@ -67,7 +67,7 @@ const mockBrands = [
 function TopCigarsBrands() {
   return (
     <section
-      className="max-w-[1440px] mx-auto w-full px-4 md:px-10 py-10 md:py-16"
+      className="wrapper pb-10 md:pb-20"
       role="region"
       aria-label="Top Cigars By Brands"
     >

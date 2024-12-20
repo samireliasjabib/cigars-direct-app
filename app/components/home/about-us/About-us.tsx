@@ -10,7 +10,11 @@ const mockData = {
 
 function AboutUs() {
   return (
-    <div className="relative w-full min-h-[400px] h-[60vh] md:h-[550px] lg:h-[650px]">
+    <section
+      className="relative w-full min-h-[400px] h-[60vh] md:h-[550px] lg:h-[650px]"
+      role="region"
+      aria-labelledby="about-us-title"
+    >
       <Image
         data={{
           url: mockData.backgroundImage,
@@ -20,6 +24,8 @@ function AboutUs() {
         height="100%"
         width="100%"
         className="w-full h-full object-cover"
+        loading="lazy"
+        decoding="async"
       />
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -27,7 +33,7 @@ function AboutUs() {
       <div className="absolute bg-black inset-0 opacity-30" />
 
       <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 lg:p-12">
-        <div className="text-center w-full max-w-xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center w-full max-w-xl mx-auto ">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 lg:mb-8 tracking-widest uppercase">
             {mockData.title}
           </h2>
@@ -36,7 +42,7 @@ function AboutUs() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

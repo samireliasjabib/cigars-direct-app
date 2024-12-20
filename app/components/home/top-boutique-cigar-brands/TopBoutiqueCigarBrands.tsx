@@ -12,7 +12,7 @@ function TopBoutiqueCigarBrands({
     <section
       role="region"
       aria-label="Top Boutique Brands"
-      className="wrapper py-8 md:py-12"
+      className="wrapper pb-10 md:pb-20"
     >
       <Heading
         title="Top Boutique Brands"

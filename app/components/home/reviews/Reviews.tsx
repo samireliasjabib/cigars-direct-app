@@ -35,7 +35,7 @@ export default function Reviews({
   });
 
   return (
-    <section className="w-full py-12 md:py-16 wrapper">
+    <section className="w-full py-10 md:py-20 wrapper">
       <Heading
         title="WHAT OUR CUSTOMERS ARE SAYING ABOUT US﻿"
         variant="centered"

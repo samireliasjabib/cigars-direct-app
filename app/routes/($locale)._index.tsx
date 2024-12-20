@@ -75,11 +75,11 @@ export default function Homepage() {
       <HomeBanner
         desktopImage={{
           url: 'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-image.webp?v=1734482420',
-          altText: 'cigars-direct-banner-desktop',
+          altText: 'Promotional banner for desktop users showing latest offers',
         }}
         mobileImage={{
           url: 'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-mobile.webp?v=1734482417',
-          altText: 'cigars-direct-banner-mobile',
+          altText: 'Promotional banner for mobile users showing latest offers',
         }}
       />
       <TopCigarsBrands />

@@ -14,7 +14,7 @@ function CigarsOfTheYear({
     <section
       role="region"
       aria-label="Cigars of the Year"
-      className="wrapper pb-16 md:pb-20"
+      className="wrapper pb-10 md:pb-20"
     >
       <Heading
         title="2023 Cigars of the Year"

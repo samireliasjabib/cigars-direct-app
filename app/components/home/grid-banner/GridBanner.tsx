@@ -21,7 +21,7 @@ function GridBanner() {
   ];
 
   return (
-    <div className="wrapper py-10 md:py-16">
+    <div className="wrapper pb-10 md:pb-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {sections.map((section, index) => (
           <SectionCard
