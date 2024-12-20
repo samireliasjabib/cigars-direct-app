@@ -26,6 +26,7 @@ import {Suspense} from 'react';
 import Reviews from '~/components/home/reviews/Reviews';
 import GridBanner from '~/components/home/grid-banner/GridBanner';
 import NewsCigar from '~/components/home/news-cigar/NewsCigar';
+import RecentlyViewed from '~/components/home/recently-viewed/RecentlyViewed';
 
 export const headers = routeHeaders;
 
@@ -103,6 +104,7 @@ export default function Homepage() {
       <Reviews />
       <GridBanner />
       <NewsCigar />
+      <RecentlyViewed cigarsOfTheYear={cigarsOfTheYear} />
     </>
   );
 }

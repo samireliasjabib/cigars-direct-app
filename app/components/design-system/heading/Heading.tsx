@@ -4,6 +4,7 @@ import {Link} from '../../shared/Link';
 interface HeadingProps {
   title: string;
   viewAllLink?: string;
+  titlePosition?: 'left' | 'center' | 'right';
   className?: string;
   variant?: 'default' | 'centered';
 }
@@ -34,7 +35,7 @@ function Heading({
       >
         {title}
       </h2>
-      {viewAllLink && !isCentered && (
+      {viewAllLink && (
         <Link
           to={viewAllLink}
           className="text-black transition-all text-sm md:text-base font-light uppercase hover:underline hover:text-primary"
