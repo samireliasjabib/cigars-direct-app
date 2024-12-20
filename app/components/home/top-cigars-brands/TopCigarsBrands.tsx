@@ -1,5 +1,5 @@
-import Heading from '~/components/design-system/Heading';
-import BrandGrid from './BrandGrid';
+import Heading from '~/components/design-system/heading/Heading';
+import BrandGrid from './components/BrandGrid';
 
 const mockBrands = [
   {

@@ -1,6 +1,6 @@
 import {CollectionByHandleQuery} from 'storefrontapi.generated';
-import Heading from '~/components/design-system/Heading';
-import ProductVitrine from '~/components/product/product-vitrine/ProductVitrine';
+import Heading from '~/components/design-system/heading/Heading';
+import ProductVitrine from '~/components/design-system/product/product-vitrine/ProductVitrine';
 
 function CigarsOfTheYear({
   cigarsOfTheYear,

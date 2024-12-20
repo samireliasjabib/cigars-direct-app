@@ -1,5 +1,5 @@
-import BrandCard from './components/BrandCard';
-import {BrandGridProps} from './types/types';
+import BrandCard from './BrandCard';
+import {BrandGridProps} from '../types/types';
 
 function BrandGrid({brands}: BrandGridProps) {
   return (

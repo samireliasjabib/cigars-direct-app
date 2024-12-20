@@ -1,6 +1,6 @@
 import {Image} from '@shopify/hydrogen';
-import {BannerProps} from './types';
-import {Button} from '../../ui/button';
+import {BannerProps} from '../types';
+import {Button} from '../../../design-system/ui/button';
 
 function MobileBanner({
   image,
@@ -17,6 +17,7 @@ function MobileBanner({
         className="w-full h-full object-cover"
         height="100%"
         width="100%"
+        sizes="(min-width: 768px) 100vw, 1px"
         loading="eager"
         decoding="async"
       />

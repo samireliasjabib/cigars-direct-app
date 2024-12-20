@@ -1,6 +1,6 @@
 import {Image} from '@shopify/hydrogen';
-import {Button} from '../../ui/button';
-import {BannerProps} from './types';
+import {Button} from '../../../design-system/ui/button';
+import {BannerProps} from '../types';
 
 function DesktopBanner({
   image,

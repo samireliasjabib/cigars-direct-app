@@ -1,7 +1,7 @@
 import {HomeBannerProps} from './types';
 
-import MobileBanner from './MobileBanner';
-import DesktopBanner from './DesktopBanner';
+import MobileBanner from './components/MobileBanner';
+import DesktopBanner from './components/DesktopBanner';
 
 function HomeBanner({mobileImage, desktopImage}: HomeBannerProps) {
   return (

@@ -1,5 +1,5 @@
 import {GetCollectionTopBoutiqueBrandsQuery} from 'storefrontapi.generated';
-import {BrandInfo} from './types';
+import {BrandInfo} from '../types/types';
 
 export function formatBrandsData(
   data: GetCollectionTopBoutiqueBrandsQuery,

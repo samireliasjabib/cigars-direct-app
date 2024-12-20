@@ -1,7 +1,7 @@
-import type {TopBoutiqueCigarBrandsProps} from './types';
-import {formatBrandsData} from './utils';
-import Heading from '~/components/design-system/Heading';
-import BrandCard from './BrandCard';
+import type {TopBoutiqueCigarBrandsProps} from './types/types';
+import {formatBrandsData} from './utils/utils';
+import Heading from '~/components/design-system/heading/Heading';
+import BrandCard from './components/BrandCard';
 
 function TopBoutiqueCigarBrands({
   topBoutiqueCigarsBrands,

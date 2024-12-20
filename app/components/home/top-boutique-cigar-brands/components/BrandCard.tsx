@@ -1,6 +1,6 @@
 import {Image} from '@shopify/hydrogen';
 import {Link} from '~/components/shared/Link';
-import type {BrandInfo} from './types';
+import type {BrandInfo} from '../types/types';
 
 interface BrandCardProps {
   brand: BrandInfo;

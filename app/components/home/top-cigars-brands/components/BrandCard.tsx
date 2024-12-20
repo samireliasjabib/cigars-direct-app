@@ -1,5 +1,5 @@
 import {Image} from '@shopify/hydrogen';
-import {BrandCardProps} from './types';
+import {BrandCardProps} from '../types/types';
 
 function BrandCard({imageUrl, altText}: BrandCardProps) {
   return (
