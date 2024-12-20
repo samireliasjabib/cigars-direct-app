@@ -22,7 +22,7 @@ const ReviewCard = React.memo(function ReviewCard({
       : review.text;
 
   return (
-    <div className="break-inside-avoid-column bg-card">
+    <div className="break-inside-avoid-column bg-card drop-shadow-sm rounded-lg">
       <div className="p-4 border rounded-lg">
         <StarRating rating={review.rating} />
         <p className="text-sm mt-2">

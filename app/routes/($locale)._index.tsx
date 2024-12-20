@@ -24,6 +24,8 @@ import {
 } from 'storefrontapi.generated';
 import {Suspense} from 'react';
 import Reviews from '~/components/home/reviews/Reviews';
+import GridBanner from '~/components/home/grid-banner/GridBanner';
+import NewsCigar from '~/components/home/news-cigar/NewsCigar';
 
 export const headers = routeHeaders;
 
@@ -99,6 +101,8 @@ export default function Homepage() {
       ) : null}
       <AboutUs />
       <Reviews />
+      <GridBanner />
+      <NewsCigar />
     </>
   );
 }

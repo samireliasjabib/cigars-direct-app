@@ -1,11 +1,6 @@
 import {useState, useRef, useEffect} from 'react';
 import {reviews} from '../data/reviews';
-
-interface UseReviewsProps {
-  initialCount: number;
-  loadMoreCount: number;
-  loadingDelay: number;
-}
+import {UseReviewsProps} from '../types/types';
 
 const MOBILE_BREAKPOINT = 768; // md breakpoint
 

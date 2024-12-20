@@ -32,6 +32,14 @@ import favicon from '~/assets/favicon.svg';
 import {seoPayload} from '~/lib/seo.server';
 import styles from '~/styles/app.css?url';
 
+import workSans400 from '@fontsource/work-sans/400.css?url';
+import workSans500 from '@fontsource/work-sans/500.css?url';
+import workSans600 from '@fontsource/work-sans/600.css?url';
+import workSans700 from '@fontsource/work-sans/700.css?url';
+import workSans800 from '@fontsource/work-sans/800.css?url';
+import workSans900 from '@fontsource/work-sans/900.css?url';
+import {loadDeferredData} from '@shopify/remix-oxygen';
+
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 
 export type RootLoader = typeof loader;
@@ -68,9 +76,33 @@ export const links: LinksFunction = () => {
     },
     {
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
+      href: workSans400,
     },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {
+      rel: 'stylesheet',
+      href: workSans500,
+    },
+    {
+      rel: 'stylesheet',
+      href: workSans600,
+    },
+    {
+      rel: 'stylesheet',
+      href: workSans700,
+    },
+    {
+      rel: 'stylesheet',
+      href: workSans800,
+    },
+    {
+      rel: 'stylesheet',
+      href: workSans900,
+    },
+    {
+      rel: 'icon',
+      type: 'image/svg+xml',
+      href: favicon,
+    },
   ];
 };
 

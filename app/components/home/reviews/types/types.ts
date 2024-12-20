@@ -4,3 +4,9 @@ export interface Review {
   author: string;
   isGoogle?: boolean;
 }
+
+export interface UseReviewsProps {
+  initialCount: number;
+  loadMoreCount: number;
+  loadingDelay: number;
+}
