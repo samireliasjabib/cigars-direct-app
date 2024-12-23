@@ -5,6 +5,7 @@ import {Button} from '~/components/design-system/ui/button';
 import {Checkbox} from '~/components/design-system/ui/checkbox';
 import {Input} from '~/components/design-system/ui/input';
 import {PhoneInput} from '~/components/design-system/ui/phone-input';
+import BirthdayInput from './BirthdayInput';
 
 interface JoinFormData {
   email: string;
@@ -38,6 +39,7 @@ export function JoinForm() {
         type="email"
         placeholder="Email Address"
         value={formData.email}
+        className="text-black placeholder:text-black/60"
         onChange={(e) => setFormData({...formData, email: e.target.value})}
         required
       />
@@ -52,13 +54,9 @@ export function JoinForm() {
         />
       </div>
 
-      <Input
-        type="date"
-        placeholder="Birthdate"
+      <BirthdayInput
         value={formData.birthdate}
-        className="text-black"
-        onChange={(e) => setFormData({...formData, birthdate: e.target.value})}
-        required
+        onChange={(value) => setFormData({...formData, birthdate: value})}
       />
 
       <div className="flex items-start gap-2">
@@ -77,7 +75,10 @@ export function JoinForm() {
         </label>
       </div>
 
-      <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+      <Button
+        type="submit"
+        className="w-full bg-white border-2 border-indigo-500 text-indigo-500 hover:bg-white/20 hover:text-white rounded-lg py-6 text-lg font-bold"
+      >
         Submit
       </Button>
     </form>
