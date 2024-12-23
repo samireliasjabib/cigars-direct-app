@@ -38,7 +38,6 @@ import workSans600 from '@fontsource/work-sans/600.css?url';
 import workSans700 from '@fontsource/work-sans/700.css?url';
 import workSans800 from '@fontsource/work-sans/800.css?url';
 import workSans900 from '@fontsource/work-sans/900.css?url';
-import {loadDeferredData} from '@shopify/remix-oxygen';
 
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 

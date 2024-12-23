@@ -5,7 +5,7 @@ import {ScrollArea} from '~/components/design-system/ui/scroll-area';
 import {Separator} from '~/components/design-system/ui/separator';
 import LoadMoreButton from './components/LoadMoreButton';
 import {useReviews} from './hooks/useReviews';
-import {REVIEWS_CONFIG, REVIEWS_COPY} from './constants/constants';
+import {REVIEWS_CONFIG} from './constants/constants';
 import ReviewActions from './components/ReviewActions';
 
 type ReviewsProps = {

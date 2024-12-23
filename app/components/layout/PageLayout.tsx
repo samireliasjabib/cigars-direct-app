@@ -3,6 +3,7 @@ import {type EnhancedMenu} from '~/lib/utils';
 
 import Header from './header/Header';
 import Footer from './footer/Footer';
+import NewFooter from './footer/NewFooter';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -29,7 +30,7 @@ export function PageLayout({children, layout}: LayoutProps) {
           {children}
         </main>
       </div>
-      {footerMenu && <Footer menu={footerMenu} />}
+      {footerMenu && <NewFooter />}
     </>
   );
 }

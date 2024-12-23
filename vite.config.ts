@@ -21,6 +21,8 @@ export default defineConfig({
   ssr: {
     optimizeDeps: {
       include: [
+        'classnames',
+        'prop-types',
         'screenfull',
         'nano-css/addon/vcssom/cssToTree',
         'nano-css/addon/vcssom',
