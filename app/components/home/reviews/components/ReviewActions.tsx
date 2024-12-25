@@ -31,7 +31,7 @@ const ReviewActions: React.FC<ReviewActionsProps> = ({
       </div>
       <button
         onClick={onWriteReview}
-        className="w-full md:w-auto px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg hover:bg-primary/90 transition-colors text-sm md:text-base font-medium"
+        className="w-full md:w-auto px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-sm md:text-base font-medium"
       >
         Write a Review
       </button>
