@@ -53,10 +53,13 @@ export default function Reviews({
             style={{height: contentHeight ? `${contentHeight}px` : 'auto'}}
             className="w-full"
           >
-            <div ref={contentRef}>
+            <div
+              ref={contentRef}
+              className="space-y-4 md:space-y-6 md:min-h-[400px] max-h-[500px] md:max-h-none overflow-y-auto md:overflow-visible"
+            >
               <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 px-4 pb-8">
-                {reviews.slice(0, visibleReviews).map((review, i) => (
-                  <ReviewCard key={i} review={review} />
+                {reviews.slice(0, visibleReviews).map((review, index) => (
+                  <ReviewCard key={index} review={review} />
                 ))}
                 {isLoading && (
                   <div ref={skeletonRef} className="space-y-4">

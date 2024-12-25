@@ -16,9 +16,15 @@ export function useReviews({
   const skeletonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.offsetHeight);
-    }
+    const updateHeight = () => {
+      if (contentRef.current && window.innerWidth >= MOBILE_BREAKPOINT) {
+        setContentHeight(contentRef.current.offsetHeight);
+      }
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
   }, []);
 
   const handleLoadMore = () => {
@@ -29,12 +35,12 @@ export function useReviews({
       );
       setIsLoading(false);
 
-      // Only scroll on mobile devices
+      // Scroll to new content on mobile
       if (skeletonRef.current && window.innerWidth < MOBILE_BREAKPOINT) {
-        skeletonRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
+        const container = contentRef.current;
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
       }
     }, loadingDelay);
   };
