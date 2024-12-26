@@ -55,3 +55,20 @@ export const PRODUCT_VARIANT_FRAGMENT = `#graphql
     }
   }
 ` as const;
+
+export const PRODUCT_QUICK_BUY_FRAGMENT = `#graphql
+  fragment ProductQuickBuy on Product {
+    id
+    variants(first: 4) {
+      nodes {
+        price {
+          amount
+        }
+        compareAtPrice {
+          amount
+        }
+        title
+      }
+    }
+  }
+`;
