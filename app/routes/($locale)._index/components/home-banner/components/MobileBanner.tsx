@@ -1,6 +1,6 @@
 import {Image} from '@shopify/hydrogen';
 import {BannerProps} from '../types';
-import {Button} from '../../../design-system/ui/button';
+import {Button} from '~/components/design-system/ui/button';
 
 function MobileBanner({
   image,

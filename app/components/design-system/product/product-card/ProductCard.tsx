@@ -1,12 +1,12 @@
 import {Link} from '~/components/shared/Link';
-import ProductPricing from './ProductPricing';
+import ProductPricing from './components/ProductPricing';
 import {Plus, Search} from 'lucide-react';
 import {CollectionByHandleQuery} from 'storefrontapi.generated';
 import {getImageMedia} from './utils';
 
 import {useMemo} from 'react';
-import ProductActionButtons from './ProductActionButtons';
-import ProductImageSwitcher from './ProductImageSwitcher';
+import ProductActionButtons from './components/ProductActionButtons';
+import ProductImageSwitcher from './components/ProductImageSwitcher';
 
 function ProductCard({
   product,
@@ -54,9 +54,7 @@ function ProductCard({
   return (
     <div className="group relative">
       <div className="pb-4 relative">
-        {/* Action Buttons */}
-        <ProductActionButtons buttons={actionButtons} />
-
+        <ProductActionButtons productHandle={handle} />
         <Link to={`/products/${handle}`} className="block">
           <ProductImageSwitcher
             firstImage={{

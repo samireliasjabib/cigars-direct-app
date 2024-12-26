@@ -31,6 +31,7 @@ import {FILTER_URL_PREFIX} from '~/components/SortFilter';
 import {getImageLoadingPriority} from '~/lib/const';
 import {parseAsCurrency} from '~/lib/utils';
 import {PRODUCT_CARD_FRAGMENT} from '~/graphql/querys/products/fragments';
+import UnderDevelopment from '~/components/shared/UnderDevelopment';
 
 export const headers = routeHeaders;
 
@@ -147,73 +148,75 @@ export default function Collection() {
 
   const {ref, inView} = useInView();
 
-  return (
-    <>
-      <PageHeader heading={collection.title}>
-        {collection?.description && (
-          <div className="flex items-baseline justify-between w-full">
-            <div>
-              <Text format width="narrow" as="p" className="inline-block">
-                {collection.description}
-              </Text>
-            </div>
-          </div>
-        )}
-      </PageHeader>
-      <Section>
-        <SortFilter
-          filters={collection.products.filters as Filter[]}
-          appliedFilters={appliedFilters}
-          collections={collections}
-        >
-          <Pagination connection={collection.products}>
-            {({
-              nodes,
-              isLoading,
-              PreviousLink,
-              NextLink,
-              nextPageUrl,
-              hasNextPage,
-              state,
-            }) => (
-              <>
-                <div className="flex items-center justify-center mb-6">
-                  <Button as={PreviousLink} variant="secondary" width="full">
-                    {isLoading ? 'Loading...' : 'Load previous'}
-                  </Button>
-                </div>
-                <ProductsLoadedOnScroll
-                  nodes={nodes}
-                  inView={inView}
-                  nextPageUrl={nextPageUrl}
-                  hasNextPage={hasNextPage}
-                  state={state}
-                />
-                <div className="flex items-center justify-center mt-6">
-                  <Button
-                    ref={ref}
-                    as={NextLink}
-                    variant="secondary"
-                    width="full"
-                  >
-                    {isLoading ? 'Loading...' : 'Load more products'}
-                  </Button>
-                </div>
-              </>
-            )}
-          </Pagination>
-        </SortFilter>
-      </Section>
-      <Analytics.CollectionView
-        data={{
-          collection: {
-            id: collection.id,
-            handle: collection.handle,
-          },
-        }}
-      />
-    </>
-  );
+  return <UnderDevelopment />;
+
+  // return (
+  //   <>
+  //     <PageHeader heading={collection.title}>
+  //       {collection?.description && (
+  //         <div className="flex items-baseline justify-between w-full">
+  //           <div>
+  //             <Text format width="narrow" as="p" className="inline-block">
+  //               {collection.description}
+  //             </Text>
+  //           </div>
+  //         </div>
+  //       )}
+  //     </PageHeader>
+  //     <Section>
+  //       <SortFilter
+  //         filters={collection.products.filters as Filter[]}
+  //         appliedFilters={appliedFilters}
+  //         collections={collections}
+  //       >
+  //         <Pagination connection={collection.products}>
+  //           {({
+  //             nodes,
+  //             isLoading,
+  //             PreviousLink,
+  //             NextLink,
+  //             nextPageUrl,
+  //             hasNextPage,
+  //             state,
+  //           }) => (
+  //             <>
+  //               <div className="flex items-center justify-center mb-6">
+  //                 <Button as={PreviousLink} variant="secondary" width="full">
+  //                   {isLoading ? 'Loading...' : 'Load previous'}
+  //                 </Button>
+  //               </div>
+  //               <ProductsLoadedOnScroll
+  //                 nodes={nodes}
+  //                 inView={inView}
+  //                 nextPageUrl={nextPageUrl}
+  //                 hasNextPage={hasNextPage}
+  //                 state={state}
+  //               />
+  //               <div className="flex items-center justify-center mt-6">
+  //                 <Button
+  //                   ref={ref}
+  //                   as={NextLink}
+  //                   variant="secondary"
+  //                   width="full"
+  //                 >
+  //                   {isLoading ? 'Loading...' : 'Load more products'}
+  //                 </Button>
+  //               </div>
+  //             </>
+  //           )}
+  //         </Pagination>
+  //       </SortFilter>
+  //     </Section>
+  //     <Analytics.CollectionView
+  //       data={{
+  //         collection: {
+  //           id: collection.id,
+  //           handle: collection.handle,
+  //         },
+  //       }}
+  //     />
+  //   </>
+  // );
 }
 
 function ProductsLoadedOnScroll({

@@ -10,23 +10,20 @@ import {getSeoMeta, SeoConfig} from '@shopify/hydrogen';
 import {routeHeaders} from '~/data/cache';
 
 import {
-  loadCriticalData,
-  loadDeferredData,
-} from '~/components/home/utils/get-home-data';
-import TopCigarsBrands from '~/components/home/top-cigars-brands/TopCigarsBrands';
-import HomeBanner from '~/components/home/home-banner/HomeBanner';
-import CigarsOfTheYear from '~/components/home/cigars-of-the-year/CigarsOfTheYear';
-import TopBoutiqueCigarBrands from '~/components/home/top-boutique-cigar-brands/TopBoutiqueCigarBrands';
-import AboutUs from '~/components/home/about-us/About-us';
-import {
   CollectionByHandleQuery,
   GetCollectionTopBoutiqueBrandsQuery,
 } from 'storefrontapi.generated';
 import {Suspense} from 'react';
-import Reviews from '~/components/home/reviews/Reviews';
-import GridBanner from '~/components/home/grid-banner/GridBanner';
-import NewsCigar from '~/components/home/news-cigar/NewsCigar';
-import RecentlyViewed from '~/components/home/recently-viewed/RecentlyViewed';
+import HomeBanner from './components/home-banner/HomeBanner';
+import TopCigarsBrands from './components/top-cigars-brands/TopCigarsBrands';
+import CigarsOfTheYear from './components/cigars-of-the-year/CigarsOfTheYear';
+import TopBoutiqueCigarBrands from './components/top-boutique-cigar-brands/TopBoutiqueCigarBrands';
+import AboutUs from './components/about-us/About-us';
+import Reviews from './components/reviews/Reviews';
+import GridBanner from './components/grid-banner/GridBanner';
+import NewsCigar from './components/news-cigar/NewsCigar';
+import RecentlyViewed from './components/recently-viewed/RecentlyViewed';
+import {loadCriticalData, loadDeferredData} from './utils/get-home-data';
 
 export const headers = routeHeaders;
 

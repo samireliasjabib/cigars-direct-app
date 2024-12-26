@@ -36,6 +36,7 @@ import type {Storefront} from '~/lib/type';
 import {routeHeaders} from '~/data/cache';
 import {MEDIA_FRAGMENT} from '~/graphql/querys/media/fragments';
 import {PRODUCT_CARD_FRAGMENT} from '~/graphql/querys/products/fragments';
+import UnderDevelopment from '~/components/shared/UnderDevelopment';
 
 export const headers = routeHeaders;
 
@@ -162,89 +163,91 @@ export default function Product() {
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
 
-  return (
-    <>
-      <Section className="px-0 md:px-8 lg:px-12">
-        <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
-          <ProductGallery
-            media={media.nodes}
-            className="w-full lg:col-span-2"
-          />
-          <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
-            <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
-              <div className="grid gap-2">
-                <Heading as="h1" className="whitespace-normal">
-                  {title}
-                </Heading>
-                {vendor && (
-                  <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-                )}
-              </div>
-              <Suspense fallback={<ProductForm variants={[]} />}>
-                <Await
-                  errorElement="There was a problem loading related products"
-                  resolve={variants}
-                >
-                  {(resp) => (
-                    <ProductForm
-                      variants={resp.product?.variants.nodes || []}
-                    />
-                  )}
-                </Await>
-              </Suspense>
-              <div className="grid gap-4 py-4">
-                {descriptionHtml && (
-                  <ProductDetail
-                    title="Product Details"
-                    content={descriptionHtml}
-                  />
-                )}
-                {shippingPolicy?.body && (
-                  <ProductDetail
-                    title="Shipping"
-                    content={getExcerpt(shippingPolicy.body)}
-                    learnMore={`/policies/${shippingPolicy.handle}`}
-                  />
-                )}
-                {refundPolicy?.body && (
-                  <ProductDetail
-                    title="Returns"
-                    content={getExcerpt(refundPolicy.body)}
-                    learnMore={`/policies/${refundPolicy.handle}`}
-                  />
-                )}
-              </div>
-            </section>
-          </div>
-        </div>
-      </Section>
-      <Suspense fallback={<Skeleton className="h-32" />}>
-        <Await
-          errorElement="There was a problem loading related products"
-          resolve={recommended}
-        >
-          {(products) => (
-            <ProductSwimlane title="Related Products" products={products} />
-          )}
-        </Await>
-      </Suspense>
-      <Analytics.ProductView
-        data={{
-          products: [
-            {
-              id: product.id,
-              title: product.title,
-              price: product.selectedVariant?.price.amount || '0',
-              vendor: product.vendor,
-              variantId: product.selectedVariant?.id || '',
-              variantTitle: product.selectedVariant?.title || '',
-              quantity: 1,
-            },
-          ],
-        }}
-      />
-    </>
-  );
+  return <UnderDevelopment />;
+
+  // return (
+  //   <>
+  //     <Section className="px-0 md:px-8 lg:px-12">
+  //       <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
+  //         <ProductGallery
+  //           media={media.nodes}
+  //           className="w-full lg:col-span-2"
+  //         />
+  //         <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
+  //           <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
+  //             <div className="grid gap-2">
+  //               <Heading as="h1" className="whitespace-normal">
+  //                 {title}
+  //               </Heading>
+  //               {vendor && (
+  //                 <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+  //               )}
+  //             </div>
+  //             <Suspense fallback={<ProductForm variants={[]} />}>
+  //               <Await
+  //                 errorElement="There was a problem loading related products"
+  //                 resolve={variants}
+  //               >
+  //                 {(resp) => (
+  //                   <ProductForm
+  //                     variants={resp.product?.variants.nodes || []}
+  //                   />
+  //                 )}
+  //               </Await>
+  //             </Suspense>
+  //             <div className="grid gap-4 py-4">
+  //               {descriptionHtml && (
+  //                 <ProductDetail
+  //                   title="Product Details"
+  //                   content={descriptionHtml}
+  //                 />
+  //               )}
+  //               {shippingPolicy?.body && (
+  //                 <ProductDetail
+  //                   title="Shipping"
+  //                   content={getExcerpt(shippingPolicy.body)}
+  //                   learnMore={`/policies/${shippingPolicy.handle}`}
+  //                 />
+  //               )}
+  //               {refundPolicy?.body && (
+  //                 <ProductDetail
+  //                   title="Returns"
+  //                   content={getExcerpt(refundPolicy.body)}
+  //                   learnMore={`/policies/${refundPolicy.handle}`}
+  //                 />
+  //               )}
+  //             </div>
+  //           </section>
+  //         </div>
+  //       </div>
+  //     </Section>
+  //     <Suspense fallback={<Skeleton className="h-32" />}>
+  //       <Await
+  //         errorElement="There was a problem loading related products"
+  //         resolve={recommended}
+  //       >
+  //         {(products) => (
+  //           <ProductSwimlane title="Related Products" products={products} />
+  //         )}
+  //       </Await>
+  //     </Suspense>
+  //     <Analytics.ProductView
+  //       data={{
+  //         products: [
+  //           {
+  //             id: product.id,
+  //             title: product.title,
+  //             price: product.selectedVariant?.price.amount || '0',
+  //             vendor: product.vendor,
+  //             variantId: product.selectedVariant?.id || '',
+  //             variantTitle: product.selectedVariant?.title || '',
+  //             quantity: 1,
+  //           },
+  //         ],
+  //       }}
+  //     />
+  //   </>
+  // );
 }
 
 export function ProductForm({
