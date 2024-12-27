@@ -8,6 +8,7 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
   const selectedOptions = getSelectedProductOptions(request);
+  const cacheKey = `${productHandle}-${JSON.stringify(selectedOptions)}`;
 
   try {
     const {product} = await context.storefront.query(
@@ -82,7 +83,16 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
       product.selectedVariant = firstVariant;
     }
 
-    return json({product});
+    return json(
+      {product},
+      {
+        headers: {
+          'Cache-Control': 'public, max-age=15, stale-while-revalidate=30',
+          Vary: 'Accept, Accept-Encoding',
+          ETag: `"${cacheKey}"`,
+        },
+      },
+    );
   } catch (error) {
     console.error('Error loading product:', error);
     return json({error: 'Error loading product', status: 500}, {status: 500});

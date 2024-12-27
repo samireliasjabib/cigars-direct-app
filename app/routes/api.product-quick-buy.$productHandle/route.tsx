@@ -29,24 +29,29 @@ export async function loader(args: LoaderFunctionArgs) {
         variables: {
           handle: productHandle,
         },
+        cache: {
+          maxAge: 60, // Cache in Oxygen for 60 seconds
+          staleWhileRevalidate: 60,
+        },
       },
     );
 
-    console.log(data.product);
+    if (!data.product) {
+      throw new Response('Product not found', {status: 404});
+    }
 
-    return new Response(
-      JSON.stringify({
-        product: data.product,
-        status: 200,
-      }),
+    return json(
+      {product: data.product},
       {
         headers: {
-          'Content-Type': 'application/json',
+          'Cache-Control': 'public, max-age=30, stale-while-revalidate=60',
+          Vary: 'Accept, Accept-Encoding',
+          ETag: `"${productHandle}"`,
         },
       },
     );
   } catch (error) {
     console.error(error);
-    throw error;
+    return json({error: 'Error loading product'}, {status: 500});
   }
 }
