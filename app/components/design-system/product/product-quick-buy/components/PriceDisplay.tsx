@@ -1,7 +1,6 @@
 import type {PriceDisplayProps} from '../types';
 
 export function PriceDisplay({price, compareAtPrice}: PriceDisplayProps) {
-  console.log(price, 'price in price display');
   const [dollars, cents = '00'] = price.amount.split('.');
 
   return (

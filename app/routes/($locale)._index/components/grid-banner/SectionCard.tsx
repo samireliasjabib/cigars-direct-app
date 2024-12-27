@@ -25,6 +25,9 @@ const SectionCard: React.FC<SectionCardProps> = ({
           width: 1920,
           height: 420,
         }}
+        sizes="100vw"
+        height="100%"
+        width="100%"
         alt={`${title} background`}
         className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
       />

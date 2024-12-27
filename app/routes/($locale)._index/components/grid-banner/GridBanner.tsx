@@ -18,7 +18,7 @@ function GridBanner() {
         'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/accessories_720x_fa41eb83-f6b9-4bf9-9488-34c10c4aca4e.webp?v=1734666646',
       buttonLabel: 'KNOW MORE',
     },
-];
+  ];
 
   return (
     <div className="wrapper pb-10 md:pb-20">

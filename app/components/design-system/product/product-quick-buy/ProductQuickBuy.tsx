@@ -4,6 +4,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogTrigger,
 } from '../../ui/dialog';
 import {ReactNode} from 'react';
@@ -29,13 +30,24 @@ export function ProductQuickBuy({
 
   return (
     <Dialog onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>
+      <DialogTrigger asChild aria-label={`Quick buy ${productHandle}`}>
         <ActionButton className="bg-primary p-2 rounded-full shadow-md hover:bg-primary/90 transform transition-transform duration-300 hover:scale-110">
           <Plus size={24} className="text-white" />
         </ActionButton>
       </DialogTrigger>
       {isOpen && (
-        <DialogContent className="shadow-lg">
+        <DialogContent
+          className="shadow-lg"
+          aria-describedby="quick-buy-modal"
+          aria-label={`Quick buy ${productHandle}`}
+        >
+          <DialogHeader className="sr-only">
+            <DialogTitle>{productHandle}</DialogTitle>
+          </DialogHeader>
+
+          <DialogDescription className="sr-only">
+            This is a product quick buy for {productHandle}
+          </DialogDescription>
           <ProductQuickBuyContent
             productHandle={productHandle}
             onClose={() => setIsOpen(false)}

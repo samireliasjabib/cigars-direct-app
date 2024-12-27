@@ -1580,6 +1580,46 @@ export type ProductQuickBuyQuery = {
   >;
 };
 
+export type ProductQuickViewQueryVariables = StorefrontAPI.Exact<{
+  handle: StorefrontAPI.Scalars['String']['input'];
+  selectedOptions:
+    | Array<StorefrontAPI.SelectedOptionInput>
+    | StorefrontAPI.SelectedOptionInput;
+}>;
+
+export type ProductQuickViewQuery = {
+  product?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Product, 'id' | 'title' | 'handle'> & {
+      options: Array<
+        Pick<StorefrontAPI.ProductOption, 'name'> & {
+          optionValues: Array<Pick<StorefrontAPI.ProductOptionValue, 'name'>>;
+        }
+      >;
+      variants: {
+        nodes: Array<
+          Pick<
+            StorefrontAPI.ProductVariant,
+            'id' | 'title' | 'availableForSale'
+          > & {
+            selectedOptions: Array<
+              Pick<StorefrontAPI.SelectedOption, 'name' | 'value'>
+            >;
+            price: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+            compareAtPrice?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>
+            >;
+          }
+        >;
+      };
+      selectedVariant?: StorefrontAPI.Maybe<
+        Pick<StorefrontAPI.ProductVariant, 'id' | 'title'> & {
+          price: Pick<StorefrontAPI.MoneyV2, 'amount'>;
+        }
+      >;
+    }
+  >;
+};
+
 interface GeneratedQueryTypes {
   '#graphql\n  query seoCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)\n  @inContext(country: $country, language: $language) {\n    hero: collection(handle: $handle) {\n      ...CollectionContent\n    }\n    shop {\n      name\n      description\n    }\n  }\n  #graphql\n  fragment CollectionContent on Collection {\n    id\n    handle\n    title\n    descriptionHtml\n    products(first: 10) {\n      edges {\n        node {\n          ...ProductContent\n        }\n      }\n    }\n    heading: metafield(namespace: "hero", key: "title") {\n      value\n    }\n    byline: metafield(namespace: "hero", key: "byline") {\n      value\n    }\n    cta: metafield(namespace: "hero", key: "cta") {\n      value\n    }\n    spread: metafield(namespace: "hero", key: "spread") {\n      reference {\n        ...Media\n      }\n    }\n    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {\n      reference {\n        ...Media\n      }\n    }\n  }\n  #graphql\n  fragment ProductContent on Product {\n    id\n    title\n    handle\n    media(first: 2) {\n      nodes {\n        ...Media\n      }\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n      maxVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 1) {\n      edges {\n        node {\n          id\n          price {\n            amount\n            currencyCode\n          }\n          compareAtPrice {\n            amount\n            currencyCode\n          }\n          image {\n            url\n            altText\n          }\n        }\n      }\n    }\n  }\n  #graphql\n  fragment Media on Media {\n    __typename\n    mediaContentType\n    alt\n    previewImage {\n      url\n    }\n    ... on MediaImage {\n      id\n      image {\n        id\n        url\n        width\n        height\n      }\n    }\n    ... on Video {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on Model3d {\n      id\n      sources {\n        mimeType\n        url\n      }\n    }\n    ... on ExternalVideo {\n      id\n      embedUrl\n      host\n    }\n  }\n\n\n\n': {
     return: SeoCollectionContentQuery;
@@ -1660,6 +1700,10 @@ interface GeneratedQueryTypes {
   '#graphql\n        query ProductQuickBuy($handle: String!) {\n          product(handle: $handle) {\n            ...ProductQuickBuy\n          }\n        }\n        #graphql\n  fragment ProductQuickBuy on Product {\n    id\n    variants(first: 4) {\n      nodes {\n        id\n        price {\n          amount\n        }\n        compareAtPrice {\n          amount\n        }\n        title\n      }\n    }\n  }\n\n      ': {
     return: ProductQuickBuyQuery;
     variables: ProductQuickBuyQueryVariables;
+  };
+  '#graphql\n        query ProductQuickView(\n          $handle: String!\n          $selectedOptions: [SelectedOptionInput!]!\n        ) {\n          product(handle: $handle) {\n            id\n            title\n            handle\n            options {\n                name\n                optionValues {\n                    name\n                }\n            }\n            variants(first: 10) {\n              nodes {\n                id\n                title\n                availableForSale\n                selectedOptions {\n                  name\n                  value\n                }\n                price {\n                  amount\n                  currencyCode\n                }\n                compareAtPrice {\n                  amount\n                  currencyCode\n                }\n              }\n            }\n            selectedVariant: variantBySelectedOptions(selectedOptions: $selectedOptions) {\n              id\n              title\n              price {\n                amount\n              }\n            }\n          }\n        }': {
+    return: ProductQuickViewQuery;
+    variables: ProductQuickViewQueryVariables;
   };
 }
 
