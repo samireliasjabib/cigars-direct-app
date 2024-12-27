@@ -36,7 +36,10 @@ export function ProductQuickBuy({
       </DialogTrigger>
       {isOpen && (
         <DialogContent className="shadow-lg">
-          <ProductQuickBuyContent productHandle={productHandle} />
+          <ProductQuickBuyContent
+            productHandle={productHandle}
+            onClose={() => setIsOpen(false)}
+          />
         </DialogContent>
       )}
     </Dialog>

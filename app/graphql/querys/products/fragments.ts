@@ -61,6 +61,7 @@ export const PRODUCT_QUICK_BUY_FRAGMENT = `#graphql
     id
     variants(first: 4) {
       nodes {
+        id
         price {
           amount
         }

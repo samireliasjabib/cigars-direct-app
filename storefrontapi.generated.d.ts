@@ -737,7 +737,7 @@ export type ProductVariantFragment = Pick<
 export type ProductQuickBuyFragment = Pick<StorefrontAPI.Product, 'id'> & {
   variants: {
     nodes: Array<
-      Pick<StorefrontAPI.ProductVariant, 'title'> & {
+      Pick<StorefrontAPI.ProductVariant, 'id' | 'title'> & {
         price: Pick<StorefrontAPI.MoneyV2, 'amount'>;
         compareAtPrice?: StorefrontAPI.Maybe<
           Pick<StorefrontAPI.MoneyV2, 'amount'>
@@ -1568,7 +1568,7 @@ export type ProductQuickBuyQuery = {
     Pick<StorefrontAPI.Product, 'id'> & {
       variants: {
         nodes: Array<
-          Pick<StorefrontAPI.ProductVariant, 'title'> & {
+          Pick<StorefrontAPI.ProductVariant, 'id' | 'title'> & {
             price: Pick<StorefrontAPI.MoneyV2, 'amount'>;
             compareAtPrice?: StorefrontAPI.Maybe<
               Pick<StorefrontAPI.MoneyV2, 'amount'>
@@ -1657,7 +1657,7 @@ interface GeneratedQueryTypes {
     return: PaginatedProductsSearchQuery;
     variables: PaginatedProductsSearchQueryVariables;
   };
-  '#graphql\n        query ProductQuickBuy($handle: String!) {\n          product(handle: $handle) {\n            ...ProductQuickBuy\n          }\n        }\n        #graphql\n  fragment ProductQuickBuy on Product {\n    id\n    variants(first: 4) {\n      nodes {\n        price {\n          amount\n        }\n        compareAtPrice {\n          amount\n        }\n        title\n      }\n    }\n  }\n\n      ': {
+  '#graphql\n        query ProductQuickBuy($handle: String!) {\n          product(handle: $handle) {\n            ...ProductQuickBuy\n          }\n        }\n        #graphql\n  fragment ProductQuickBuy on Product {\n    id\n    variants(first: 4) {\n      nodes {\n        id\n        price {\n          amount\n        }\n        compareAtPrice {\n          amount\n        }\n        title\n      }\n    }\n  }\n\n      ': {
     return: ProductQuickBuyQuery;
     variables: ProductQuickBuyQueryVariables;
   };
