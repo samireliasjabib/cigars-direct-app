@@ -23,6 +23,7 @@ import {Link} from '~/components/shared/Link';
 import {IconRemove} from '~/components/layout/ui/Icon';
 import {FeaturedProducts} from '~/components/FeaturedProducts';
 import {getInputStyleClasses} from '~/lib/utils';
+import {ShoppingCart} from 'lucide-react';
 
 type Layouts = 'page' | 'drawer';
 
@@ -435,40 +436,23 @@ export function CartEmpty({
   layout?: Layouts;
   onClose?: () => void;
 }) {
-  const scrollRef = useRef(null);
-  const {y} = useScroll(scrollRef);
-
-  const container = {
-    drawer: clsx([
-      'content-start gap-4 px-6 pb-8 transition overflow-y-scroll md:gap-12 md:px-12 h-screen-no-nav md:pb-12',
-      y > 0 ? 'border-t' : '',
-    ]),
-    page: clsx([
-      hidden ? '' : 'grid',
-      `pb-12 w-full md:items-start gap-4 md:gap-8 lg:gap-12`,
-    ]),
-  };
-
   return (
-    <div ref={scrollRef} className={container[layout]} hidden={hidden}>
-      <section className="grid gap-6">
-        <Text format>
-          Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
-          started!
-        </Text>
-        <div>
-          <Button onClick={onClose}>Continue shopping</Button>
-        </div>
-      </section>
-      <section className="grid gap-8 pt-16">
-        <FeaturedProducts
-          count={4}
-          heading="Shop Best Sellers"
-          layout={layout}
-          onClose={onClose}
-          sortKey="BEST_SELLING"
-        />
-      </section>
+    <div
+      className="flex flex-col items-center justify-center py-12 px-4"
+      hidden={hidden}
+    >
+      <div className="mb-6">
+        <ShoppingCart size="lg" />
+      </div>
+      <h2 className="text-xl font-medium text-gray-900 mb-8">
+        Your cart is currently empty.
+      </h2>
+      <Button
+        onClick={onClose}
+        className="w-full max-w-xs bg-primary hover:bg-primary/90 text-white font-medium"
+      >
+        SHOP OUR PRODUCTS
+      </Button>
     </div>
   );
 }
