@@ -51,6 +51,16 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
               price {
                 amount
               }
+              compareAtPrice {
+                amount
+              }
+              image{
+                url
+                altText
+                id
+                width
+                height
+              }
             }
           }
         }`,

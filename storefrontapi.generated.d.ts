@@ -1614,6 +1614,15 @@ export type ProductQuickViewQuery = {
       selectedVariant?: StorefrontAPI.Maybe<
         Pick<StorefrontAPI.ProductVariant, 'id' | 'title'> & {
           price: Pick<StorefrontAPI.MoneyV2, 'amount'>;
+          compareAtPrice?: StorefrontAPI.Maybe<
+            Pick<StorefrontAPI.MoneyV2, 'amount'>
+          >;
+          image?: StorefrontAPI.Maybe<
+            Pick<
+              StorefrontAPI.Image,
+              'url' | 'altText' | 'id' | 'width' | 'height'
+            >
+          >;
         }
       >;
     }
@@ -1701,7 +1710,7 @@ interface GeneratedQueryTypes {
     return: ProductQuickBuyQuery;
     variables: ProductQuickBuyQueryVariables;
   };
-  '#graphql\n        query ProductQuickView(\n          $handle: String!\n          $selectedOptions: [SelectedOptionInput!]!\n        ) {\n          product(handle: $handle) {\n            id\n            title\n            handle\n            options {\n                name\n                optionValues {\n                    name\n                }\n            }\n            variants(first: 10) {\n              nodes {\n                id\n                title\n                availableForSale\n                selectedOptions {\n                  name\n                  value\n                }\n                price {\n                  amount\n                  currencyCode\n                }\n                compareAtPrice {\n                  amount\n                  currencyCode\n                }\n              }\n            }\n            selectedVariant: variantBySelectedOptions(selectedOptions: $selectedOptions) {\n              id\n              title\n              price {\n                amount\n              }\n            }\n          }\n        }': {
+  '#graphql\n        query ProductQuickView(\n          $handle: String!\n          $selectedOptions: [SelectedOptionInput!]!\n        ) {\n          product(handle: $handle) {\n            id\n            title\n            handle\n            options {\n                name\n                optionValues {\n                    name\n                }\n            }\n            variants(first: 10) {\n              nodes {\n                id\n                title\n                availableForSale\n                selectedOptions {\n                  name\n                  value\n                }\n                price {\n                  amount\n                  currencyCode\n                }\n                compareAtPrice {\n                  amount\n                  currencyCode\n                }\n              }\n            }\n            selectedVariant: variantBySelectedOptions(selectedOptions: $selectedOptions) {\n              id\n              title\n              price {\n                amount\n              }\n              compareAtPrice {\n                amount\n              }\n              image{\n                url\n                altText\n                id\n                width\n                height\n              }\n            }\n          }\n        }': {
     return: ProductQuickViewQuery;
     variables: ProductQuickViewQueryVariables;
   };

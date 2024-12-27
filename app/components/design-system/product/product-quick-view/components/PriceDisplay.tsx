@@ -1,20 +1,27 @@
-import {memo, useMemo} from 'react';
+import {memo} from 'react';
 
 interface PriceDisplayProps {
   amount: string;
+  compareAtPrice?: string;
 }
 
-export const PriceDisplay = memo(function PriceDisplay({amount}: PriceDisplayProps) {
-  const formattedPrice = useMemo(() => {
-    return `$${parseFloat(amount).toFixed(2)}`;
-  }, [amount]);
+export const PriceDisplay = memo(function PriceDisplay({
+  amount,
+  compareAtPrice,
+}: PriceDisplayProps) {
+  const [dollars, cents = '00'] = amount.split('.');
+  const formattedPrice = `$${dollars}${cents !== '00' ? `.${cents}` : ''}`;
+  const isOnSale =
+    compareAtPrice && parseFloat(compareAtPrice) > parseFloat(amount);
 
   return (
-    <div className="space-y-2 pt-4 border-t">
-      <div className="flex justify-between items-center">
-        <span className="text-sm text-gray-600">Price</span>
-        <span className="text-lg font-semibold">{formattedPrice}</span>
-      </div>
+    <div className="flex items-center gap-2">
+      <span className="text-2xl font-bold text-gray-900">{formattedPrice}</span>
+      {isOnSale && compareAtPrice && (
+        <span className="text-lg text-gray-500 line-through">
+          ${parseFloat(compareAtPrice).toFixed(2)}
+        </span>
+      )}
     </div>
   );
 });

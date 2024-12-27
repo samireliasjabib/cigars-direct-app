@@ -11,7 +11,7 @@ import ActionButton from '~/components/shared/ActionButton';
 import {Search} from 'lucide-react';
 import {useState} from 'react';
 import {useSearchParams} from '@remix-run/react';
-import ProductQuickViewContent from './ProductQuickViewContent';
+import ProductQuickViewContent from './components/ProductQuickViewContent';
 
 export function ProductQuickView({productHandle}: {productHandle: string}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +42,7 @@ export function ProductQuickView({productHandle}: {productHandle: string}) {
         </ActionButton>
       </DialogTrigger>
       <DialogContent
-        className="p-6 shadow-lg"
+        className="p-6 shadow-lg w-[95vw] h-[95vh] md:max-h-[650px] max-w-screen-lg"
         aria-describedby="quick-view-modal"
         aria-label={`Quick view ${productHandle}`}
       >
@@ -52,7 +52,12 @@ export function ProductQuickView({productHandle}: {productHandle: string}) {
         <DialogDescription className="sr-only">
           This is a quick view of the product details for {productHandle}.
         </DialogDescription>
-        {isOpen && <ProductQuickViewContent productHandle={productHandle} />}
+        {isOpen && (
+          <ProductQuickViewContent
+            productHandle={productHandle}
+            onClose={handleOpenChange}
+          />
+        )}
       </DialogContent>
     </Dialog>
   );
