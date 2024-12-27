@@ -1,16 +1,20 @@
+import CartBadge from './CartBadge';
+
 const CartToggle = ({
   openCart,
   variant = 'default',
 }: {
+  totalQuantity?: number;
   openCart?: () => void;
   variant?: 'default' | 'label-hidden';
 }) => {
   return (
     <div
       role="button"
-      className="flex flex-row items-center gap-4"
+      className="flex flex-row items-center gap-4 relative"
       onClick={openCart}
     >
+      <div className="absolute -top-2 -right-2"></div>
       <CartIcon />
       {variant !== 'label-hidden' && (
         <p className="text-sm uppercase text-white tracking-wide">Cart</p>

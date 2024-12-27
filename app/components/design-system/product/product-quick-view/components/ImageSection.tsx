@@ -1,5 +1,6 @@
 import {Image} from '@shopify/hydrogen';
 import {Product} from '../types';
+import {Skeleton} from '~/components/Skeleton';
 
 function ImageSection({product}: {product: Product}) {
   return (
@@ -18,9 +19,7 @@ function ImageSection({product}: {product: Product}) {
           sizes="(min-width: 1024px) 500px, 100vw"
         />
       ) : (
-        <div className="flex items-center justify-center w-full h-full bg-gray-100 text-gray-500">
-          No image available
-        </div>
+        <Skeleton className="w-full h-full" />
       )}
     </div>
   );

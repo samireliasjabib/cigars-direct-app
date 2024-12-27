@@ -38,12 +38,15 @@ export function Cart({
 }) {
   const linesCount = Boolean(cart?.lines?.edges?.length || 0);
 
-  return (
-    <>
-      <CartEmpty hidden={linesCount} onClose={onClose} layout={layout} />
-      <CartDetails cart={cart} layout={layout} />
-    </>
-  );
+  if (linesCount) {
+    return (
+      <>
+        <CartDetails cart={cart} layout={layout} />
+      </>
+    );
+  }
+
+  return <CartEmpty hidden={linesCount} layout={layout} onClose={onClose} />;
 }
 
 export function CartDetails({
