@@ -38,7 +38,11 @@ function ProductQuickViewContent({
 
   const variantPrices = useVariantPrices(product);
 
-  if (isLoading) {
+  if (
+    isLoading ||
+    !product?.selectedVariant ||
+    !product.selectedVariant.image
+  ) {
     return <ProductQuickViewContentSkeleton />;
   }
 

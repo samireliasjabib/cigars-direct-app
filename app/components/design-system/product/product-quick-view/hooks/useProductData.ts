@@ -13,7 +13,7 @@ export function useProductData(
     if (fetcher.state === 'idle') {
       fetcher.load(`/api/product-quick-view/${productHandle}?${searchParams}`);
     }
-  }, [productHandle, searchParams, fetcher.load]);
+  }, [productHandle, searchParams]);
 
   return {
     product: fetcher.data?.product as Product | undefined,
