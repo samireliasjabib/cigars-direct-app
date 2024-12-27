@@ -1,9 +1,14 @@
 import {useFetcher} from '@remix-run/react';
-import {useEffect, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import type {ProductQuickBuyResponse} from '../types';
 
 export function useProductData(productHandle: string) {
-  const fetcher = useFetcher<ProductQuickBuyResponse>();
+  const fetcherKey = useMemo(
+    () => `product-fetcher-${productHandle}`,
+    [productHandle],
+  );
+
+  const fetcher = useFetcher<ProductQuickBuyResponse>({key: fetcherKey});
   const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
