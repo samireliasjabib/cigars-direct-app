@@ -15,7 +15,7 @@ function ProductQuickBuyContent({
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const {isLoading, product} = useProductData(productHandle);
 
-  if (isLoading) {
+  if (isLoading || !product?.variants) {
     return <ProductQuickBuyContentSkeleton />;
   }
 
