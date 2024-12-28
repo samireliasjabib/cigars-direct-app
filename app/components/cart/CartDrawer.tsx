@@ -10,7 +10,7 @@ function CartDrawer({isOpen, onClose}: {isOpen: boolean; onClose: () => void}) {
   if (!rootData) return null;
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
+    <Drawer open={isOpen} onClose={onClose} openFrom="right" disabledClose>
       <div>
         <Suspense fallback={<CartLoading />}>
           <Await resolve={rootData?.cart}>
