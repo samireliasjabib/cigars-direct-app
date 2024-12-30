@@ -36,6 +36,7 @@ function InputSearch() {
               aria-label="Search products"
               aria-expanded={isFocused}
               role="searchbox"
+              autoComplete="off"
             />
             <SearchIcon />
           </div>

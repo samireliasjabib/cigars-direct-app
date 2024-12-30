@@ -1,4 +1,4 @@
-import {Button} from '~/components/Button';
+import {Button} from '~/components/design-system/ui/button';
 
 interface CartCheckoutActionsProps {
   checkoutUrl: string;
@@ -10,7 +10,7 @@ export function CartCheckoutActions({checkoutUrl}: CartCheckoutActionsProps) {
   return (
     <div className="flex flex-col mt-2">
       <a href={checkoutUrl} target="_self">
-        <Button as="span" width="full">
+        <Button className="w-full text-white rounded-md" variant="default">
           Continue to Checkout
         </Button>
       </a>
