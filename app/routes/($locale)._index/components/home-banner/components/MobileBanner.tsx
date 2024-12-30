@@ -9,23 +9,39 @@ function MobileBanner({
   buttonPosition,
 }: BannerProps) {
   return (
-    <div className="w-full relative  md:hidden">
+    <div className="w-full relative md:hidden">
       <Image
         data={{
           url: image.url,
           altText: image.altText,
-          width: 1920,
-          height: 1080,
+          // Reduce initial image dimensions for faster loading
+          width: 640,
+          height: 853,
         }}
-        height={1080}
-        width={1920}
+        // Using smaller dimensions for mobile
+        width={640}
+        height={853}
         className="object-cover w-full h-full"
         loading="eager"
-        aspectRatio="0.75"
-        sizes="auto"
-        style={{objectPosition: 'center'}}
+        // Use proper aspect ratio for mobile
+        aspectRatio="3/4"
+        // Implement responsive image loading
+        sizes="(max-width: 640px) 100vw, 640px"
+        // Explicitly set fetchpriority for LCP
+        fetchPriority="high"
+        // Enable native lazy loading as fallback
+        decoding="async"
+        style={{
+          objectPosition: 'center',
+          // Add container aspect ratio to prevent layout shift
+          aspectRatio: '3/4',
+        }}
       />
-      <div className={`flex justify-center w-full absolute ${buttonPosition}`}>
+      <div
+        className={`flex justify-center w-full absolute ${buttonPosition}`}
+        // Ensure button container doesn't affect LCP
+        style={{willChange: 'transform'}}
+      >
         <Button variant="default" className={buttonClass}>
           {buttonLabel}
         </Button>
@@ -33,5 +49,8 @@ function MobileBanner({
     </div>
   );
 }
+
+// Add display name for better debugging
+MobileBanner.displayName = 'MobileBanner';
 
 export default MobileBanner;
