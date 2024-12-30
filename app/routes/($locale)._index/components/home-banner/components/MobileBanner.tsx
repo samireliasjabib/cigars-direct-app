@@ -1,6 +1,7 @@
 import {Image} from '@shopify/hydrogen';
 import {BannerProps} from '../types';
 import {Button} from '~/components/design-system/ui/button';
+import BanneImage from '../../../../../assets/banner-mobile.webp';
 
 function MobileBanner({
   image,
@@ -10,8 +11,13 @@ function MobileBanner({
 }: BannerProps) {
   return (
     <div className="w-full relative  md:hidden">
-      <img
-        src={image.url}
+      <Image
+        data={{
+          url: BanneImage,
+          altText: 'banner mobile',
+          width: 500,
+          height: 500,
+        }}
         className="object-cover"
         height={500}
         width={500}
