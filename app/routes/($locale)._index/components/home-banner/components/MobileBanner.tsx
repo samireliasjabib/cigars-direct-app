@@ -8,19 +8,23 @@ function MobileBanner({
   buttonLabel,
   buttonPosition,
 }: BannerProps) {
+  const optimizedImageUrl = image.url
+    .replace(/\.(png|jpg|jpeg)/, '_600x.$1') // Forzar ancho de 600px
+    .replace(/\?(.*)/, '?width=600&quality=80&format=webp'); // Optimizar calidad y formato
+
   return (
     <div className="w-full relative md:hidden">
       <Image
         data={{
-          url: image.url,
+          url: optimizedImageUrl,
           altText: image.altText,
           // Reduce initial image dimensions for faster loading
           width: 640,
-          height: 853,
+          height: 500,
         }}
         // Using smaller dimensions for mobile
         width={640}
-        height={853}
+        height={500}
         className="object-cover w-full h-full"
         loading="eager"
         // Use proper aspect ratio for mobile
