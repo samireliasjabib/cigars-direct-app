@@ -179,7 +179,7 @@ function Layout({children}: {children?: React.ReactNode}) {
         <meta name="msvalidate.01" content="A352E6A0AF9A652267361BBB572B8468" />
         <link
           rel="preload"
-          href="https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner_mobile.webp?v=1735536880"
+          href="https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-mobile_f606531f-5587-4e8f-898b-0268f51f0668.webp?v=1735537469"
           as="image"
           type="image/webp"
         ></link>

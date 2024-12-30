@@ -15,9 +15,9 @@ function MobileBanner({
           ...image,
         }}
         className="w-full h-full object-cover"
-        height="100%"
-        width="100%"
-        sizes="(min-width: 768px) 100vw, 1px"
+        sizes="(max-width: 767px) 100vw, 1px" // Optimize for mobile-only
+        height={500}
+        width={500}
         loading="eager"
         decoding="async"
       />
