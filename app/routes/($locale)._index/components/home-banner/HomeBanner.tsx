@@ -10,7 +10,7 @@ function HomeBanner({mobileImage, desktopImage}: HomeBannerProps) {
         Welcome to Our Latest Offers
       </h1>
 
-      <div className="hidden" role="banner">
+      <div className="md:hidden" role="banner">
         <MobileBanner
           image={mobileImage}
           buttonClass="text-base uppercase mr-3"

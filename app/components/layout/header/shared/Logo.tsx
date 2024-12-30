@@ -6,11 +6,17 @@ function Logo() {
   return (
     <Link to="/">
       <Image
-        data={{url: CIGARS_DIRECT_LOGO_WHITE, altText: 'CIGARS DIRECT'}}
+        data={{
+          url: CIGARS_DIRECT_LOGO_WHITE,
+          altText: 'CIGARS DIRECT',
+        }}
         width={140}
         height={40}
-        aspectRatio="1:1"
-        className="object-contain"
+        aspectRatio="3.5/1"
+        fetchPriority="high"
+        loading="eager"
+        sizes="(min-width: 768px) 140px, 120px"
+        className="object-contain w-auto h-[40px] md:h-[40px]"
       />
     </Link>
   );
