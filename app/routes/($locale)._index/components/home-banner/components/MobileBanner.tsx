@@ -14,11 +14,16 @@ function MobileBanner({
         data={{
           url: image.url,
           altText: image.altText,
+          width: 1920,
+          height: 1080,
         }}
-        className="object-cover"
-        height={340}
-        width={500}
+        height={1080}
+        width={1920}
+        className="object-cover w-full h-full"
         loading="eager"
+        aspectRatio="0.75"
+        sizes="auto"
+        style={{objectPosition: 'center'}}
       />
       <div className={`flex justify-center w-full absolute ${buttonPosition}`}>
         <Button variant="default" className={buttonClass}>

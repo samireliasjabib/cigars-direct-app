@@ -76,7 +76,7 @@ export default function Homepage() {
           altText: 'Promotional banner for desktop users showing latest offers',
         }}
         mobileImage={{
-          url: 'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-mobile_f606531f-5587-4e8f-898b-0268f51f0668.webp?v=1735537469',
+          url: 'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-mobile_c5c916db-e68c-4fbd-bcf3-85c47af15e95.webp?v=1735541112',
           altText: 'Promotional banner for mobile users showing latest offers',
         }}
       />

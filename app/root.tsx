@@ -177,12 +177,6 @@ function Layout({children}: {children?: React.ReactNode}) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="msvalidate.01" content="A352E6A0AF9A652267361BBB572B8468" />
-        <link
-          rel="preload"
-          href="https://cdn.shopify.com/s/files/1/0724/4899/9675/files/banner-mobile_f606531f-5587-4e8f-898b-0268f51f0668.webp?v=1735537469"
-          as="image"
-          type="image/webp"
-        ></link>
         <Meta />
         <Links />
       </head>
