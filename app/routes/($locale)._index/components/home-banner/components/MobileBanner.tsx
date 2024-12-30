@@ -8,44 +8,41 @@ function MobileBanner({
   buttonLabel,
   buttonPosition,
 }: BannerProps) {
-  const optimizedImageUrl = image.url
-    .replace(/\.(png|jpg|jpeg)/, '_600x.$1') // Forzar ancho de 600px
-    .replace(/\?(.*)/, '?width=600&quality=80&format=webp'); // Optimizar calidad y formato
+  // Optimizar URL para móvil usando los parámetros correctos de Shopify CDN
+  const optimizedUrl = image.url
+    .replace(/\.(png|jpg|jpeg)/, '_progressive.$1') // Habilitar carga progresiva
+    .replace(
+      /\?(.*)/,
+      '?width=640&height=500&crop=center&quality=85&format=webp',
+    );
 
   return (
-    <div className="w-full relative md:hidden">
+    <div
+      className="w-full relative md:hidden"
+      style={{
+        aspectRatio: '640/500',
+        contain: 'layout paint',
+      }}
+    >
       <Image
         data={{
-          url: optimizedImageUrl,
+          url: optimizedUrl,
           altText: image.altText,
-          // Reduce initial image dimensions for faster loading
           width: 640,
           height: 500,
         }}
-        // Using smaller dimensions for mobile
         width={640}
         height={500}
         className="object-cover w-full h-full"
         loading="eager"
-        // Use proper aspect ratio for mobile
-        aspectRatio="3/4"
-        // Implement responsive image loading
-        sizes="(max-width: 640px) 100vw, 640px"
-        // Explicitly set fetchpriority for LCP
         fetchPriority="high"
-        // Enable native lazy loading as fallback
         decoding="async"
+        sizes="100vw"
         style={{
           objectPosition: 'center',
-          // Add container aspect ratio to prevent layout shift
-          aspectRatio: '3/4',
         }}
       />
-      <div
-        className={`flex justify-center w-full absolute ${buttonPosition}`}
-        // Ensure button container doesn't affect LCP
-        style={{willChange: 'transform'}}
-      >
+      <div className={`flex justify-center w-full absolute ${buttonPosition}`}>
         <Button variant="default" className={buttonClass}>
           {buttonLabel}
         </Button>
@@ -54,7 +51,7 @@ function MobileBanner({
   );
 }
 
-// Add display name for better debugging
+// Agregar displayName para mejor debugging
 MobileBanner.displayName = 'MobileBanner';
 
 export default MobileBanner;
