@@ -91,7 +91,7 @@ function ArticleCard({
     <li key={article.id}>
       <Link to={`/${blogHandle}/${article.handle}`}>
         {article.image && (
-          <div className="card-image aspect-[3/2]">
+          <div className="card-image aspect-[3/2]">_P
             <Image
               alt={article.image.altText || article.title}
               className="object-cover w-full"

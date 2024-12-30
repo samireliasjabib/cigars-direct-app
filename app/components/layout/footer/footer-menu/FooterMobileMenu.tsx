@@ -9,7 +9,7 @@ import FooterLink from '../NewFooterLink';
 
 export const FooterMobileMenu = () => {
   return (
-    <div className="lg:hidden">
+    <div className="2xl:hidden">
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="customer-service">
           <AccordionTrigger className="text-lg font-bold">

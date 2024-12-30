@@ -4,7 +4,7 @@ import FooterLink from '../NewFooterLink';
 
 export const FooterDesktopMenu = () => {
   return (
-    <div className="hidden lg:grid grid-cols-4 gap-8">
+    <div className="hidden 2xl:grid grid-cols-4 gap-8">
       <FooterSection title="CUSTOMER SERVICE">
         <div className="flex flex-col gap-2">
           <FooterLink href="/accessibility">Accessibility Statement</FooterLink>

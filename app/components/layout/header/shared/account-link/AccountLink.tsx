@@ -14,7 +14,7 @@ function AccountLink({
   const isLoggedIn = rootData?.isLoggedIn;
 
   return (
-    <Link to="/account">
+    <Link to="/page-in-development">
       <Suspense fallback={<IconLogin />}>
         <Await
           resolve={isLoggedIn}

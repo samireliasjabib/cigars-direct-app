@@ -1,20 +1,4 @@
-function HeaderSearchInput() {
-  return (
-    <div className="flex items-center w-full bg-white max-w-[475px] p-1">
-      <input
-        type="search"
-        placeholder="Search..."
-        className="text-sm w-full border-none outline-none focus:outline-none focus:ring-0 text-black px-"
-        name="q"
-      />
-      <SearchIcon />
-    </div>
-  );
-}
-
-export default HeaderSearchInput;
-
-function SearchIcon() {
+export function SearchIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -32,7 +16,7 @@ function SearchIcon() {
         fill="none"
         strokeWidth="4"
         strokeMiterlimit="10"
-      ></path>
+      />
     </svg>
   );
 }

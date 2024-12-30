@@ -40,7 +40,7 @@ function Header({menu}: HeaderProps) {
       {menu && (
         <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
       )}
-      <header className="fixed top-0 left-0 right-0 z-40 bg-black">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-black h-[80px] flex items-center ">
         <DesktopHeader menu={menu} openCart={openCart} />
         <MobileHeader openCart={openCart} openMenu={openMenu} />
       </header>

@@ -6,7 +6,7 @@ import {IconMenu} from '../../ui/Icon';
 import AccountLink from '../shared/account-link/AccountLink';
 import CIGARS_DIRECT_LOGO_WHITE from '../../../../assets/cigar-logo-white.jpg';
 import CartToggle from '~/components/cart/CartToggle';
-import SearchToggle from '~/components/search/SearchToggle';
+import SearchToggle from '~/components/search/search-toggle/SearchToggle';
 import ActionButton from '~/components/shared/ActionButton';
 
 function MobileHeader({

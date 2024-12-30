@@ -1,5 +1,5 @@
 import {EnhancedMenu} from '~/lib/utils';
-import HeaderSearchInput from './HeaderSearchInput';
+import HeaderSearchInput from '../../../search/input-search/InputSearch';
 import CartToggle from '~/components/cart/CartToggle';
 import AccountLink from '../shared/account-link/AccountLink';
 import Logo from '../shared/Logo';
@@ -11,7 +11,7 @@ const DesktopHeader = ({
   menu?: EnhancedMenu;
 }) => {
   return (
-    <div className="h-[80px] bg-black w-full py-4 hidden lg:block">
+    <div className="bg-black w-full hidden lg:block">
       <div className="wrapper flex items-center justify-between">
         <div className="flex items-center gap-12 w-full">
           <Logo />
