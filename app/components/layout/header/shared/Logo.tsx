@@ -4,19 +4,19 @@ import {Link} from '~/components/shared/Link';
 
 function Logo() {
   return (
-    <Link to="/">
+    <Link to="/" prefetch="intent" className="inline-block">
       <Image
         data={{
           url: CIGARS_DIRECT_LOGO_WHITE,
-          altText: 'CIGARS DIRECT',
+          altText: 'Cigars Direct',
         }}
-        width={140}
-        height={40}
-        aspectRatio="3.5/1"
-        fetchPriority="high"
+        width={280}
+        height={80}
+        aspectRatio="3.5:1"
         loading="eager"
-        sizes="(min-width: 768px) 140px, 120px"
-        className="object-contain w-auto h-[40px] md:h-[40px]"
+        sizes="(min-width: 768px) 140px"
+        fetchPriority="high"
+        className="object-contain w-[140px] h-[40px] md:h-[55px] transform-gpu"
       />
     </Link>
   );
