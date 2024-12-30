@@ -11,7 +11,10 @@ interface CartLinesProps {
   lines: CartType['lines'] | undefined;
 }
 
-export function CartLines({layout = 'drawer', lines: cartLines}: CartLinesProps) {
+export function CartLines({
+  layout = 'drawer',
+  lines: cartLines,
+}: CartLinesProps) {
   const currentLines = cartLines ? flattenConnection(cartLines) : [];
   const scrollRef = useRef(null);
   const {y} = useScroll(scrollRef);

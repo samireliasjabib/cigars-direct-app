@@ -17,7 +17,7 @@ export function CartDetails({layout, cart}: CartDetailsProps) {
       <CartLines lines={cart?.lines} layout={layout} />
       {cartHasItems && (
         <CartSummary cost={cart.cost} layout={layout}>
-          <CartDiscounts discountCodes={cart.discountCodes} />
+          {/* <CartDiscounts discountCodes={cart.discountCodes} /> */}
           <CartCheckoutActions checkoutUrl={cart.checkoutUrl} />
         </CartSummary>
       )}

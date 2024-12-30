@@ -2,6 +2,7 @@ import {CartReturn} from '@shopify/hydrogen';
 import {CartDetails} from './components/CartDetails';
 import {CartEmpty} from './components/CartEmpty';
 import CartHeader from './components/CartHeader';
+import FreeShipping from './components/FreeShipping';
 
 type Layouts = 'page' | 'drawer';
 
@@ -25,6 +26,7 @@ export function Cart({
         itemCount={itemCount}
         onClose={onClose}
       />
+      {linesCount && <FreeShipping totalAmount={totalAmount} />}
       {linesCount ? (
         <CartDetails cart={cart} layout={layout} />
       ) : (

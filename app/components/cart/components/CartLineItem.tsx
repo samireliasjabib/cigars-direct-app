@@ -29,15 +29,15 @@ export function CartLineItem({line}: CartLineProps) {
             width={110}
             height={110}
             data={merchandise.image}
-            className="object-cover object-center w-24 h-24 border rounded md:w-28 md:h-28"
+            className="object-cover object-center w-24 h-24 md:w-28 md:h-28"
             alt={merchandise.title}
           />
         )}
       </div>
 
       <div className="flex justify-between flex-grow">
-        <div className="grid gap-2">
-          <Heading as="h3" size="copy">
+        <div className="flex flex-col gap-2">
+          <h3 className="text-xs font-regular text-black">
             {merchandise?.product?.handle ? (
               <Link to={`/products/${merchandise.product.handle}`}>
                 {merchandise?.product?.title || ''}
@@ -45,26 +45,25 @@ export function CartLineItem({line}: CartLineProps) {
             ) : (
               <Text>{merchandise?.product?.title || ''}</Text>
             )}
-          </Heading>
-
-          <div className="grid pb-2">
-            {(merchandise?.selectedOptions || []).map((option) => (
-              <Text color="subtle" key={option.name}>
-                {option.name}: {option.value}
-              </Text>
-            ))}
-          </div>
-
+          </h3>
+          <p className="text-xs font-regular text-black flex flex-row gap-2 items-center mb-2 ">
+            Count:{' '}
+            <span className="font-semibold">
+              {merchandise.selectedOptions[0].value}
+            </span>
+          </p>
           <div className="flex items-center gap-2">
             <div className="flex justify-start text-copy">
               <CartLineQuantityAdjust line={line} />
             </div>
-            <ItemRemoveButton lineId={id} />
           </div>
         </div>
-        <Text>
-          <CartLinePrice line={line} as="span" />
-        </Text>
+        <div className="flex flex-col items-center gap-1">
+          <ItemRemoveButton lineId={id} />
+          <Text>
+            <CartLinePrice line={line} as="span" />
+          </Text>
+        </div>
       </div>
     </li>
   );

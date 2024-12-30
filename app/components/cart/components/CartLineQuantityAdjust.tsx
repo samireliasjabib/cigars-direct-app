@@ -1,6 +1,7 @@
 import {useOptimisticData, CartForm, OptimisticInput} from '@shopify/hydrogen';
 import type {CartLineProps, OptimisticData} from '../types';
 import {useCartActions} from '../hooks/useCartActions';
+import {Minus, Plus} from 'lucide-react';
 
 export function CartLineQuantityAdjust({line}: CartLineProps) {
   const cartActions = useCartActions();
@@ -17,7 +18,7 @@ export function CartLineQuantityAdjust({line}: CartLineProps) {
       <label htmlFor={`quantity-${line.id}`} className="sr-only">
         Quantity, {optimisticQuantity}
       </label>
-      <div className="flex items-center border rounded">
+      <div className="flex items-center border-black border">
         <QuantityButton
           lineId={line.id}
           quantity={prevQuantity}
@@ -25,8 +26,8 @@ export function CartLineQuantityAdjust({line}: CartLineProps) {
           disabled={optimisticQuantity <= 1}
           cartActions={cartActions}
         />
-        <div className="px-2 text-center" data-test="item-quantity">
-          {optimisticQuantity}
+        <div className="w-8 text-center" data-test="item-quantity">
+          <span className="text-sm tabular-nums">{optimisticQuantity}</span>
         </div>
         <QuantityButton
           lineId={line.id}
@@ -61,11 +62,13 @@ function QuantityButton({
       <button
         name={`${type}-quantity`}
         aria-label={`${type === 'increase' ? 'Increase' : 'Decrease'} quantity`}
-        className="w-10 h-10 transition text-primary/50 hover:text-primary disabled:text-primary/10"
+        className="text-black/80 hover:text-black flex items-center justify-center w-9 h-9 transition-colors duration-150"
         value={quantity}
         disabled={disabled}
       >
-        <span>{type === 'increase' ? '&#43;' : '&#8722;'}</span>
+        <span className="flex items-center justify-center w-full h-full">
+          {type === 'increase' ? <Plus size={16} /> : <Minus size={16} />}
+        </span>
         <OptimisticInput id={lineId} data={{quantity}} />
       </button>
     </CartForm>

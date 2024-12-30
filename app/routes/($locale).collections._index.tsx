@@ -19,6 +19,7 @@ import {Button} from '~/components/Button';
 import {getImageLoadingPriority} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
+import UnderDevelopment from '~/components/shared/UnderDevelopment';
 
 const PAGINATION_SIZE = 4;
 
@@ -52,41 +53,43 @@ export const meta = ({matches}: MetaArgs<typeof loader>) => {
 export default function Collections() {
   const {collections} = useLoaderData<typeof loader>();
 
-  return (
-    <>
-      <PageHeader heading="Collections" />
-      <Section>
-        <Pagination connection={collections}>
-          {({nodes, isLoading, PreviousLink, NextLink}) => (
-            <>
-              <div className="flex items-center justify-center mb-6">
-                <Button as={PreviousLink} variant="secondary" width="full">
-                  {isLoading ? 'Loading...' : 'Previous collections'}
-                </Button>
-              </div>
-              <Grid
-                items={nodes.length === 3 ? 3 : 2}
-                data-test="collection-grid"
-              >
-                {nodes.map((collection, i) => (
-                  <CollectionCard
-                    collection={collection as Collection}
-                    key={collection.id}
-                    loading={getImageLoadingPriority(i, 2)}
-                  />
-                ))}
-              </Grid>
-              <div className="flex items-center justify-center mt-6">
-                <Button as={NextLink} variant="secondary" width="full">
-                  {isLoading ? 'Loading...' : 'Next collections'}
-                </Button>
-              </div>
-            </>
-          )}
-        </Pagination>
-      </Section>
-    </>
-  );
+  return <UnderDevelopment />;
+
+  // return (
+  //   <>
+  //     <PageHeader heading="Collections" />
+  //     <Section>
+  //       <Pagination connection={collections}>
+  //         {({nodes, isLoading, PreviousLink, NextLink}) => (
+  //           <>
+  //             <div className="flex items-center justify-center mb-6">
+  //               <Button as={PreviousLink} variant="secondary" width="full">
+  //                 {isLoading ? 'Loading...' : 'Previous collections'}
+  //               </Button>
+  //             </div>
+  //             <Grid
+  //               items={nodes.length === 3 ? 3 : 2}
+  //               data-test="collection-grid"
+  //             >
+  //               {nodes.map((collection, i) => (
+  //                 <CollectionCard
+  //                   collection={collection as Collection}
+  //                   key={collection.id}
+  //                   loading={getImageLoadingPriority(i, 2)}
+  //                 />
+  //               ))}
+  //             </Grid>
+  //             <div className="flex items-center justify-center mt-6">
+  //               <Button as={NextLink} variant="secondary" width="full">
+  //                 {isLoading ? 'Loading...' : 'Next collections'}
+  //               </Button>
+  //             </div>
+  //           </>
+  //         )}
+  //       </Pagination>
+  //     </Section>
+  //   </>
+  // );
 }
 
 function CollectionCard({
