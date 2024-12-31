@@ -7,7 +7,10 @@ function ArticleCard({article}: ArticleCardProps) {
 
   return (
     <article className="group flex flex-col space-y-4">
-      <Link to={link} className="relative block overflow-hidden">
+      <Link
+        to="/page-in-development"
+        className="relative block overflow-hidden"
+      >
         <Image
           src={image}
           alt={alt}

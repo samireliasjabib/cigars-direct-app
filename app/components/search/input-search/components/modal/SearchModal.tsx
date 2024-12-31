@@ -29,7 +29,7 @@ export const SearchModal = ({isVisible, children}: SearchModalProps) => (
         ${isVisible ? 'opacity-100' : 'opacity-0'}
       `}
     >
-      <div className="md:max-w-none md:mx-auto">{children}</div>
+      <div className="md:max-w-none md:mx-auto min-h-[500px]  ">{children}</div>
     </div>
   </div>
 );

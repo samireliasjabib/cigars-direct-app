@@ -18,13 +18,15 @@ export const mockProducts = {
       id: '1',
       name: 'Lost and Found Pepper Cream Soda San Andres Torpedo',
       price: '$12.00',
-      image: 'https://via.placeholder.com/150',
+      image:
+        'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
     },
     {
       id: '2',
       name: 'Caldwell Lost and Found Pepper Cream Soda San Andres Robusto',
       price: '$11.00',
-      image: 'https://via.placeholder.com/150',
+      image:
+        'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
     },
   ],
   recent: [
@@ -32,7 +34,8 @@ export const mockProducts = {
       id: '3',
       name: 'Lost and Found Pepper Cream Soda San Andres Toro Extra',
       price: '$12.00',
-      image: 'https://via.placeholder.com/150',
+      image:
+        'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
     },
   ],
   popular: [
@@ -40,7 +43,8 @@ export const mockProducts = {
       id: '4',
       name: 'Lost and Found Pepper Cream Soda San Andres Toro Fino Largo',
       price: '$11.00',
-      image: 'https://via.placeholder.com/150',
+      image:
+        'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
     },
   ],
 } as const;
