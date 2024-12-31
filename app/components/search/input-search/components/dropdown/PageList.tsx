@@ -6,14 +6,18 @@ export interface Page {
 function PageList({pages}: {pages: Page[]}) {
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-2">Pages</h2>
-      <ul className="space-y-2">
+      <div className="bg-gray-100">
+        <h2 className="text-sm font-normal uppercase px-2 py-1 text-black/50">
+          Pages
+        </h2>
+      </div>
+      <ul>
         {pages.map((page) => (
           <li
             key={page.id}
-            className="hover:underline cursor-pointer text-gray-800"
+            className="hover:bg-gray-100 cursor-pointer text-gray-800 py-1 text-sm px-2"
           >
-            {page.title}
+            <span>{page.title}</span>
           </li>
         ))}
       </ul>

@@ -20,6 +20,6 @@ export const SearchDropdown = ({isVisible, children}: SearchDropdownProps) => (
     role="listbox"
     aria-hidden={!isVisible}
   >
-    <div className="p-4">{children}</div>
+    <div>{children}</div>
   </div>
 );

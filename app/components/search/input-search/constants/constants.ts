@@ -14,7 +14,7 @@ export const SEARCH_CLASSES = {
     'text-sm w-full border-none outline-none focus:outline-none focus:ring-0 text-black px-2 appearance-none [&::-webkit-search-cancel-button]:appearance-none',
   INPUT_WRAPPER: 'flex items-center bg-white w-[475px] p-1',
   DROPDOWN_BASE:
-    'absolute top-12 left-0 w-screen max-w-3xl bg-white shadow-lg rounded-md',
+    'absolute top-12 left-0 w-screen max-w-4xl bg-white shadow-lg rounded-md',
   MODAL_BASE: 'fixed inset-x-0 top-[80px] bg-white shadow-lg w-full',
   CONTAINER: 'wrapper',
 } as const;

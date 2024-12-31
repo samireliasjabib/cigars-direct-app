@@ -1,5 +1,5 @@
 export const mockCollections = [
-  {id: '1', name: 'Saka Dunbarton Trust Samplers'},
+  {id: '1', name: 'Drew Estate'},
   {id: '2', name: 'Trinidad Santiago'},
   {id: '3', name: 'Caldwell Savages'},
   {id: '4', name: 'Sancho Panza'},
@@ -12,39 +12,59 @@ export const mockPages = [
   {id: '4', title: 'Five More Ways to Say Thanks with Cigars'},
 ] as const;
 
-export const mockProducts = {
-  search: [
-    {
-      id: '1',
-      name: 'Lost and Found Pepper Cream Soda San Andres Torpedo',
-      price: '$12.00',
-      image:
-        'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
-    },
-    {
-      id: '2',
-      name: 'Caldwell Lost and Found Pepper Cream Soda San Andres Robusto',
-      price: '$11.00',
-      image:
-        'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
-    },
-  ],
-  recent: [
-    {
-      id: '3',
-      name: 'Lost and Found Pepper Cream Soda San Andres Toro Extra',
-      price: '$12.00',
-      image:
-        'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
-    },
-  ],
-  popular: [
-    {
-      id: '4',
-      name: 'Lost and Found Pepper Cream Soda San Andres Toro Fino Largo',
-      price: '$11.00',
-      image:
-        'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
-    },
-  ],
-} as const;
+export const mockProducts = [
+  {
+    id: '1',
+    sku: 'CD0-0001-SDGRQ-0001',
+    name: 'Lost and Found Pepper Cream Soda San Andres Torpedo',
+    price: '$12.00',
+    product_vendor: 'Padron',
+    image:
+      'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
+  },
+  {
+    id: '2',
+    sku: 'CD0-0001-SDGRQ-0001',
+    name: 'Lost and Found Pepper Cream Soda San Andres Torpedo',
+    price: '$12.00',
+    product_vendor: 'Padron',
+    image:
+      'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
+  },
+  {
+    id: '3',
+    sku: 'CD0-0001-SDGRQ-0001',
+    name: 'Lost and Found Pepper Cream Soda San Andres Torpedo',
+    price: '$12.00',
+    product_vendor: 'Padron',
+    image:
+      'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
+  },
+  {
+    id: '4',
+    sku: 'CD0-0001-SDGRQ-0001',
+    name: 'Lost and Found Pepper Cream Soda San Andres Torpedo',
+    price: '$12.00',
+    product_vendor: 'Padron',
+    image:
+      'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
+  },
+  {
+    id: '5',
+    sku: 'CD0-0001-SDGRQ-0001',
+    name: 'Lost and Found Pepper Cream Soda San Andres Torpedo',
+    price: '$12.00',
+    product_vendor: 'Padron',
+    image:
+      'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
+  },
+  {
+    id: '6',
+    sku: 'CD0-0001-SDGRQ-0001',
+    name: 'Lost and Found Pepper Cream Soda San Andres Torpedo',
+    price: '$12.00',
+    product_vendor: 'Padron',
+    image:
+      'https://cdn.shopify.com/s/files/1/0724/4899/9675/files/padron-1926-anniversary-no-48-maduro-single.webp?v=1735243653',
+  },
+];
