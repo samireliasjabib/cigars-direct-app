@@ -1,4 +1,4 @@
-import type {Product} from '../../layout/header/desktop/search/types';
+import {Product} from '../../types/types';
 
 interface ProductCardProps {
   product: Product;

@@ -31,8 +31,6 @@ function MobileBanner({
         aspectRatio="3/4"
         // Implement responsive image loading
         sizes="(max-width: 640px) 100vw, 640px"
-        // Explicitly set fetchpriority for LCP
-        fetchPriority="high"
         // Enable native lazy loading as fallback
         decoding="async"
         style={{

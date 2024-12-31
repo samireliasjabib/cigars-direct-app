@@ -3,9 +3,11 @@ import {Image} from '@shopify/hydrogen';
 function ProductImageSwitcher({
   firstImage,
   secondImage,
+  soldOut,
 }: {
   firstImage: {url: string; altText?: string};
   secondImage: {url: string; altText?: string};
+  soldOut?: boolean;
 }) {
   const imageSize = {
     width: 400,
@@ -40,6 +42,13 @@ function ProductImageSwitcher({
           decoding="async"
         />
       </div>
+      {soldOut && (
+        <div className="absolute bottom-2 left-2 z-20">
+          <span className="bg-white px-3 py-1 text-black text-xs font-semibold">
+            SOLD OUT
+          </span>
+        </div>
+      )}
     </div>
   );
 }
