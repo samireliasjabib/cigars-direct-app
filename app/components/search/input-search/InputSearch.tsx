@@ -2,11 +2,11 @@ import {SearchIcon} from './components/SearchIcon';
 import ProductSearchDropdown from './components/ProductSearchDropdown';
 import {mockCollections, mockPages, mockProducts} from './constants/mockData';
 import {SEARCH_CLASSES, SEARCH_CONSTANTS} from './constants/constants';
-import {SearchDropdown} from './components/dropdown/SearchDropdown';
 import {SearchModal} from './components/modal/SearchModal';
 import {useSearch} from './hooks/useSearch';
 import {X} from 'lucide-react';
 import {TopSearchedProducts} from './components/top-searched/TopSearchedProducts';
+import SearchDropdown from './components/dropdown/SearchDropdown';
 
 function InputSearch() {
   const {
@@ -41,7 +41,7 @@ function InputSearch() {
             <SearchIcon />
           </div>
 
-          <SearchDropdown isVisible={Boolean(isFocused)}>
+          <SearchDropdown isVisible={Boolean(searchValue)}>
             <ProductSearchDropdown
               collections={[...mockCollections]}
               pages={[...mockPages]}

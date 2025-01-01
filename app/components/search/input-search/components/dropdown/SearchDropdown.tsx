@@ -5,7 +5,7 @@ interface SearchDropdownProps {
   children: React.ReactNode;
 }
 
-export const SearchDropdown = ({isVisible, children}: SearchDropdownProps) => (
+const SearchDropdown = ({isVisible, children}: SearchDropdownProps) => (
   <div
     className={`
       ${SEARCH_CLASSES.DROPDOWN_BASE}
@@ -23,3 +23,5 @@ export const SearchDropdown = ({isVisible, children}: SearchDropdownProps) => (
     <div>{children}</div>
   </div>
 );
+
+export default SearchDropdown;
