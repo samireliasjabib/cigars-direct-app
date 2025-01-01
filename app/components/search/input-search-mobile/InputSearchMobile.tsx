@@ -1,5 +1,5 @@
 import {SearchIcon} from '../input-search/components/SearchIcon';
-import ProductSearchDropdown from '../input-search/components/ProductSearchDropdown';
+import ProductSearchDropdown from '../shared/dropdown/ProductSearchDropdown';
 import {
   mockCollections,
   mockPages,
