@@ -1,4 +1,4 @@
-import {Product} from '../../types/types';
+import {Product} from '../../input-search/types/types';
 import {ProductCard} from './ProductCard';
 
 interface ProductListProps {

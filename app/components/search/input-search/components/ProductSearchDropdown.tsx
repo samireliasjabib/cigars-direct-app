@@ -1,9 +1,9 @@
-import CollectionList, {Collection} from './dropdown/CollectionList';
-import PageList, {Page} from './dropdown/PageList';
-import ProductList from './dropdown/ProductList';
 import {Product} from '../types/types';
 import {Button} from '~/components/design-system/ui/button';
 import {MoveRight} from 'lucide-react';
+import PageList, {Page} from '../../shared/dropdown/PageList';
+import ProductList from '../../shared/dropdown/ProductList';
+import CollectionList, {Collection} from '../../shared/dropdown/CollectionList';
 
 interface MainProps {
   products: Product[];

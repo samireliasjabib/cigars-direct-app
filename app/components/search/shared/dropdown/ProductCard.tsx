@@ -1,5 +1,5 @@
 import {Image} from '@shopify/hydrogen';
-import {Product} from '../../types/types';
+import {Product} from '../../input-search/types/types';
 
 interface ProductCardProps {
   product: Product;

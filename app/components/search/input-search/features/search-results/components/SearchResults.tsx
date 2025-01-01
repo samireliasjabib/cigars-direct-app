@@ -1,7 +1,7 @@
+import PageList, {Page} from '~/components/search/shared/dropdown/PageList';
 import CollectionList, {
   Collection,
 } from '../../../components/dropdown/CollectionList';
-import PageList, {Page} from '../../../components/dropdown/PageList';
 import {Product} from '../../../types/types';
 import {ProductCard} from './ProductCard';
 

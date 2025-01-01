@@ -17,9 +17,11 @@ export const mockTopSearchedProducts = Array.from({length: 6}, () => ({
 
 export function TopSearchedProducts() {
   return (
-    <div className="py-8 w-full">
-      <h2 className="text-2xl font-bold mb-6">Top searched</h2>
-      <div className="grid grid-cols-6 gap-4 w-full">
+    <div className="p-4 lg:p-8 w-full">
+      <h2 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-6">
+        Top searched
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 lg:gap-4 w-full">
         {mockTopSearchedProducts.map((product, index) => {
           const hasSoldOut = Math.random() < 0.5;
           return (

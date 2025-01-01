@@ -1,4 +1,7 @@
-import {SEARCH_CLASSES, SEARCH_CONSTANTS} from '../../constants/constants';
+import {
+  SEARCH_CLASSES,
+  SEARCH_CONSTANTS,
+} from '../../input-search/constants/constants';
 
 interface SearchDropdownProps {
   isVisible: boolean;

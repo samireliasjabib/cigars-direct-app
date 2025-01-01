@@ -5,8 +5,8 @@ import {SEARCH_CLASSES, SEARCH_CONSTANTS} from './constants/constants';
 import {SearchModal} from './components/modal/SearchModal';
 import {useSearch} from './hooks/useSearch';
 import {X} from 'lucide-react';
-import {TopSearchedProducts} from './components/top-searched/TopSearchedProducts';
-import SearchDropdown from './components/dropdown/SearchDropdown';
+import {TopSearchedProducts} from '../shared/top-searched/TopSearchedProducts';
+import SearchDropdown from '../shared/dropdown/SearchDropdown';
 
 function InputSearch() {
   const {

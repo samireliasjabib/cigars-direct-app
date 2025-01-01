@@ -1,4 +1,4 @@
-import {TopSearchedProducts} from '../../components/top-searched/TopSearchedProducts';
+import {TopSearchedProducts} from '../../../shared/top-searched/TopSearchedProducts';
 
 interface TopSearchedContainerProps {
   isVisible: boolean;

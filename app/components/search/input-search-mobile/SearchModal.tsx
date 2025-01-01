@@ -3,6 +3,7 @@ import {cn} from '~/lib/utils';
 import {SearchModalHeader} from './features/search-modal/components/SearchModalHeader';
 import {SearchModalContent} from './features/search-modal/components/SearchModalContent';
 import {InputSearchMobile} from './InputSearchMobile';
+import {TopSearchedProducts} from '../shared/top-searched/TopSearchedProducts';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -32,6 +33,9 @@ export function SearchModal({isOpen, onClose}: SearchModalProps) {
           <div className="relative flex flex-col h-full">
             <SearchModalHeader />
             <InputSearchMobile />
+            <div className=" overflow-y-auto">
+              <TopSearchedProducts />
+            </div>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
