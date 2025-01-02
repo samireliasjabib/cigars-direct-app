@@ -14,18 +14,42 @@ function AccountLink({
   const isLoggedIn = rootData?.isLoggedIn;
 
   return (
-    <Link to="/page-in-development">
-      <Suspense fallback={<IconLogin />}>
-        <Await
-          resolve={isLoggedIn}
-          errorElement={<AccountToggle variant={variant} />}
+    <Suspense
+      fallback={
+        <Link
+          to="/page-in-development"
+          className="inline-flex items-center justify-center"
+          aria-label="Account loading"
         >
-          {(isLoggedIn) =>
-            isLoggedIn ? <IconAccount /> : <AccountToggle variant={variant} />
-          }
-        </Await>
-      </Suspense>
-    </Link>
+          <IconLogin />
+        </Link>
+      }
+    >
+      <Await
+        resolve={isLoggedIn}
+        errorElement={
+          <Link
+            to="/page-in-development"
+            className="inline-flex items-center justify-center"
+            aria-label="Sign in to your account"
+          >
+            <AccountToggle variant={variant} />
+          </Link>
+        }
+      >
+        {(isLoggedIn) => (
+          <Link
+            to="/page-in-development"
+            className="inline-flex items-center justify-center"
+            aria-label={
+              isLoggedIn ? 'View your account' : 'Sign in to your account'
+            }
+          >
+            {isLoggedIn ? <IconAccount /> : <AccountToggle variant={variant} />}
+          </Link>
+        )}
+      </Await>
+    </Suspense>
   );
 }
 

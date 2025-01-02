@@ -15,26 +15,40 @@ function AboutUs() {
       role="region"
       aria-labelledby="about-us-title"
     >
-      <Image
-        data={{
-          url: mockData.backgroundImage,
-          altText: mockData.title,
-        }}
-        sizes="100vw"
-        height="100%"
-        width="100%"
-        className="w-full h-full object-cover"
-        loading="lazy"
-        decoding="async"
-      />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-      {/* Additional overlay for better text readability */}
-      <div className="absolute bg-black inset-0 opacity-30" />
+      <div className="relative h-full">
+        <Image
+          data={{
+            url: mockData.backgroundImage,
+            altText: mockData.title,
+          }}
+          sizes="100vw"
+          height="100%"
+          width="100%"
+          className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        {/* Gradient overlay */}
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"
+          aria-hidden="true"
+        />
+        {/* Additional overlay for better text readability */}
+        <div
+          className="absolute bg-black inset-0 opacity-30"
+          aria-hidden="true"
+        />
+      </div>
 
-      <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 lg:p-12">
-        <div className="text-center w-full max-w-xl mx-auto ">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 lg:mb-8 tracking-widest uppercase">
+      <div
+        className="absolute inset-0 flex items-center justify-center p-4 md:p-8 lg:p-12"
+        role="presentation"
+      >
+        <div className="text-center w-full max-w-xl mx-auto">
+          <h2
+            id="about-us-title"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 lg:mb-8 tracking-widest uppercase"
+          >
             {mockData.title}
           </h2>
           <p className="text-sm md:text-base lg:text-lg tracking-wide font-normal text-white/90 leading-relaxed md:leading-relaxed lg:leading-relaxed">

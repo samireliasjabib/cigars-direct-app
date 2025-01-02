@@ -13,9 +13,17 @@ const StarRating = React.memo(function StarRating({
   size = 20,
 }: StarRatingProps) {
   const starCount = singleStar ? 1 : 5;
+  const formattedRating = rating.toFixed(1);
 
   return (
-    <div className="flex" aria-label={`Rating: ${rating} out of 5`}>
+    <div
+      className="flex"
+      role="img"
+      aria-label={`Rating: ${formattedRating} out of 5 stars`}
+      aria-valuemin={0}
+      aria-valuemax={5}
+      aria-valuenow={rating}
+    >
       {[...Array(starCount)].map((_, i) => (
         <Star
           key={i}

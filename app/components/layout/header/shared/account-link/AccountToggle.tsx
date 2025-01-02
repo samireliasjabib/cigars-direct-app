@@ -15,7 +15,7 @@ const AccountToggle = ({
 
 export default AccountToggle;
 
-// User Icon Component
+// User Icon Component/page-in-development"
 function UserIcon() {
   return (
     <svg

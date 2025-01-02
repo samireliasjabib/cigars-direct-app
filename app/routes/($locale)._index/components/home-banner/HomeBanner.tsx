@@ -13,7 +13,7 @@ function HomeBanner({mobileImage, desktopImage}: HomeBannerProps) {
       <div className="md:hidden" role="banner">
         <MobileBanner
           image={mobileImage}
-          buttonClass="text-base uppercase mr-3"
+          buttonClass="text-base uppercase mr-3 text-white"
           buttonLabel="Learn More"
           buttonPosition="bottom-8"
           aria-label="Explore mobile-exclusive promotions and offers"

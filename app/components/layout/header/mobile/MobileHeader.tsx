@@ -22,8 +22,11 @@ function MobileHeader({
 
   return (
     <>
-      <div className="h-[72px] bg-black flex items-center px-4 py-3 justify-between w-full lg:hidden">
-        <Link to="/" className="inline-block">
+      <div
+        className="h-[72px] bg-black flex items-center px-4 py-3 justify-between w-full lg:hidden"
+        role="banner"
+      >
+        <Link to="/" className="inline-block" aria-label="Cigars Direct Home">
           <Image
             data={{url: CIGARS_DIRECT_LOGO_WHITE, altText: 'CIGARS DIRECT'}}
             width={140}
@@ -32,21 +35,27 @@ function MobileHeader({
             className="object-contain"
           />
         </Link>
-        {/* 
-          https://web.dev/articles/accessible-tap-targets 
-          I choose change a bit to make this actions buttons more clickable and it accessible
-        */}
-        <div className="flex items-center">
-          <ActionButton onClick={() => setIsSearchOpen(true)}>
+        <div className="flex items-center" role="navigation">
+          <ActionButton
+            onClick={() => setIsSearchOpen(true)}
+            ariaLabel="Open search"
+            isToggle={true}
+            isExpanded={isSearchOpen}
+          >
             <SearchToggle />
           </ActionButton>
-          <ActionButton>
-            <AccountLink variant="label-hidden" />
-          </ActionButton>
-          <ActionButton onClick={openCart}>
+          <AccountLink variant="label-hidden" />
+          <ActionButton
+            onClick={openCart}
+            ariaLabel="Shopping cart"
+          >
             <CartToggle variant="label-hidden" />
           </ActionButton>
-          <ActionButton>
+          <ActionButton
+            ariaLabel="Main menu"
+            isToggle={true}
+            isExpanded={isOpen}
+          >
             <Hamburger
               toggled={isOpen}
               toggle={setOpen}

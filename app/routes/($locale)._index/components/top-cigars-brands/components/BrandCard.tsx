@@ -5,9 +5,10 @@ function BrandCard({imageUrl, altText}: BrandCardProps) {
   return (
     <div
       className="group relative flex justify-center items-center h-32 py-6 cursor-pointer"
-      role="button"
+      role="link"
       tabIndex={0}
       aria-label={`View details about the brand ${altText}`}
+      aria-describedby="brand-card-description"
     >
       {/* Borders */}
       <div className="absolute top-0 left-0 h-[40%] w-full border-t border-l border-gray-200 transition-colors duration-300 group-hover:border-primary" />
@@ -28,7 +29,11 @@ function BrandCard({imageUrl, altText}: BrandCardProps) {
           height={56}
           loading="lazy"
           decoding="async"
+          aria-hidden="true"
         />
+      </div>
+      <div id="brand-card-description" className="sr-only">
+        View details about the brand {altText}
       </div>
     </div>
   );
