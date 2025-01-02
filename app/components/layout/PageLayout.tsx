@@ -1,9 +1,10 @@
 import {type LayoutQuery} from 'storefrontapi.generated';
 import {type EnhancedMenu} from '~/lib/utils';
+import {Suspense} from 'react';
 
 import Header from './header/Header';
-import Footer from './footer/Footer';
 import NewFooter from './footer/NewFooter';
+import MegaMenu from './navigation/MegaMenu';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -26,8 +27,9 @@ export function PageLayout({children, layout}: LayoutProps) {
         {headerMenu && layout?.shop.name && (
           <Header title={layout.shop.name} menu={headerMenu} />
         )}
+        <MegaMenu />
         <main role="main" id="mainContent" className="flex-grow">
-          {children}
+          <Suspense>{children}</Suspense>
         </main>
       </div>
       {footerMenu && <NewFooter />}
