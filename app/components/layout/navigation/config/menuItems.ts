@@ -1,4 +1,4 @@
-import {NavigationItem, SubMenuItem} from '../types';
+import { NavigationItem, SubMenuItem } from '../types';
 
 export const cigarsSubMenu: SubMenuItem[] = [
   {
@@ -83,18 +83,98 @@ export const cigarsSubMenu: SubMenuItem[] = [
   },
 ];
 
+export const fivePacksSubMenu: SubMenuItem[] = [
+  {
+    title: 'Cigar 5-Packs',
+    links: [
+      '5-Packs Under $25',
+      '5-Packs From $25 – $50',
+      '5-Packs From $50 – $75',
+      '5-Packs From $75 – $100',
+      '5-Packs Over $100',
+    ],
+  },
+  {
+    title: 'Cigar Samplers',
+    links: [
+      'Samplers Under $25',
+      'Samplers From $25 – $50',
+      'Samplers From $50 – $75',
+      'Samplers From $75 – $100',
+      'Samplers Over $100',
+    ],
+  },
+  {
+    title: '5-Packs By Strength',
+    links: [
+      '5-Packs Full',
+      '5-Packs Medium-Full',
+      '5-Packs Medium',
+      '5-Packs Mild-Medium',
+      '5-Packs Mild',
+    ],
+  },
+  {
+    title: '5-Packs By Region',
+    links: [
+      'Dominican 5-Packs',
+      'Honduran 5-Packs',
+      'Nicaraguan 5-Packs',
+      'Other 5-Packs',
+    ],
+  },
+];
+
+export const accessoriesSubMenu: SubMenuItem[] = [
+  {
+    title: 'Accessories',
+    links: [
+      'Humidors',
+      'Ashtrays',
+      'Lighters',
+      'Cutters',
+      'Cases',
+      'Humidification',
+      'Lighter - Cutter Set',
+      'Punches',
+    ],
+  },
+];
+
+export const apparelSubMenu: SubMenuItem[] = [
+  {
+    title: 'Apparel',
+    links: [
+      'Hats',
+      'T-Shirts',
+    ],
+  },
+];
+
+export const giftsSubMenu: SubMenuItem[] = [
+  {
+    title: 'Gifts',
+    links: [
+      'Gift w/Purchase',
+      'Gift Guide',
+    ],
+  },
+];
+
+
 export const navigationItems: NavigationItem[] = [
   {
     label: 'CIGARS',
     href: '/cigars',
     subMenu: cigarsSubMenu,
   },
-  {label: '5-PACKS & SAMPLERS', href: '/samplers'},
-  {label: 'LIMITED EDITION', href: '/limited-edition'},
-  {label: 'NEW ARRIVALS', href: '/new-arrivals'},
-  {label: 'ACCESSORIES', href: '/accessories'},
-  {label: 'APPAREL', href: '/apparel'},
-  {label: 'GIFTS', href: '/gifts'},
-  {label: 'HOT DEALS', href: '/hot-deals', isHighlighted: true},
-  {label: 'TRACK YOUR ORDER', href: '/track-order'},
+  { label: '5-PACKS & SAMPLERS', href: '/samplers', subMenu: fivePacksSubMenu },
+  { label: 'LIMITED EDITION', href: '/limited-edition' },
+  { label: 'NEW ARRIVALS', href: '/new-arrivals' },
+  { label: 'ACCESSORIES', href: '/accessories', subMenu: accessoriesSubMenu },
+  { label: 'APPAREL', href: '/apparel', subMenu: apparelSubMenu },
+  { label: 'GIFTS', href: '/gifts', subMenu: giftsSubMenu },
+  { label: 'HOT DEALS', href: '/hot-deals', isHighlighted: true },
+  { label: 'TRACK YOUR ORDER', href: '/track-order' },
 ];
+

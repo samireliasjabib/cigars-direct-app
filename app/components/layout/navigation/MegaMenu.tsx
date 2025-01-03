@@ -13,7 +13,7 @@ function MegaMenu() {
         aria-label="Main navigation"
       >
         <div className="px-4">
-          <ul className="flex items-center wrapper  whitespace-nowrap justify-center flex-wrap py-2 -mx-4 px-4 gap-4 tracking-wide">
+          <ul className="flex items-center wrapper mx-auto  whitespace-nowrap justify-center flex-wrap py-2 px-4 gap-4 tracking-wide">
             {navigationItems.map((item) => (
               <NavigationItem
                 key={item.href}

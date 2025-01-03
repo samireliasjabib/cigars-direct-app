@@ -6,17 +6,13 @@ interface SubMenuProps {
   onMouseLeave: () => void;
 }
 
-export function SubMenu({ subMenu, onMouseLeave }: SubMenuProps) {
-
+function SubMenuMultiple({ subMenu, onMouseLeave }: SubMenuProps) {
   return (
     <div
-      className="absolute left-0 right-0 h-80 overflow-y-auto bg-white border-t border-gray-200 shadow-lg z-20"
-      style={{ top: '100%' }}
+      className="absolute left-0 right-0 h-80 overflow-y-auto bg-white border-t border-gray-200 shadow-lg z-20 top-full"
     >
       <div className="wrapper px-4" onMouseLeave={onMouseLeave}>
-        <div
-          className={`flex gap-6 py-8 flex-wrap justify-center`}
-        >
+        <div className="flex gap-6 py-8 flex-wrap justify-center">
           {subMenu.map((section, index) => (
             <div key={index} className="space-y-3">
               <h3 className="text-base font-semibold text-gray-800 mb-3">
@@ -41,3 +37,5 @@ export function SubMenu({ subMenu, onMouseLeave }: SubMenuProps) {
     </div>
   );
 }
+
+export default SubMenuMultiple;

@@ -1,7 +1,8 @@
-import {Link} from '~/components/shared/Link';
-import {Flame} from 'lucide-react';
-import {NavigationItem as NavItemType} from '../types';
-import {SubMenu} from './SubMenu';
+import { Link } from '~/components/shared/Link';
+import { Flame } from 'lucide-react';
+import { NavigationItem as NavItemType } from '../types';
+import SubMenuMultiple from './SubMenuMultiple';
+import SubMenuSingle from './SubMenuSingle';
 
 interface NavigationItemProps {
   item: NavItemType;
@@ -20,11 +21,10 @@ export function NavigationItem({
     <li className="group" onMouseEnter={onMouseEnter}>
       <Link
         to={item.href}
-        className={`text-base font-normal transition-colors inline-flex items-center gap-2 ${
-          item.isHighlighted
-            ? 'bg-primary text-white p-2 hover:bg-primary/90'
-            : 'text-gray-900'
-        }`}
+        className={`text-base font-normal transition-colors inline-flex items-center gap-2 ${item.isHighlighted
+          ? 'bg-primary text-white p-2 hover:bg-primary/90'
+          : 'text-gray-900'
+          }`}
         prefetch="intent"
       >
         {item.isHighlighted && (
@@ -35,8 +35,15 @@ export function NavigationItem({
         {item.label}
       </Link>
 
-      {item.subMenu && isActive && (
-        <SubMenu subMenu={item.subMenu} onMouseLeave={onMouseLeave} />
+      {item.subMenu && isActive && item.subMenu.length > 1 && (
+        <SubMenuMultiple subMenu={item.subMenu} onMouseLeave={onMouseLeave} />
+      )}
+      {item.subMenu && isActive && item.subMenu.length === 1 && (
+        <SubMenuSingle
+          subMenu={item.subMenu}
+          onMouseLeave={onMouseLeave}
+        />
+
       )}
     </li>
   );
