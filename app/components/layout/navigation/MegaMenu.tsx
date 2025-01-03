@@ -1,6 +1,6 @@
-import {useState} from 'react';
-import {NavigationItem} from './components/NavigationItem';
-import {navigationItems} from './config/menuItems';
+import { useState } from 'react';
+import { NavigationItem } from './components/NavigationItem';
+import { navigationItems } from './config/menuItems';
 
 function MegaMenu() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
@@ -12,8 +12,8 @@ function MegaMenu() {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-7xl mx-auto px-4">
-          <ul className="flex items-center justify-between whitespace-nowrap py-2 -mx-4 px-4 gap-6 tracking-wide">
+        <div className="px-4">
+          <ul className="flex items-center wrapper  whitespace-nowrap justify-center flex-wrap py-2 -mx-4 px-4 gap-4 tracking-wide">
             {navigationItems.map((item) => (
               <NavigationItem
                 key={item.href}

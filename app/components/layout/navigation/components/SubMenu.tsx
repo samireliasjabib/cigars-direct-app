@@ -1,27 +1,21 @@
-import {Link} from '~/components/shared/Link';
-import {SubMenuItem} from '../types';
+import { Link } from '~/components/shared/Link';
+import { SubMenuItem } from '../types';
 
 interface SubMenuProps {
   subMenu: SubMenuItem[];
   onMouseLeave: () => void;
 }
 
-export function SubMenu({subMenu, onMouseLeave}: SubMenuProps) {
-  const getGridCols = (count: number) => {
-    const maxCols = 12;
-    return `lg:grid-cols-${Math.min(count, maxCols)}`;
-  };
+export function SubMenu({ subMenu, onMouseLeave }: SubMenuProps) {
 
   return (
     <div
-      className="absolute left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-20"
-      style={{top: '100%'}}
+      className="absolute left-0 right-0 h-80 overflow-y-auto bg-white border-t border-gray-200 shadow-lg z-20"
+      style={{ top: '100%' }}
     >
-      <div className="max-w-[1400px] mx-auto px-6" onMouseLeave={onMouseLeave}>
+      <div className="wrapper px-4" onMouseLeave={onMouseLeave}>
         <div
-          className={`grid gap-6 py-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 ${getGridCols(
-            subMenu.length,
-          )}`}
+          className={`flex gap-6 py-8 flex-wrap justify-center`}
         >
           {subMenu.map((section, index) => (
             <div key={index} className="space-y-3">
