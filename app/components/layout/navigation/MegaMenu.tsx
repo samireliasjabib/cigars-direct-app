@@ -1,17 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavigationItem } from './components/NavigationItem';
 import { navigationItems } from './config/menuItems';
+import { useMegaMenuContext } from '../header/context/useMegaMenuContext';
 
 function MegaMenu() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const { isOpenMegaMenu } = useMegaMenuContext();
+
+  // Cerrar submenús cuando el menú principal se cierra
+  useEffect(() => {
+    if (!isOpenMegaMenu) {
+      setActiveItem(null);
+    }
+  }, [isOpenMegaMenu]);
 
   return (
     <div className="relative">
-      <nav
-        className="w-full bg-white border-b border-gray-200 relative z-10"
-        role="navigation"
-        aria-label="Main navigation"
-      >
+      <nav className="bg-white border-b border-neutral-200">
         <div className="px-4">
           <ul className="flex items-center wrapper mx-auto whitespace-nowrap justify-center flex-wrap py-2 px-4 gap-4 tracking-wide">
             {navigationItems.map((item) => (

@@ -20,7 +20,7 @@ export function NavigationItem({
   return (
     <li className="group" onMouseEnter={onMouseEnter}>
       <Link
-        to={item.href}
+        to="/page-in-development"
         className={`text-base font-normal transition-colors inline-flex items-center gap-2 ${item.isHighlighted
           ? 'bg-primary text-white p-2 hover:bg-primary/90'
           : 'text-gray-900'

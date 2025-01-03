@@ -1,14 +1,14 @@
 import Hamburger from 'hamburger-react';
-import {useState} from 'react';
-import {Image} from '@shopify/hydrogen';
+import { useState } from 'react';
+import { Image } from '@shopify/hydrogen';
 
 import AccountLink from '../shared/account-link/AccountLink';
 import CIGARS_DIRECT_LOGO_WHITE from '../../../../assets/cigar-logo-white.jpg';
 import CartToggle from '~/components/cart/CartToggle';
 import SearchToggle from '~/components/search/input-search-mobile/SearchToggle';
 import ActionButton from '~/components/shared/ActionButton';
-import {SearchModal} from '~/components/search/input-search-mobile/SearchModal';
-import {Link} from '~/components/shared/Link';
+import { SearchModal } from '~/components/search/input-search-mobile/SearchModal';
+import { Link } from '~/components/shared/Link';
 
 function MobileHeader({
   openCart,
@@ -28,7 +28,7 @@ function MobileHeader({
       >
         <Link to="/" className="inline-block" aria-label="Cigars Direct Home">
           <Image
-            data={{url: CIGARS_DIRECT_LOGO_WHITE, altText: 'CIGARS DIRECT'}}
+            data={{ url: CIGARS_DIRECT_LOGO_WHITE, altText: 'CIGARS DIRECT' }}
             width={140}
             height={40}
             aspectRatio="1:1"

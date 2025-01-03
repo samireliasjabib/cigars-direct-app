@@ -16,7 +16,7 @@ export function HeaderWithMegaMenu({ title, menu }: HeaderWithMegaMenuProps) {
       <div className="sticky top-0 z-50">
         <Header title={title} menu={menu} />
         <div
-          className="fixed w-full"
+          className="fixed w-full hidden lg:block"
           style={{
             transform: (isScrolled && !isOpenMegaMenu) ? 'translateY(-100%)' : 'translateY(0)',
             transition: 'transform 0.3s ease'

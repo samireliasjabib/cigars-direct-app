@@ -23,8 +23,8 @@ function SubMenuSingle({ subMenu, onMouseLeave }: SubMenuProps) {
                         {section.links.map((link, linkIndex) => (
                             <li key={linkIndex}>
                                 <Link
-                                    to={`/cigars/${link.toLowerCase().replace(/\s+/g, '-')}`}
-                                    className="text-sm text-gray-600 hover:text-gray-800 transition-colors block whitespace-nowrap"
+                                    to={`/page-in-development`}
+                                    className="text-sm text-gray-600 hover:text-gray-800 hover:underline transition-colors block whitespace-nowrap"
                                 >
                                     {link}
                                 </Link>

@@ -25,7 +25,8 @@ function DesktopHeader({ menu, openCart }: DesktopHeaderProps) {
               className="overflow-hidden transition-[width] duration-300 ease-in-out"
               style={{ width: isScrolled ? '40px' : '0' }}
             >
-              <div className="relative right-3">
+              <div className={`relative right-3 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0'
+                }`}>
                 <ActionButton
                   ariaLabel='Close Menu'
                   onClick={toggleMegaMenu}
