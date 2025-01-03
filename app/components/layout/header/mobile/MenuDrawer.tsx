@@ -1,5 +1,5 @@
-import {Drawer} from '~/components/Drawer';
-import {EnhancedMenu} from '~/lib/utils';
+import { Drawer } from '~/components/Drawer';
+import { EnhancedMenu } from '~/lib/utils';
 import MenuMobileNav from './MenuMobileNav';
 
 function MenuDrawer({

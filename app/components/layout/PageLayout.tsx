@@ -1,10 +1,8 @@
-import {type LayoutQuery} from 'storefrontapi.generated';
-import {type EnhancedMenu} from '~/lib/utils';
-import {Suspense} from 'react';
-
-import Header from './header/Header';
+import { type LayoutQuery } from 'storefrontapi.generated';
+import { type EnhancedMenu } from '~/lib/utils';
+import HeaderWithMegaMenu from './header/HeaderWithMegaMenu';
 import NewFooter from './footer/NewFooter';
-import MegaMenu from './navigation/MegaMenu';
+import { MegaMenuProvider } from './header/context/useMegaMenuContext';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -14,10 +12,11 @@ type LayoutProps = {
   };
 };
 
-export function PageLayout({children, layout}: LayoutProps) {
-  const {headerMenu, footerMenu} = layout || {};
+export function PageLayout({ children, layout }: LayoutProps) {
+  const { headerMenu, footerMenu } = layout || {};
+
   return (
-    <>
+    <MegaMenuProvider>
       <div className="flex flex-col min-h-screen">
         <div className="">
           <a href="#mainContent" className="sr-only">
@@ -25,14 +24,13 @@ export function PageLayout({children, layout}: LayoutProps) {
           </a>
         </div>
         {headerMenu && layout?.shop.name && (
-          <Header title={layout.shop.name} menu={headerMenu} />
+          <HeaderWithMegaMenu title={layout.shop.name} menu={headerMenu} />
         )}
-        <MegaMenu />
         <main role="main" id="mainContent" className="flex-grow">
-          <Suspense>{children}</Suspense>
+          {children}
         </main>
       </div>
       {footerMenu && <NewFooter />}
-    </>
+    </MegaMenuProvider>
   );
 }

@@ -1,9 +1,9 @@
-import {HomeBannerProps} from './types';
+import { HomeBannerProps } from './types';
 
 import MobileBanner from './components/MobileBanner';
 import DesktopBanner from './components/DesktopBanner';
 
-function HomeBanner({mobileImage, desktopImage}: HomeBannerProps) {
+function HomeBanner({ mobileImage, desktopImage }: HomeBannerProps) {
   return (
     <section aria-labelledby="home-banner-title" className="pb-10 md:pb-20">
       <h1 id="home-banner-title" className="sr-only">

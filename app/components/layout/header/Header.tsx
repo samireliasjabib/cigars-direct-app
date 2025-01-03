@@ -1,10 +1,9 @@
-import {CartForm} from '@shopify/hydrogen';
-import {useEffect} from 'react';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
+import { CartForm } from '@shopify/hydrogen';
+import { useEffect } from 'react';
 import CartDrawer from '~/components/cart/CartDrawer';
-import {useDrawer} from '~/components/Drawer';
-import {useCartFetchers} from '~/hooks/useCartFetchers';
-import {EnhancedMenu} from '~/lib/utils';
+import { useDrawer } from '~/components/Drawer';
+import { useCartFetchers } from '~/hooks/useCartFetchers';
+import { EnhancedMenu } from '~/lib/utils';
 import MobileHeader from './mobile/MobileHeader';
 import MenuDrawer from './mobile/MenuDrawer';
 import DesktopHeader from './desktop/DesktopHeader';
@@ -14,7 +13,7 @@ interface HeaderProps {
   menu?: EnhancedMenu;
 }
 
-function Header({menu}: HeaderProps) {
+function Header({ menu }: HeaderProps) {
   const {
     isOpen: isCartOpen,
     openDrawer: openCart,
